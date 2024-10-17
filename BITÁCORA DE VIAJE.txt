@@ -1,0 +1,7 @@
+BITÁCORA DE VIAJE
+*******************
+2024/10/17
+Tomás y Gaby en clase de consulta con los profes elaboramos UML
+y autogeneramos código para clases.
+La BD está incompleta.
+*******************
