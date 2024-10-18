@@ -5,3 +5,8 @@ Tomás y Gaby en clase de consulta con los profes elaboramos UML
 y autogeneramos código para clases.
 La BD está incompleta.
 *******************
+subo SQL de Joacc0 que compartió por whatsapp//Gaby
+*******************
+agrego UML de clases/entidades formato EASYUML
+completo constructores, getters, setters para las Clases//Gaby
+*******************

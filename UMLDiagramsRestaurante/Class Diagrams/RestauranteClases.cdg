@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Clases">
+  <ClassDiagramComponents>
+    <Class name="Detalle" package="Clases" visibility="public" xPosition="484.0" yPosition="76.0">
+      <Fields>
+        <Field name="idDetalle" type="int" visibility="private"/>
+        <Field name="producto" type="Producto" visibility="private"/>
+        <Field name="cantidad" type="int" visibility="private"/>
+        <Field name="pedido" type="Pedido" visibility="private"/>
+        <Field name="importe" type="double" visibility="private"/>
+        <Field name="baja" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Mesa" package="Clases" visibility="public" xPosition="20.0" yPosition="29.0">
+      <Fields>
+        <Field name="idMesa" type="int" visibility="private"/>
+        <Field name="capacidad" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="baja" type="boolean" visibility="private"/>
+        <Field name="numeroMesa" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Mesero" package="Clases" visibility="public" xPosition="263.0" yPosition="326.0">
+      <Fields>
+        <Field name="idMesero" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="baja" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Pedido" package="Clases" visibility="public" xPosition="263.0" yPosition="29.0">
+      <Fields>
+        <Field name="idPedido" type="int" visibility="private"/>
+        <Field name="fechaYhora" type="LocalDate" visibility="private"/>
+        <Field name="mesero" type="Mesero" visibility="private"/>
+        <Field name="cobrada" type="boolean" visibility="private"/>
+        <Field name="idMesa" type="Mesa" visibility="private"/>
+        <Field name="baja" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Producto" package="Clases" visibility="public" xPosition="697.0" yPosition="41.0">
+      <Fields>
+        <Field name="idProducto" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="categoria" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="stock" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="asocia" source="Clases.Detalle" target="Clases.Producto" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="asocia" source="Clases.Mesero" target="Clases.Pedido" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="asocia" source="Clases.Mesa" target="Clases.Pedido" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="asocia" source="Clases.Detalle" target="Clases.Pedido" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
