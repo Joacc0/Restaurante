@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 
 // relacion MUCHOS A MUCHOS entre PEDIDO y PRODUCTO
 // nace la clase DETALLE
