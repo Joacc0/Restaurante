@@ -1,4 +1,4 @@
-package Modelo;
+package Persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
