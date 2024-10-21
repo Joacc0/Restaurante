@@ -3,21 +3,27 @@ package Modelo;
 public class Mesa {
 
     private int idMesa;
-
-    private int capacidad;
-
+    private int capacidad;   
     private boolean estado;
-
     private boolean baja;
-
     private int numeroMesa;
+    private String ubicacion;
 
-    public Mesa(int idMesa, int capacidad, boolean estado, boolean baja, int numeroMesa) {
+    public Mesa(int idMesa, int capacidad, boolean estado, boolean baja, int numeroMesa,String ubicacion) {
         this.idMesa = idMesa;
         this.capacidad = capacidad;
         this.estado = estado;
         this.baja = baja;
         this.numeroMesa = numeroMesa;
+        this.ubicacion = ubicacion;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Mesa() {
