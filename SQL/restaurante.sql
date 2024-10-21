@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 20:58:05
+-- Tiempo de generación: 21-10-2024 a las 22:40:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,7 +31,10 @@ USE `restaurante`;
 
 CREATE TABLE `mesa` (
   `id_mesa` int(11) NOT NULL,
-  `numero_mesa` int(11) NOT NULL
+  `numero_mesa` int(11) NOT NULL,
+  `estado_mesa` tinyint(1) NOT NULL,
+  `capacidad` int(11) NOT NULL,
+  `ubicacion` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -42,7 +45,11 @@ CREATE TABLE `mesa` (
 
 CREATE TABLE `mesero` (
   `id_mesero` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(60) NOT NULL,
+  `telefono` bigint(20) NOT NULL,
+  `correo` varchar(60) NOT NULL,
+  `fecha_contratacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -53,8 +60,17 @@ CREATE TABLE `mesero` (
 
 CREATE TABLE `pedido` (
   `id_pedido` int(11) NOT NULL,
-  `fecha_pedido` date NOT NULL,
-  `total` double NOT NULL
+  `id_mesa` int(11) NOT NULL,
+  `fecha_pedido` datetime NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `total` double NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `descripcion` varchar(60) NOT NULL,
+  `precio` double NOT NULL,
+  `categoria` varchar(60) NOT NULL,
+  `disponibilidad` int(11) NOT NULL,
+  `id_mesero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,7 +82,10 @@ CREATE TABLE `pedido` (
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre_producto` varchar(100) NOT NULL,
-  `precio` double NOT NULL
+  `descripcion` varchar(60) NOT NULL,
+  `precio` double NOT NULL,
+  `categoria` varchar(60) NOT NULL,
+  `disponibilidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -77,8 +96,11 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `reserva` (
   `id_reserva` int(11) NOT NULL,
+  `id_mesa` int(11) NOT NULL,
   `nombre_cliente` varchar(100) NOT NULL,
-  `fecha_reserva` date NOT NULL
+  `fecha_reserva` datetime NOT NULL,
+  `numero_personas` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -89,7 +111,8 @@ CREATE TABLE `reserva` (
 -- Indices de la tabla `mesa`
 --
 ALTER TABLE `mesa`
-  ADD PRIMARY KEY (`id_mesa`);
+  ADD PRIMARY KEY (`id_mesa`),
+  ADD UNIQUE KEY `numero_mesa` (`numero_mesa`);
 
 --
 -- Indices de la tabla `mesero`
@@ -101,7 +124,10 @@ ALTER TABLE `mesero`
 -- Indices de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`id_pedido`);
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `id_mesero` (`id_mesero`),
+  ADD KEY `id_mesa` (`id_mesa`);
 
 --
 -- Indices de la tabla `producto`
@@ -113,7 +139,8 @@ ALTER TABLE `producto`
 -- Indices de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD PRIMARY KEY (`id_reserva`);
+  ADD PRIMARY KEY (`id_reserva`),
+  ADD KEY `id_mesa` (`id_mesa`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -148,6 +175,24 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `reserva`
   MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`id_mesero`) REFERENCES `mesero` (`id_mesero`),
+  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id_mesa`);
+
+--
+-- Filtros para la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id_mesa`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
