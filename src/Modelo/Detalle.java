@@ -1,42 +1,32 @@
 package Modelo;
 
 // relacion MUCHOS A MUCHOS entre PEDIDO y PRODUCTO
+
+import java.util.Date;
+
 // nace la clase DETALLE
 public class Detalle {
 
     private int idDetalle;
 
-    private Producto producto;
+    private Mesa idMesa;
+    
+    private String nombreCliente;
+    
+    private Date fechaReserva;
+    
+    private int CantidadPersonas;
 
-    private int cantidad;
+    private boolean estado;//para borrado lógico
 
-    private Pedido pedido;
-
-    private double importe;
-
-    private boolean baja;//para borrado lógico
-
-    public Detalle(int idDetalle, Producto producto, int cantidad, Pedido pedido, double importe, boolean baja) {
+    public Detalle(int idDetalle, Mesa idMesa, String nombreCliente, Date fechaReserva, int CantidadPersonas, boolean estado) {
         this.idDetalle = idDetalle;
-        this.producto = producto;
-        this.cantidad = cantidad;
-        this.pedido = pedido;
-        this.importe = importe;
-        this.baja = baja;
+        this.idMesa = idMesa;
+        this.nombreCliente = nombreCliente;
+        this.fechaReserva = fechaReserva;
+        this.CantidadPersonas = CantidadPersonas;
+        this.estado = estado;
     }
-
-    public Detalle() {
-    }
-
-    public Detalle(Producto producto, int cantidad, Pedido pedido, double importe, boolean baja) {
-        this.producto = producto;
-        this.cantidad = cantidad;
-        this.pedido = pedido;
-        this.importe = importe;
-        this.baja = baja;
-    }
-    
-    
 
     public int getIdDetalle() {
         return idDetalle;
@@ -46,45 +36,47 @@ public class Detalle {
         this.idDetalle = idDetalle;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Mesa getIdMesa() {
+        return idMesa;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setIdMesa(Mesa idMesa) {
+        this.idMesa = idMesa;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Date getFechaReserva() {
+        return fechaReserva;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setFechaReserva(Date fechaReserva) {
+        this.fechaReserva = fechaReserva;
     }
 
-    public double getImporte() {
-        return importe;
+    public int getCantidadPersonas() {
+        return CantidadPersonas;
     }
 
-    public void setImporte(double importe) {
-        this.importe = importe;
+    public void setCantidadPersonas(int CantidadPersonas) {
+        this.CantidadPersonas = CantidadPersonas;
     }
 
-    public boolean isBaja() {
-        return baja;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setBaja(boolean baja) {
-        this.baja = baja;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
+
+   
     
     
 }
