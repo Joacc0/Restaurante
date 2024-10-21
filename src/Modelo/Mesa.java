@@ -5,15 +5,13 @@ public class Mesa {
     private int idMesa;
     private int capacidad;   
     private boolean estado;
-    private boolean baja;
     private int numeroMesa;
     private String ubicacion;
 
-    public Mesa(int idMesa, int capacidad, boolean estado, boolean baja, int numeroMesa,String ubicacion) {
+    public Mesa(int idMesa, int capacidad, boolean estado, int numeroMesa,String ubicacion) {
         this.idMesa = idMesa;
         this.capacidad = capacidad;
         this.estado = estado;
-        this.baja = baja;
         this.numeroMesa = numeroMesa;
         this.ubicacion = ubicacion;
     }
@@ -21,11 +19,11 @@ public class Mesa {
     public Mesa() {
     }
 
-    public Mesa(int capacidad, boolean estado, boolean baja, int numeroMesa, String ubicacion) {
+    public Mesa(int capacidad, boolean estado, int numeroMesa, String ubicacion) {
         this.capacidad = capacidad;
         this.estado = estado;
-        this.baja = baja;
         this.numeroMesa = numeroMesa;
+        this.ubicacion = ubicacion;
     }
     
     public String getUbicacion() {
@@ -58,14 +56,6 @@ public class Mesa {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }
-
-    public boolean isBaja() {
-        return baja;
-    }
-
-    public void setBaja(boolean baja) {
-        this.baja = baja;
     }
 
     public int getNumeroMesa() {
