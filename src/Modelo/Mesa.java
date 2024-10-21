@@ -18,6 +18,16 @@ public class Mesa {
         this.ubicacion = ubicacion;
     }
 
+    public Mesa() {
+    }
+
+    public Mesa(int capacidad, boolean estado, boolean baja, int numeroMesa, String ubicacion) {
+        this.capacidad = capacidad;
+        this.estado = estado;
+        this.baja = baja;
+        this.numeroMesa = numeroMesa;
+    }
+    
     public String getUbicacion() {
         return ubicacion;
     }
@@ -25,18 +35,6 @@ public class Mesa {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-
-    public Mesa() {
-    }
-
-    public Mesa(int capacidad, boolean estado, boolean baja, int numeroMesa) {
-        this.capacidad = capacidad;
-        this.estado = estado;
-        this.baja = baja;
-        this.numeroMesa = numeroMesa;
-    }
-    
-    
 
     public int getIdMesa() {
         return idMesa;
