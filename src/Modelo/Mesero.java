@@ -1,28 +1,20 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Mesero {
 
     private int idMesero;
-
     private String nombre;
-    
-    private boolean baja;
+    private String apellido;
+    private long telefono;
+    private String correo;
+    private Date fechaContratacion;
 
-    public Mesero(int idMesero, String nombre, boolean baja) {
-        this.idMesero = idMesero;
-        this.nombre = nombre;
-        this.baja = baja;
+    @Override
+    public String toString() {
+        return "Mesero{" + "idMesero=" + idMesero + ", nombre=" + nombre + ", apellido=" + apellido + '}';
     }
-
-    public Mesero() {
-    }
-
-    public Mesero(String nombre, boolean baja) {
-        this.nombre = nombre;
-        this.baja = baja;
-    }
-    
-    
 
     public int getIdMesero() {
         return idMesero;
@@ -40,13 +32,51 @@ public class Mesero {
         this.nombre = nombre;
     }
 
-    public boolean isBaja() {
-        return baja;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setBaja(boolean baja) {
-        this.baja = baja;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
+
+    public long getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(long telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Date getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    public Mesero(int idMesero, String nombre, String apellido, long telefono, String correo, Date fechaContratacion) {
+        this.idMesero = idMesero;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.fechaContratacion = fechaContratacion;
+    }
+    
+    
+    
+  
+
     
     
 }
