@@ -10,3 +10,11 @@ subo SQL de Joacc0 que compartió por whatsapp//Gaby
 agrego UML de clases/entidades formato EASYUML
 completo constructores, getters, setters para las Clases//Gaby
 *******************
+2024/10/21
+Genero UMLs
+UML Clases: lo que consultamos con los profes
+UML Entidades: conforme quedaron para primer entrega
+UML Persistencia: conforme quedaron para primer entrega
+UML TOTAL: conforme quedó para primer entrega
+//Gaby
+*******************
