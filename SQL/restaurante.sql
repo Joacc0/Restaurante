@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2024 a las 16:17:26
+-- Tiempo de generación: 24-10-2024 a las 16:46:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -35,7 +35,8 @@ CREATE TABLE `detalle` (
   `nombreCliente` varchar(60) NOT NULL,
   `fechaReserva` date NOT NULL,
   `cantidadPersonas` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` int(11) NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -47,9 +48,10 @@ CREATE TABLE `detalle` (
 CREATE TABLE `mesa` (
   `id_mesa` int(11) NOT NULL,
   `numero_mesa` int(11) NOT NULL,
-  `estado_mesa` tinyint(1) NOT NULL,
+  `estado_mesa` int(11) NOT NULL,
   `capacidad` int(11) NOT NULL,
-  `ubicacion` varchar(60) NOT NULL
+  `ubicacion` varchar(60) NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -64,7 +66,8 @@ CREATE TABLE `mesero` (
   `apellido` varchar(60) NOT NULL,
   `telefono` bigint(20) NOT NULL,
   `correo` varchar(60) NOT NULL,
-  `fecha_contratacion` date NOT NULL
+  `fecha_contratacion` date NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -77,7 +80,7 @@ CREATE TABLE `pedido` (
   `id_pedido` int(11) NOT NULL,
   `id_mesa` int(11) NOT NULL,
   `fecha_pedido` datetime NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+  `estado` int(11) NOT NULL,
   `total` double NOT NULL,
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(60) NOT NULL,
@@ -85,7 +88,8 @@ CREATE TABLE `pedido` (
   `precio` double NOT NULL,
   `categoria` varchar(60) NOT NULL,
   `disponibilidad` int(11) NOT NULL,
-  `id_mesero` int(11) NOT NULL
+  `id_mesero` int(11) NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -115,7 +119,8 @@ CREATE TABLE `reserva` (
   `nombre_cliente` varchar(100) NOT NULL,
   `fecha_reserva` datetime NOT NULL,
   `numero_personas` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` int(11) NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
