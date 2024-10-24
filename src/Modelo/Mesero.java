@@ -10,6 +10,7 @@ public class Mesero {
     private long telefono;
     private String correo;
     private Date fechaContratacion;
+    private boolean baja;
 
     @Override
     public String toString() {
@@ -64,13 +65,35 @@ public class Mesero {
         this.fechaContratacion = fechaContratacion;
     }
 
-    public Mesero(int idMesero, String nombre, String apellido, long telefono, String correo, Date fechaContratacion) {
+    public Mesero(int idMesero, String nombre, String apellido, long telefono, String correo, Date fechaContratacion, boolean baja) {
         this.idMesero = idMesero;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.correo = correo;
         this.fechaContratacion = fechaContratacion;
+        this.baja = baja;
+    }
+
+    public Mesero(String nombre, String apellido, long telefono, String correo, Date fechaContratacion, boolean baja) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.fechaContratacion = fechaContratacion;
+        this.baja = baja;
+    }
+
+    public Mesero() {
+    }
+    
+
+    public boolean isBaja() {
+        return baja;
+    }
+
+    public void setBaja(boolean baja) {
+        this.baja = baja;
     }
     
     

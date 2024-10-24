@@ -23,6 +23,18 @@ public class Producto {
         this.stock = stock;
     }
 
+    public Producto(String nombre, String descripcion, double precio, String categoria, int stock) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.stock = stock;
+    }
+
+    public Producto() {
+    }
+
+    
     public int getIdProducto() {
         return idProducto;
     }

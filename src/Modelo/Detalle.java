@@ -13,21 +13,33 @@ public class Detalle {
     
     private String nombreCliente;
     
-    private Date fechaReserva;
+    private Date fecha;
     
-    private int CantidadPersonas;
+    private int CantidadProductos;
 
-    private boolean estado;//para borrado lógico
+    private boolean baja;//para borrado lógico
 
-    public Detalle(int idDetalle, Mesa idMesa, String nombreCliente, Date fechaReserva, int CantidadPersonas, boolean estado) {
+    public Detalle(int idDetalle, Mesa idMesa, String nombreCliente, Date fecha, int CantidadProductos, boolean baja) {
         this.idDetalle = idDetalle;
         this.idMesa = idMesa;
         this.nombreCliente = nombreCliente;
-        this.fechaReserva = fechaReserva;
-        this.CantidadPersonas = CantidadPersonas;
-        this.estado = estado;
+        this.fecha = fecha;
+        this.CantidadProductos = CantidadProductos;
+        this.baja = baja;
     }
 
+    public Detalle(Mesa idMesa, String nombreCliente, Date fecha, int CantidadProductos, boolean baja) {
+        this.idMesa = idMesa;
+        this.nombreCliente = nombreCliente;
+        this.fecha = fecha;
+        this.CantidadProductos = CantidadProductos;
+        this.baja = baja;
+    }
+
+    public Detalle() {
+    }
+
+    
     public int getIdDetalle() {
         return idDetalle;
     }
@@ -52,28 +64,28 @@ public class Detalle {
         this.nombreCliente = nombreCliente;
     }
 
-    public Date getFechaReserva() {
-        return fechaReserva;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaReserva(Date fechaReserva) {
-        this.fechaReserva = fechaReserva;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public int getCantidadPersonas() {
-        return CantidadPersonas;
+    public int getCantidadProductos() {
+        return CantidadProductos;
     }
 
-    public void setCantidadPersonas(int CantidadPersonas) {
-        this.CantidadPersonas = CantidadPersonas;
+    public void setCantidadProductos(int CantidadProductos) {
+        this.CantidadProductos = CantidadProductos;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isBaja() {
+        return baja;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setBaja(boolean baja) {
+        this.baja = baja;
     }
 
    

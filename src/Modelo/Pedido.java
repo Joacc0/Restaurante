@@ -7,17 +7,28 @@ public class Pedido {
     private int idPedido;
     private Mesa idMesa;
     private LocalDate fechaYhora;
-    private boolean estado;
+    private boolean estado; //
     private Double total;
     private Producto idProducto;
     private String nombre;
     private String descripcion;
     private Double precio;
     private String categoria;
+
+    public boolean isBaja() {
+        return baja;
+    }
+
+    public void setBaja(boolean baja) {
+        this.baja = baja;
+    }
     private int disponibilidad;
     private Mesero idMesero;
+    private boolean baja; // para borrado logico
 
-    public Pedido(int idPedido, Mesa idMesa, LocalDate fechaYhora, boolean estado, Double total, Producto idProducto, String nombre, String descripcion, Double precio, String categoria, int disponibilidad, Mesero idMesero) {
+ 
+
+    public Pedido(int idPedido, Mesa idMesa, LocalDate fechaYhora, boolean estado, Double total, Producto idProducto, String nombre, String descripcion, Double precio, String categoria, int disponibilidad, Mesero idMesero, boolean baja) {
         this.idPedido = idPedido;
         this.idMesa = idMesa;
         this.fechaYhora = fechaYhora;
@@ -30,7 +41,26 @@ public class Pedido {
         this.categoria = categoria;
         this.disponibilidad = disponibilidad;
         this.idMesero = idMesero;
+        this.baja = baja;
     }
+
+    public Pedido(Mesa idMesa, LocalDate fechaYhora, boolean estado, Double total, Producto idProducto, String nombre, String descripcion, Double precio, String categoria, boolean baja) {
+        this.idMesa = idMesa;
+        this.fechaYhora = fechaYhora;
+        this.estado = estado;
+        this.total = total;
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.baja = baja;
+    }
+
+    public Pedido() {
+    }
+    
+    
 
     public int getIdPedido() {
         return idPedido;
