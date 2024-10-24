@@ -2,6 +2,7 @@ package Persistencia;
 
 import Modelo.Mesa;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,5 +39,29 @@ public class MesaData {
         
     }
  }
+    
+    public void actualizarMesa(Mesa mesa){
+        try {
+            String sql = "UPDATE mesa SET numero_mesa= ?, estado_mesa= ?,capacidad= ?,ubicacion= ? "
+                    + "WHERE id_mesa = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1,mesa.getNumeroMesa());
+            ps.setBoolean(2, true);
+            ps.setString(3,alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFecha()));           
+            ps.setInt(5, alumno.getIdAlumno());
+            
+            int fila = ps.executeUpdate();
+            
+            if (fila ==1) {
+                JOptionPane.showMessageDialog(null, "Alumno modificado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de alumnos");
+        }  
+    }
+    }
     
 }
