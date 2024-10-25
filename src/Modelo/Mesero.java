@@ -7,14 +7,22 @@ public class Mesero {
     private int idMesero;
     private String nombre;
     private String apellido;
-    private long telefono;
-    private String correo;
-    private Date fechaContratacion;
     private boolean baja;
 
-    @Override
-    public String toString() {
-        return "Mesero{" + "idMesero=" + idMesero + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+    public Mesero() {
+    }
+
+    public Mesero(int idMesero, String nombre, String apellido, boolean baja) {
+        this.idMesero = idMesero;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.baja = baja;
+    }
+
+    public Mesero(String nombre, String apellido, boolean baja) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.baja = baja;
     }
 
     public int getIdMesero() {
@@ -41,53 +49,6 @@ public class Mesero {
         this.apellido = apellido;
     }
 
-    public long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(long telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public Date getFechaContratacion() {
-        return fechaContratacion;
-    }
-
-    public void setFechaContratacion(Date fechaContratacion) {
-        this.fechaContratacion = fechaContratacion;
-    }
-
-    public Mesero(int idMesero, String nombre, String apellido, long telefono, String correo, Date fechaContratacion, boolean baja) {
-        this.idMesero = idMesero;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.fechaContratacion = fechaContratacion;
-        this.baja = baja;
-    }
-
-    public Mesero(String nombre, String apellido, long telefono, String correo, Date fechaContratacion, boolean baja) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.fechaContratacion = fechaContratacion;
-        this.baja = baja;
-    }
-
-    public Mesero() {
-    }
-    
-
     public boolean isBaja() {
         return baja;
     }
@@ -95,11 +56,11 @@ public class Mesero {
     public void setBaja(boolean baja) {
         this.baja = baja;
     }
-    
-    
-    
-  
 
-    
-    
+    @Override
+    public String toString() {
+        return "Mesero{" + "idMesero=" + idMesero + ", nombre=" + nombre + ", apellido=" + apellido + ", baja=" + baja + '}';
+    }
+
+   
 }

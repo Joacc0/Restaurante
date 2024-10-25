@@ -8,38 +8,32 @@ import java.util.Date;
 public class Detalle {
 
     private int idDetalle;
-
-    private Mesa idMesa;
-    
-    private String nombreCliente;
-    
-    private Date fecha;
-    
+    private Producto producto;
     private int CantidadProductos;
-
+    private Pedido pedido;
+    private double importe;
     private boolean baja;//para borrado lógico
-
-    public Detalle(int idDetalle, Mesa idMesa, String nombreCliente, Date fecha, int CantidadProductos, boolean baja) {
-        this.idDetalle = idDetalle;
-        this.idMesa = idMesa;
-        this.nombreCliente = nombreCliente;
-        this.fecha = fecha;
-        this.CantidadProductos = CantidadProductos;
-        this.baja = baja;
-    }
-
-    public Detalle(Mesa idMesa, String nombreCliente, Date fecha, int CantidadProductos, boolean baja) {
-        this.idMesa = idMesa;
-        this.nombreCliente = nombreCliente;
-        this.fecha = fecha;
-        this.CantidadProductos = CantidadProductos;
-        this.baja = baja;
-    }
 
     public Detalle() {
     }
 
-    
+    public Detalle(int idDetalle, Producto producto, int CantidadProductos, Pedido pedido, double importe, boolean baja) {
+        this.idDetalle = idDetalle;
+        this.producto = producto;
+        this.CantidadProductos = CantidadProductos;
+        this.pedido = pedido;
+        this.importe = importe;
+        this.baja = baja;
+    }
+
+    public Detalle(Producto producto, int CantidadProductos, Pedido pedido, double importe, boolean baja) {
+        this.producto = producto;
+        this.CantidadProductos = CantidadProductos;
+        this.pedido = pedido;
+        this.importe = importe;
+        this.baja = baja;
+    }
+
     public int getIdDetalle() {
         return idDetalle;
     }
@@ -48,28 +42,12 @@ public class Detalle {
         this.idDetalle = idDetalle;
     }
 
-    public Mesa getIdMesa() {
-        return idMesa;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdMesa(Mesa idMesa) {
-        this.idMesa = idMesa;
-    }
-
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidadProductos() {
@@ -80,6 +58,22 @@ public class Detalle {
         this.CantidadProductos = CantidadProductos;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public double getImporte() {
+        return importe;
+    }
+
+    public void setImporte(double importe) {
+        this.importe = importe;
+    }
+
     public boolean isBaja() {
         return baja;
     }
@@ -88,7 +82,10 @@ public class Detalle {
         this.baja = baja;
     }
 
+    @Override
+    public String toString() {
+        return "Detalle{" + "idDetalle=" + idDetalle + ", producto=" + producto + ", CantidadProductos=" + CantidadProductos + ", pedido=" + pedido + ", importe=" + importe + ", baja=" + baja + '}';
+    }
+    
    
-    
-    
 }

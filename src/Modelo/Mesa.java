@@ -2,36 +2,28 @@ package Modelo;
 
 public class Mesa {
 
-    private int idMesa;
-    private int capacidad;   
-    private int estado;
-    private int numeroMesa;
-    private String ubicacion;
-
-    public Mesa(int idMesa, int capacidad, int estado, int numeroMesa,String ubicacion) {
-        this.idMesa = idMesa;
-        this.capacidad = capacidad;
-        this.estado = estado;
-        this.numeroMesa = numeroMesa;
-        this.ubicacion = ubicacion;
-    }
+    private int idMesa;     //autogeneradoBD
+    private int capacidad;  //permite sentar X personas máximo   
+    private int estado;     //1_libre 2_ocupada 3_atendida-> cuando es cobrada pasa a 1_libre
+    private int numeroMesa; //número (descriptivo) introducido x mesero
+    private boolean baja;
 
     public Mesa() {
     }
 
-    public Mesa(int capacidad, int estado, int numeroMesa, String ubicacion) {
+    public Mesa(int idMesa, int capacidad, int estado, int numeroMesa, boolean baja) {
+        this.idMesa = idMesa;
         this.capacidad = capacidad;
         this.estado = estado;
         this.numeroMesa = numeroMesa;
-        this.ubicacion = ubicacion;
-    }
-    
-    public String getUbicacion() {
-        return ubicacion;
+        this.baja = baja;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public Mesa(int capacidad, int estado, int numeroMesa, boolean baja) {
+        this.capacidad = capacidad;
+        this.estado = estado;
+        this.numeroMesa = numeroMesa;
+        this.baja = baja;
     }
 
     public int getIdMesa() {
@@ -50,7 +42,7 @@ public class Mesa {
         this.capacidad = capacidad;
     }
 
-    public int isEstado() {
+    public int getEstado() {
         return estado;
     }
 
@@ -65,6 +57,18 @@ public class Mesa {
     public void setNumeroMesa(int numeroMesa) {
         this.numeroMesa = numeroMesa;
     }
-    
+
+    public boolean isBaja() {
+        return baja;
+    }
+
+    public void setBaja(boolean baja) {
+        this.baja = baja;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa{" + "idMesa=" + idMesa + ", capacidad=" + capacidad + ", estado=" + estado + ", numeroMesa=" + numeroMesa + ", baja=" + baja + '}';
+    }
     
 }

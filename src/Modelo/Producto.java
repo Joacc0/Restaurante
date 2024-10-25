@@ -13,28 +13,31 @@ public class Producto {
     private String categoria;    
 
     private int stock;
+    
+    private boolean baja;
 
-    public Producto(int idProducto, String nombre, String descripcion, double precio, String categoria, int stock) {
+    public Producto() {
+    }
+
+    public Producto(int idProducto, String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
         this.stock = stock;
+        this.baja = baja;
     }
 
-    public Producto(String nombre, String descripcion, double precio, String categoria, int stock) {
+    public Producto(String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
         this.stock = stock;
+        this.baja = baja;
     }
 
-    public Producto() {
-    }
-
-    
     public int getIdProducto() {
         return idProducto;
     }
@@ -83,7 +86,18 @@ public class Producto {
         this.stock = stock;
     }
 
-  
-    
-    
+    public boolean isBaja() {
+        return baja;
+    }
+
+    public void setBaja(boolean baja) {
+        this.baja = baja;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", categoria=" + categoria + ", stock=" + stock + ", baja=" + baja + '}';
+    }
+
+   
 }
