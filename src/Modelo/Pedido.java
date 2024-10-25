@@ -5,62 +5,31 @@ import java.time.LocalDate;
 public class Pedido {
 
     private int idPedido;
-    private Mesa idMesa;
-    private LocalDate fechaYhora;
-    private boolean estado; //
-    private Double total;
-    private Producto idProducto;
-    private String nombre;
-    private String descripcion;
-    private Double precio;
-    private String categoria;
-
-    public boolean isBaja() {
-        return baja;
-    }
-
-    public void setBaja(boolean baja) {
-        this.baja = baja;
-    }
-    private int disponibilidad;
-    private Mesero idMesero;
+    private Mesa mesa;
+    private LocalDate fechaYhoraPedido;
+    private Mesero mesero;
+    private boolean cobrada; //
     private boolean baja; // para borrado logico
-
- 
-
-    public Pedido(int idPedido, Mesa idMesa, LocalDate fechaYhora, boolean estado, Double total, Producto idProducto, String nombre, String descripcion, Double precio, String categoria, int disponibilidad, Mesero idMesero, boolean baja) {
-        this.idPedido = idPedido;
-        this.idMesa = idMesa;
-        this.fechaYhora = fechaYhora;
-        this.estado = estado;
-        this.total = total;
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.disponibilidad = disponibilidad;
-        this.idMesero = idMesero;
-        this.baja = baja;
-    }
-
-    public Pedido(Mesa idMesa, LocalDate fechaYhora, boolean estado, Double total, Producto idProducto, String nombre, String descripcion, Double precio, String categoria, boolean baja) {
-        this.idMesa = idMesa;
-        this.fechaYhora = fechaYhora;
-        this.estado = estado;
-        this.total = total;
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.baja = baja;
-    }
 
     public Pedido() {
     }
-    
-    
+
+    public Pedido(int idPedido, Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
+        this.idPedido = idPedido;
+        this.mesa = mesa;
+        this.fechaYhoraPedido = fechaYhoraPedido;
+        this.mesero = mesero;
+        this.cobrada = cobrada;
+        this.baja = baja;
+    }
+
+    public Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
+        this.mesa = mesa;
+        this.fechaYhoraPedido = fechaYhoraPedido;
+        this.mesero = mesero;
+        this.cobrada = cobrada;
+        this.baja = baja;
+    }
 
     public int getIdPedido() {
         return idPedido;
@@ -70,95 +39,51 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public Mesa getIdMesa() {
-        return idMesa;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public void setIdMesa(Mesa idMesa) {
-        this.idMesa = idMesa;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
-    public LocalDate getFechaYhora() {
-        return fechaYhora;
+    public LocalDate getFechaYhoraPedido() {
+        return fechaYhoraPedido;
     }
 
-    public void setFechaYhora(LocalDate fechaYhora) {
-        this.fechaYhora = fechaYhora;
+    public void setFechaYhoraPedido(LocalDate fechaYhoraPedido) {
+        this.fechaYhoraPedido = fechaYhoraPedido;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public Mesero getMesero() {
+        return mesero;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setMesero(Mesero mesero) {
+        this.mesero = mesero;
     }
 
-    public Double getTotal() {
-        return total;
+    public boolean isCobrada() {
+        return cobrada;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setCobrada(boolean cobrada) {
+        this.cobrada = cobrada;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public boolean isBaja() {
+        return baja;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setBaja(boolean baja) {
+        this.baja = baja;
     }
 
-    public String getNombre() {
-        return nombre;
+    @Override
+    public String toString() {
+        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", fechaYhoraPedido=" + fechaYhoraPedido + ", mesero=" + mesero + ", cobrada=" + cobrada + ", baja=" + baja + '}';
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public int getDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(int disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
-    public Mesero getIdMesero() {
-        return idMesero;
-    }
-
-    public void setIdMesero(Mesero idMesero) {
-        this.idMesero = idMesero;
-    }
-
- 
+    
 
     
 }

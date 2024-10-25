@@ -17,16 +17,18 @@ public class MesaData {
         con = Conexion.getConexion();
     }
     
-    public void guardarMesa(Mesa mesa){
-        
-        String sql = "INSERT INTO `mesa`( `numero_mesa`, `estado_mesa`, `capacidad`, `ubicacion`) VALUES (?,?,?,?)";
-            
+    //ALTA
+    public void guardarMesa(Mesa mesa){     //damos de alta nueva mesa ID en BD automático autoincremental
+       
+        //atributos de mesa en orden: (int capacidad, int estado, int numeroMesa, boolean baja)
+        String sql="INSERT INTO mesa (capacidad,estadoMesa,numeroMesa,baja)"
+                + "VALUES(?,?,?,?)";    
             try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-           ps.setInt(1, mesa.getNumeroMesa() );
-           ps.setBoolean(2, true);
-           ps.setInt(3, mesa.getCapacidad());
-           ps.setString(4, mesa.getUbicacion());
+           ps.setInt(1, mesa.getCapacidad() );
+           ps.setInt(2, mesa.getEstadoMesa());//aceptará 1, 2 o 3
+           ps.setInt(3, mesa.getNumeroMesa());
+           ps.setBoolean(4, mesa.isBaja());//baja=false,(damos de alta new Mesa) porque sólo ponemos baja true cuando hay borrado lógico
            ps.executeUpdate();
            ResultSet rs = ps.getGeneratedKeys();
            while (rs.next()) {
@@ -35,33 +37,36 @@ public class MesaData {
             }
             ps.close();
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla mesa");
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla mesa"+ex.getMessage());
         
     }
  }
-    
-    public void actualizarMesa(Mesa mesa){
-        try {
-            String sql = "UPDATE mesa SET numero_mesa= ?, estado_mesa= ?,capacidad= ?,ubicacion= ? "
-                    + "WHERE id_mesa = ?";
-            
+    //MODIFICA
+    public void actualizarMesa(Mesa mesa){      //recibo mesa existente
+        
+            String sql = "UPDATE mesa SET capacidad= ?, estadoMesa= ?,numeroMesa= ?,baja= ? "
+                    + "WHERE idMesa = ?";
+            try {
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1,mesa.getNumeroMesa());
-            ps.setBoolean(2, true);
-            ps.setString(3,alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFecha()));           
-            ps.setInt(5, alumno.getIdAlumno());
+           ps.setInt(1, mesa.getCapacidad() );
+           ps.setInt(2, mesa.getEstadoMesa());//aceptará 1, 2 o 3
+           ps.setInt(3, mesa.getNumeroMesa());
+           ps.setBoolean(4,mesa.isBaja());//baja=false
+           ps.setInt(5, mesa.getIdMesa());
             
-            int fila = ps.executeUpdate();
+            int exitoFila = ps.executeUpdate();
             
-            if (fila ==1) {
-                JOptionPane.showMessageDialog(null, "Alumno modificado");
+            if (exitoFila ==1) {
+                JOptionPane.showMessageDialog(null, "Mesa Modificada");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de alumnos");
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de MESA p/actualizarMesa"+ex.getMessage());
         }  
     }
     }
+
+    //BAJA MESA
+    //CONSULTA MESA
     
-}
+

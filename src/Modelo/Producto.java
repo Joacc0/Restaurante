@@ -4,7 +4,7 @@ public class Producto {
 
     private int idProducto;
 
-    private String nombre;
+    private String nombreProducto;
     
     private String descripcion;
 
@@ -21,7 +21,7 @@ public class Producto {
 
     public Producto(int idProducto, String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
         this.idProducto = idProducto;
-        this.nombre = nombre;
+        this.nombreProducto = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
@@ -30,7 +30,7 @@ public class Producto {
     }
 
     public Producto(String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
-        this.nombre = nombre;
+        this.nombreProducto = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
@@ -46,12 +46,12 @@ public class Producto {
         this.idProducto = idProducto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
     public String getDescripcion() {
@@ -96,7 +96,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", categoria=" + categoria + ", stock=" + stock + ", baja=" + baja + '}';
+        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombreProducto + ", descripcion=" + descripcion + ", precio=" + precio + ", categoria=" + categoria + ", stock=" + stock + ", baja=" + baja + '}';
     }
 
    

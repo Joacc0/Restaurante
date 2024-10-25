@@ -1,0 +1,10 @@
+00:42 del 25/10/24
+yo, Gaby, exporto BD modificada para las clases que intento unificar con el uml que hablé con la profe.
+
+por las dudas abrí una carpeta dónde guardé el sql previo
+
+
+en esta versión de sql no me animé a quitar la tabla RESERVA
+x si en el futuro nos sobra tiempo y alguien quiere implementarla en java y vistas
+
+Slds Gaby

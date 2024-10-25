@@ -9,7 +9,7 @@ public class Detalle {
 
     private int idDetalle;
     private Producto producto;
-    private int CantidadProductos;
+    private int cantidadProductos;
     private Pedido pedido;
     private double importe;
     private boolean baja;//para borrado lógico
@@ -17,18 +17,20 @@ public class Detalle {
     public Detalle() {
     }
 
-    public Detalle(int idDetalle, Producto producto, int CantidadProductos, Pedido pedido, double importe, boolean baja) {
+    public Detalle(int idDetalle, Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja) {
         this.idDetalle = idDetalle;
         this.producto = producto;
-        this.CantidadProductos = CantidadProductos;
+        this.cantidadProductos = cantidadProductos;
         this.pedido = pedido;
         this.importe = importe;
         this.baja = baja;
     }
 
-    public Detalle(Producto producto, int CantidadProductos, Pedido pedido, double importe, boolean baja) {
+    
+
+    public Detalle(Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja) {
         this.producto = producto;
-        this.CantidadProductos = CantidadProductos;
+        this.cantidadProductos = cantidadProductos;
         this.pedido = pedido;
         this.importe = importe;
         this.baja = baja;
@@ -51,11 +53,11 @@ public class Detalle {
     }
 
     public int getCantidadProductos() {
-        return CantidadProductos;
+        return cantidadProductos;
     }
 
-    public void setCantidadProductos(int CantidadProductos) {
-        this.CantidadProductos = CantidadProductos;
+    public void setCantidadProductos(int cantidadProductos) {
+        this.cantidadProductos = cantidadProductos;
     }
 
     public Pedido getPedido() {
@@ -84,7 +86,7 @@ public class Detalle {
 
     @Override
     public String toString() {
-        return "Detalle{" + "idDetalle=" + idDetalle + ", producto=" + producto + ", CantidadProductos=" + CantidadProductos + ", pedido=" + pedido + ", importe=" + importe + ", baja=" + baja + '}';
+        return "Detalle{" + "idDetalle=" + idDetalle + ", producto=" + producto + ", cantidadProductos=" + cantidadProductos + ", pedido=" + pedido + ", importe=" + importe + ", baja=" + baja + '}';
     }
     
    

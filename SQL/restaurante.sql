@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2024 a las 16:46:40
+-- Tiempo de generación: 25-10-2024 a las 05:40:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,14 +29,16 @@ USE `restaurante`;
 -- Estructura de tabla para la tabla `detalle`
 --
 
-CREATE TABLE `detalle` (
-  `id_detalle` int(11) NOT NULL,
-  `id_mesa` int(11) NOT NULL,
-  `nombreCliente` varchar(60) NOT NULL,
-  `fechaReserva` date NOT NULL,
-  `cantidadPersonas` int(11) NOT NULL,
-  `estado` int(11) NOT NULL,
-  `baja` tinyint(1) NOT NULL
+CREATE TABLE IF NOT EXISTS `detalle` (
+  `idDetalle` int(11) NOT NULL AUTO_INCREMENT,
+  `idProducto` int(11) NOT NULL,
+  `cantidadProductos` int(11) NOT NULL,
+  `idPedido` int(11) NOT NULL,
+  `importe` double NOT NULL,
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idDetalle`),
+  KEY `idProducto` (`idProducto`),
+  KEY `idPedido` (`idPedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -45,13 +47,14 @@ CREATE TABLE `detalle` (
 -- Estructura de tabla para la tabla `mesa`
 --
 
-CREATE TABLE `mesa` (
-  `id_mesa` int(11) NOT NULL,
-  `numero_mesa` int(11) NOT NULL,
-  `estado_mesa` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mesa` (
+  `idMesa` int(11) NOT NULL AUTO_INCREMENT,
   `capacidad` int(11) NOT NULL,
-  `ubicacion` varchar(60) NOT NULL,
-  `baja` tinyint(1) NOT NULL
+  `estadoMesa` int(11) NOT NULL,
+  `numeroMesa` int(11) NOT NULL,
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idMesa`),
+  UNIQUE KEY `numero_mesa` (`numeroMesa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -60,14 +63,12 @@ CREATE TABLE `mesa` (
 -- Estructura de tabla para la tabla `mesero`
 --
 
-CREATE TABLE `mesero` (
-  `id_mesero` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mesero` (
+  `idMesero` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(60) NOT NULL,
-  `telefono` bigint(20) NOT NULL,
-  `correo` varchar(60) NOT NULL,
-  `fecha_contratacion` date NOT NULL,
-  `baja` tinyint(1) NOT NULL
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idMesero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -76,20 +77,16 @@ CREATE TABLE `mesero` (
 -- Estructura de tabla para la tabla `pedido`
 --
 
-CREATE TABLE `pedido` (
-  `id_pedido` int(11) NOT NULL,
-  `id_mesa` int(11) NOT NULL,
-  `fecha_pedido` datetime NOT NULL,
-  `estado` int(11) NOT NULL,
-  `total` double NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `descripcion` varchar(60) NOT NULL,
-  `precio` double NOT NULL,
-  `categoria` varchar(60) NOT NULL,
-  `disponibilidad` int(11) NOT NULL,
-  `id_mesero` int(11) NOT NULL,
-  `baja` tinyint(1) NOT NULL
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `idPedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idMesa` int(11) NOT NULL,
+  `fechaYhoraPedido` datetime NOT NULL,
+  `idMesero` int(11) NOT NULL,
+  `cobrada` tinyint(1) NOT NULL,
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idPedido`),
+  KEY `id_mesero` (`idMesero`),
+  KEY `id_mesa` (`idMesa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,13 +95,15 @@ CREATE TABLE `pedido` (
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL,
-  `nombre_producto` varchar(100) NOT NULL,
+CREATE TABLE IF NOT EXISTS `producto` (
+  `idProducto` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreProducto` varchar(100) NOT NULL,
   `descripcion` varchar(60) NOT NULL,
   `precio` double NOT NULL,
   `categoria` varchar(60) NOT NULL,
-  `disponibilidad` int(11) NOT NULL
+  `stock` int(11) NOT NULL,
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idProducto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -113,118 +112,41 @@ CREATE TABLE `producto` (
 -- Estructura de tabla para la tabla `reserva`
 --
 
-CREATE TABLE `reserva` (
-  `id_reserva` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `reserva` (
+  `id_reserva` int(11) NOT NULL AUTO_INCREMENT,
   `id_mesa` int(11) NOT NULL,
   `nombre_cliente` varchar(100) NOT NULL,
   `fecha_reserva` datetime NOT NULL,
   `numero_personas` int(11) NOT NULL,
   `estado` int(11) NOT NULL,
-  `baja` tinyint(1) NOT NULL
+  `baja` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_reserva`),
+  KEY `id_mesa` (`id_mesa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `detalle`
---
-ALTER TABLE `detalle`
-  ADD PRIMARY KEY (`id_detalle`);
-
---
--- Indices de la tabla `mesa`
---
-ALTER TABLE `mesa`
-  ADD PRIMARY KEY (`id_mesa`),
-  ADD UNIQUE KEY `numero_mesa` (`numero_mesa`);
-
---
--- Indices de la tabla `mesero`
---
-ALTER TABLE `mesero`
-  ADD PRIMARY KEY (`id_mesero`);
-
---
--- Indices de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`id_pedido`),
-  ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_mesero` (`id_mesero`),
-  ADD KEY `id_mesa` (`id_mesa`);
-
---
--- Indices de la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id_producto`);
-
---
--- Indices de la tabla `reserva`
---
-ALTER TABLE `reserva`
-  ADD PRIMARY KEY (`id_reserva`),
-  ADD KEY `id_mesa` (`id_mesa`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `detalle`
---
-ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `mesa`
---
-ALTER TABLE `mesa`
-  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `mesero`
---
-ALTER TABLE `mesero`
-  MODIFY `id_mesero` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `producto`
---
-ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `reserva`
---
-ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `detalle`
+--
+ALTER TABLE `detalle`
+  ADD CONSTRAINT `detalle_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`),
+  ADD CONSTRAINT `detalle_ibfk_2` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idPedido`);
+
+--
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`id_mesero`) REFERENCES `mesero` (`id_mesero`),
-  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id_mesa`);
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idMesero`) REFERENCES `mesero` (`idMesero`),
+  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`idMesa`) REFERENCES `mesa` (`idMesa`);
 
 --
 -- Filtros para la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id_mesa`);
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`idMesa`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
