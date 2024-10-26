@@ -1,7 +1,9 @@
 package restaurante;
 
 import Modelo.Mesa;
+import Modelo.Mesero;
 import Persistencia.MesaData;
+import Persistencia.MeseroData;
 
 public class Restaurante {
 
@@ -46,14 +48,37 @@ public class Restaurante {
 //                Mesa mesa1DIFERENTE = new Mesa(1,2, 1, 0, false);
 //                mD1.actualizarMesa(mesa1DIFERENTE);
             
-            MesaData mD1 = new MesaData();
-                
-//                mD1.eliminarMesa(1);//baja logica de la mesa ID 1
-                    
-                mD1.buscarMesaPorIDBD(5);
-                mD1.buscarMesaPorNumeroMesa(3);
-                mD1.listarMesas();
+//            MesaData mD1 = new MesaData();
+//                
+////                mD1.eliminarMesa(1);//baja logica de la mesa ID 1
+//                    
+//                mD1.buscarMesaPorIDBD(5);
+//                mD1.buscarMesaPorNumeroMesa(3);
+//                mD1.listarMesas();
 
+            //cargo 5 meseros 
+//            Mesero mesero1 = new Mesero(11111111,"Ana","Lopez", false);
+//            Mesero mesero2 = new Mesero(22222222,"Pedro","Garcia", false);
+            Mesero mesero3 = new Mesero(33333333,"Juan","Llopis", false);
+//            Mesero mesero4 = new Mesero(44444444,"Maria","Perez", false);
+//            Mesero mesero5 = new Mesero(55555555,"Laura","Olano", false);
+//            
+            MeseroData mesD = new MeseroData();
+//            mesD.guardarMesero(mesero1);
+//            mesD.guardarMesero(mesero2);
+//            mesD.guardarMesero(mesero3);
+//            mesD.guardarMesero(mesero4);
+//            mesD.guardarMesero(mesero5);
+            
+            mesD.buscarMeseroPorIDBD(8);
+            
+            mesD.listarMeseros();
+            
+          
+            
+            mesD.listarMeseros();
+            
+            
     }
     
 }

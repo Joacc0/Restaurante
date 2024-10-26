@@ -8,3 +8,14 @@ en esta versión de sql no me animé a quitar la tabla RESERVA
 x si en el futuro nos sobra tiempo y alguien quiere implementarla en java y vistas
 
 Slds Gaby
+
+
+*************
+26/10 00:14 
+Genero nuevo sal porque recién me doy cuenta que a los meseros es bueno tener para buscarlos por DNI
+Y por quitar "sobras" había quitado din a mesero...
+Corregí todo
+BD, Clases, Clases Data
+
+Slds
+Gaby

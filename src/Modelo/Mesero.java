@@ -5,6 +5,7 @@ import java.util.Date;
 public class Mesero {
 
     private int idMesero;
+    private int dni;
     private String nombre;
     private String apellido;
     private boolean baja;
@@ -12,18 +13,22 @@ public class Mesero {
     public Mesero() {
     }
 
-    public Mesero(int idMesero, String nombre, String apellido, boolean baja) {
+    public Mesero(int idMesero, int dni, String nombre, String apellido, boolean baja) {
         this.idMesero = idMesero;
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.baja = baja;
     }
 
-    public Mesero(String nombre, String apellido, boolean baja) {
+    public Mesero(int dni, String nombre, String apellido, boolean baja) {
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.baja = baja;
     }
+
+   
 
     public int getIdMesero() {
         return idMesero;
@@ -33,6 +38,15 @@ public class Mesero {
         this.idMesero = idMesero;
     }
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }
@@ -59,8 +73,10 @@ public class Mesero {
 
     @Override
     public String toString() {
-        return "Mesero{" + "idMesero=" + idMesero + ", nombre=" + nombre + ", apellido=" + apellido + ", baja=" + baja + '}';
+        return "Mesero{" + "idMesero=" + idMesero + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", baja=" + baja + '}';
     }
+
+    
 
    
 }
