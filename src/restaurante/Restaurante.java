@@ -2,8 +2,10 @@ package restaurante;
 
 import Modelo.Mesa;
 import Modelo.Mesero;
+import Modelo.Producto;
 import Persistencia.MesaData;
 import Persistencia.MeseroData;
+import Persistencia.ProductoData;
 
 public class Restaurante {
 
@@ -77,6 +79,26 @@ public class Restaurante {
           
             
             mesD.listarMeseros();
+//          
+//            //cargo 6 productos
+//            Producto pro1=new Producto("coca", "de litro", 33, "bebidas", 24, false);
+//            Producto pro2=new Producto("agua", "de medio", 5, "bebidas", 30, false);
+//            Producto pro3=new Producto("cerveza", "latita", 80, "bebidas", 15, false);
+//            Producto pro4=new Producto("alfajor", "chocolate", 6, "postre", 6, false);
+//            Producto pro5=new Producto("helado", "frutilla", 10, "portre", 8, false);
+//            Producto pro6=new Producto("sopa", "de verduras", 10, "comidas", 20, false);
+            
+            ProductoData pd=new  ProductoData();
+//            pd.guardarProducto(pro1);
+//            pd.guardarProducto(pro2);
+//            pd.guardarProducto(pro3);
+//            pd.guardarProducto(pro4);
+//            pd.guardarProducto(pro5);
+//            pd.guardarProducto(pro6);
+            
+            pd.buscarProductoPorIDBD(4);
+            pd.listarProductos();
+            
             
             
     }

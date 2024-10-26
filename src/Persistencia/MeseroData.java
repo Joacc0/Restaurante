@@ -130,7 +130,39 @@ public class MeseroData {
     }
  
     //buscar mesero por el numero de DNI
- //primero agregar dni y luego llegar aqui
+  public Mesero buscarMeseroPorDNI(int dni){
+        Mesero mesero = null;
+        try{
+            String sql = "SELECT dni,nombre,apellido,baja FROM mesero "
+                    + "WHERE dni = ? AND baja = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1,dni);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                mesero = new Mesero();
+                mesero.setIdMesero(rs.getInt("idMesero"));
+                mesero.setDni(rs.getInt("dni"));
+                mesero.setNombre(rs.getNString("nombre"));
+                mesero.setApellido(rs.getNString("apellido"));
+                
+                mesero.setBaja(rs.getBoolean("baja"));
+                
+                //show mensaje antes de return mesero
+                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarMeseroPorDNI= "+mesero.toString());
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "buscarMeseroPorIDBD= No existe el mesero con DNI: " + dni);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de MESERO p/buscarMeseroPorDNI= "+ex.getMessage());
+        }
+        
+        return mesero;
+    }
+
  
     //listar todas las mesas Que no estén baja=true(las de borrado lógico)
  public List<Mesero> listarMeseros(){

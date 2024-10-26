@@ -43,6 +43,7 @@ public class MesaData {
         
     }
  }
+    
     //MODIFICA
     public void actualizarMesa(Mesa mesa){      //recibo mesa existente
          try {
@@ -120,7 +121,7 @@ public class MesaData {
         return mesa;
     }
  
-    //buscar mesa por el numero de mesa
+    //buscar mesa por el numero de mesa (si usamos objeto entero sobra con la busqueda x id
  public Mesa buscarMesaPorNumeroMesa(int numeroMesa){
         Mesa mesa = null;
         try{
