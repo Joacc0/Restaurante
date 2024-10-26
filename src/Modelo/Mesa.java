@@ -11,7 +11,7 @@ public class Mesa {
     public Mesa() {
     }
 
-    public Mesa(int idMesa, int capacidad, int estado, int numeroMesa, boolean baja) {
+    public Mesa(int idMesa, int capacidad, int estadoMesa, int numeroMesa, boolean baja) {
         this.idMesa = idMesa;
         this.capacidad = capacidad;
         this.estadoMesa = estadoMesa;

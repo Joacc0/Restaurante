@@ -7,18 +7,53 @@ public class Restaurante {
 
     public static void main(String[] args) {
         
-        /*
-        Mesa mesa1 = new Mesa(4, 1, 1, false);
-        System.out.println(mesa1.toString());
-        
-        MesaData mD1 = new MesaData();
-        mD1.guardarMesa(mesa1);
-        */
-        
-        MesaData mD1 = new MesaData();
-        Mesa mesa1DIFERENTE = new Mesa(1,4, 2, 1, false);
-        mD1.actualizarMesa(mesa1DIFERENTE);
-        
+//       
+//        Mesa mesa1 = new Mesa(4, 1, 1, false);
+//        System.out.println(mesa1.toString());
+//        
+//        MesaData mD1 = new MesaData();
+//        mD1.guardarMesa(mesa1);
+//        
+//        
+//       
+//       
+//       MesaData mD1 = new MesaData();
+//        Mesa mesa1DIFERENTE = new Mesa(1,4, 3, 66, false);
+//        mD1.actualizarMesa(mesa1DIFERENTE);
+//
+//
+//       
+//       
+//        
+//        Mesa mesa1cambio2 = new Mesa(1,6, 3, 3, false);
+//        mD1.actualizarMesa(mesa1cambio2);
+
+// cargo 5 mesas más
+//            Mesa mesa1 = new Mesa(2, 1, 1, false);
+//            Mesa mesa2 = new Mesa(4, 1, 2, false);
+//            Mesa mesa3 = new Mesa(6, 1, 3, false);
+//            Mesa mesa4 = new Mesa(8, 1, 4, false);
+//            Mesa mesa5 = new Mesa(10, 1, 5, false);
+//            
+//            MesaData mD1 = new MesaData();
+//            mD1.guardarMesa(mesa1);
+//            mD1.guardarMesa(mesa2);           
+//            mD1.guardarMesa(mesa3);
+//            mD1.guardarMesa(mesa4);
+//            mD1.guardarMesa(mesa5);   
+
+//                MesaData mD1 = new MesaData();
+//                Mesa mesa1DIFERENTE = new Mesa(1,2, 1, 0, false);
+//                mD1.actualizarMesa(mesa1DIFERENTE);
+            
+            MesaData mD1 = new MesaData();
+                
+//                mD1.eliminarMesa(1);//baja logica de la mesa ID 1
+                    
+                mD1.buscarMesaPorIDBD(5);
+                mD1.buscarMesaPorNumeroMesa(3);
+                mD1.listarMesas();
+
     }
     
 }
