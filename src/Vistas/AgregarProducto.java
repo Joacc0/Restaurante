@@ -182,8 +182,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLabel1.setText("GESTIÓN PRODUCTOS");
 
         jButton1.setBackground(new java.awt.Color(0, 147, 40));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tomic\\Desktop\\Proyectos Lab1\\Restaurante\\imagenesVistas\\disco.png")); // NOI18N
-        jButton1.setText("Guardar");
+        jButton1.setText("GUARDAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
