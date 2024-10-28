@@ -70,7 +70,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Baja:");
 
-        jButton1.setBackground(new java.awt.Color(0, 157, 235));
+        jButton1.setBackground(new java.awt.Color(0, 147, 40));
         jButton1.setForeground(new java.awt.Color(2, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tomic\\Desktop\\Proyectos Lab1\\Restaurante\\imagenesVistas\\disco.png")); // NOI18N
         jButton1.setText("GUARDAR");
@@ -92,7 +92,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("NUEVA MESA");
+        jLabel2.setText("GESTIÓN MESAS");
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -115,9 +115,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
+                .addContainerGap(181, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addGap(83, 83, 83)
@@ -174,7 +174,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(32, 32, 32)
-                    .addComponent(jButton1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(42, Short.MAX_VALUE)))
         );
 
