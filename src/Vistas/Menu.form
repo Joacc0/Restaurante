@@ -100,9 +100,6 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\tomic\Desktop\Proyectos Lab1\Restaurante\imagenesVistas\restaurante.png"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
