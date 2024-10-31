@@ -20,7 +20,7 @@ public class MesaData {
     }
     
     //ALTA
-    public void guardarMesa(Mesa mesa){     //damos de alta nueva mesa ID en BD automático autoincremental
+    public void agregarMesa(Mesa mesa){     //damos de alta nueva mesa ID en BD automático autoincremental
        
         //atributos de mesa en orden: (int capacidad, int estado, int numeroMesa, boolean baja)
         String sql="INSERT INTO mesa (capacidad,estadoMesa,numeroMesa,baja)"
@@ -70,12 +70,12 @@ public class MesaData {
    
 
     //BAJA MESA BAJA LÓGICA
-    public void eliminarMesa(int id){
+    public void eliminarMesa(int numeroMesa){
         try{
-            String sql = "UPDATE mesa SET baja = 1 WHERE idMesa = ? ";
+            String sql = "UPDATE mesa SET baja = 1 WHERE numeroMesa = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, id);
+            ps.setInt(1, numeroMesa);
             
             int filas = ps.executeUpdate();
             if (filas == 1) {
