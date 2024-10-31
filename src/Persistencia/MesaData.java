@@ -70,12 +70,12 @@ public class MesaData {
    
 
     //BAJA MESA BAJA LÓGICA
-    public void eliminarMesa(int numeroMesa){
+    public void eliminarMesaLogica(int idMesa){
         try{
-            String sql = "UPDATE mesa SET baja = 1 WHERE numeroMesa = ? ";
+            String sql = "UPDATE mesa SET baja = 1 WHERE idMesa = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, numeroMesa);
+            ps.setInt(1, idMesa);
             
             int filas = ps.executeUpdate();
             if (filas == 1) {
@@ -85,6 +85,28 @@ public class MesaData {
             JOptionPane.showMessageDialog(null,"Error no se pudo eliminar la mesa "+ex.getMessage());
         }
     }
+    
+    //ELIMINAR MESA
+    
+    public void eliminarMesa(int idMesa) {
+    
+    try  {
+        String sql = "DELETE FROM mesa WHERE idMesa = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setInt(1, idMesa);
+        
+        int exitoFila = ps.executeUpdate();
+        
+        if (exitoFila == 1) {
+            JOptionPane.showMessageDialog(null, "Mesa eliminada correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró la mesa.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar la mesa: " + ex.getMessage());
+    }
+}
 
     //CONSULTA MESA
     

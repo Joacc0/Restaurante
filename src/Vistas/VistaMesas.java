@@ -46,7 +46,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
         jbAgregar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbBaja = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,9 +99,14 @@ public class VistaMesas extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 204));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("DAR DE BAJA");
+        jbBaja.setBackground(new java.awt.Color(204, 0, 204));
+        jbBaja.setForeground(new java.awt.Color(0, 0, 0));
+        jbBaja.setText("DAR DE BAJA");
+        jbBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,7 +120,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jbEliminar)
                 .addGap(43, 43, 43)
-                .addComponent(jButton1)
+                .addComponent(jbBaja)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,7 +131,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
                     .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -311,28 +316,61 @@ public class VistaMesas extends javax.swing.JInternalFrame {
     private void jcbMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMesasActionPerformed
         // TODO add your handling code here:
         borrarFilas();
+
+        // Obtiene el número de mesa seleccionado como String
+        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
         
-        String mesaSeleccionada = jcbMesas.getSelectedItem().toString();
-        
-        for (Mesa mesas : listarMesas) {
-            int m = mesas.getNumeroMesa();
-            if (m == mesas.getNumeroMesa()) {
-                model.addRow(new Object[]{m, mesas.getCapacidad(),mesas.getEstadoMesa()});
+        // Asegúrate de que la selección no sea nula
+        if (mesaSeleccionada != null) {
+            // Convierte el String a int
+            int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
+
+            // Busca la mesa correspondiente y agrega la fila a la tabla
+            for (Mesa mesa : listarMesas) {
+                if (mesa.getNumeroMesa() == numeroMesaSeleccionado) {
+                    // Agrega la fila con todos los datos que necesites
+                    model.addRow(new Object[]{
+                        mesa.getNumeroMesa(), 
+                        mesa.getCapacidad(), 
+                        mesa.getEstadoMesa()
+                    });
+                    break; // Salir del bucle después de encontrar la mesa
+                }
             }
         }
     }//GEN-LAST:event_jcbMesasActionPerformed
+
+    private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
+        // TODO add your handling code here:
+        //Obtenemos la fila que estamos seleccionando.
+        int filaSeleccionada = jtMesa.getSelectedRow();
+        
+        if (filaSeleccionada > 0) {
+            
+            //Obtenemos el ID de la mesa seleccionada
+            int idMesa = (int) jtMesa.getValueAt(filaSeleccionada,0);
+            mData.eliminarMesaLogica(idMesa);
+            
+            //Actualizamos la tabla después de darle la baja lógica a la mesa.
+            model.removeRow(filaSeleccionada);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una mesa para dar de baja.");
+        }
+        
+        
+    }//GEN-LAST:event_jbBajaActionPerformed
         
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAgregar;
+    private javax.swing.JButton jbBaja;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
@@ -345,5 +383,13 @@ public class VistaMesas extends javax.swing.JInternalFrame {
              model.removeRow(f);
          }
     }
+    
+    private void llenarComboBox() {
+    jcbMesas.removeAllItems(); // Limpia los elementos actuales del JComboBox
+    
+    for (Mesa mesa : listarMesas) {
+        jcbMesas.addItem(String.valueOf(mesa.getNumeroMesa())); // Agrega el numeroMesa como String
+    }
+}
 }
 
