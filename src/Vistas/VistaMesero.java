@@ -67,18 +67,20 @@ public class VistaMesero extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 147, 40));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tomic\\Desktop\\Proyectos Lab1\\Restaurante\\imagenesVistas\\disco.png")); // NOI18N
         jButton1.setText("GUARDAR");
 
         jButton2.setBackground(new java.awt.Color(255, 153, 0));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\tomic\\Desktop\\Proyectos Lab1\\Restaurante\\imagenesVistas\\modificar.png")); // NOI18N
         jButton2.setText("MODIFICAR");
 
         jButton3.setBackground(new java.awt.Color(204, 0, 0));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\tomic\\Desktop\\Proyectos Lab1\\Restaurante\\imagenesVistas\\basura.png")); // NOI18N
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,6 +137,10 @@ public class VistaMesero extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
