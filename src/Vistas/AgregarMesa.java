@@ -4,6 +4,8 @@
  */
 package Vistas;
 
+import Modelo.Mesa;
+
 /**
  *
  * @author User
@@ -27,9 +29,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jtBaja = new javax.swing.JTextField();
-        jtNumMesa = new javax.swing.JTextField();
-        jtCapacidad = new javax.swing.JTextField();
+        jtfBaja = new javax.swing.JTextField();
+        jtfNumMesa = new javax.swing.JTextField();
+        jtfCapacidad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
@@ -43,17 +45,17 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtBaja.setBackground(new java.awt.Color(255, 255, 255));
-        jtBaja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfBaja.setBackground(new java.awt.Color(255, 255, 255));
+        jtfBaja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jtNumMesa.setBackground(new java.awt.Color(255, 255, 255));
-        jtNumMesa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfNumMesa.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNumMesa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jtCapacidad.setBackground(new java.awt.Color(255, 255, 255));
-        jtCapacidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jtCapacidad.addActionListener(new java.awt.event.ActionListener() {
+        jtfCapacidad.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCapacidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtCapacidadActionPerformed(evt);
+                jtfCapacidadActionPerformed(evt);
             }
         });
 
@@ -68,8 +70,14 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         jbGuardar.setBackground(new java.awt.Color(0, 147, 40));
         jbGuardar.setForeground(new java.awt.Color(2, 0, 0));
         jbGuardar.setText("GUARDAR");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jcbEstado.setBackground(new java.awt.Color(255, 255, 255));
+        jcbEstado.setForeground(new java.awt.Color(255, 51, 51));
         jcbEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jcbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,9 +99,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jDesktopPane1.setLayer(jtBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtNumMesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtCapacidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jtfBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jtfNumMesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jtfCapacidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -121,10 +129,10 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtCapacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtNumMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCapacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtBaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfBaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(106, 106, 106))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -145,11 +153,11 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
                 .addGap(57, 57, 57)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtNumMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNumMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -157,7 +165,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jtBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(145, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -182,13 +190,25 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCapacidadActionPerformed
+    private void jtfCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCapacidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtCapacidadActionPerformed
+    }//GEN-LAST:event_jtfCapacidadActionPerformed
 
     private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
-        // TODO add your handling code here:
+        jcbEstado.addItem(1);
+        jcbEstado.addItem(2);
+        jcbEstado.addItem(3);
     }//GEN-LAST:event_jcbEstadoActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        
+        int numeroMesa = Integer.parseInt(jtfNumMesa.getText());
+        int capacidad = Integer.parseInt(jtfCapacidad.getText());
+        int estadoMesa = (Integer) jcbEstado.getSelectedItem();
+        boolean baja = false;
+        
+        Mesa nuevaMesa = new Mesa(capacidad,estadoMesa, numeroMesa,baja);
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,9 +220,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JComboBox<String> jcbEstado;
-    private javax.swing.JTextField jtBaja;
-    private javax.swing.JTextField jtCapacidad;
-    private javax.swing.JTextField jtNumMesa;
+    private javax.swing.JComboBox<Integer> jcbEstado;
+    private javax.swing.JTextField jtfBaja;
+    private javax.swing.JTextField jtfCapacidad;
+    private javax.swing.JTextField jtfNumMesa;
     // End of variables declaration//GEN-END:variables
 }
