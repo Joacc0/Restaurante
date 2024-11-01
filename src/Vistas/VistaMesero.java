@@ -4,17 +4,31 @@
  */
 package Vistas;
 
+import Modelo.Mesero;
+import Persistencia.MeseroData;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
  */
 public class VistaMesero extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VistaMesero
-     */
+        private DefaultTableModel model; 
+        List<Mesero> listaMeseros;
+        private MeseroData meseroD=new MeseroData();
+        private Mesero meseroActual=null;
+        
     public VistaMesero() {
         initComponents();
+        this.model= (DefaultTableModel) jtMeseros.getModel();
+        this.listaMeseros= meseroD.listarMeseros();
+        llenarComboBox();
+
+        
+        
+        
     }
 
     /**
@@ -29,9 +43,9 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCBmeseros = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtMeseros = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -39,20 +53,18 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CONSULTA MESEROS");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Mesero:");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBmeseros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBmeserosActionPerformed(evt);
+            }
+        });
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtMeseros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -63,18 +75,20 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                 "DNI", "Nombre", "Apellido", "Estado", "Fecha Cont."
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtMeseros);
 
         jButton1.setBackground(new java.awt.Color(0, 147, 40));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("GUARDAR");
+        jButton1.setText("ALTA NUEVO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 153, 0));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("MODIFICAR");
 
         jButton3.setBackground(new java.awt.Color(204, 0, 0));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("ELIMINAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +108,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,7 +127,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
@@ -141,17 +155,61 @@ public class VistaMesero extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+/*
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO BOTON ALTA NUEVO MESERO, ABRE VISTA DE ALTA MESERO
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarMesero agregarMeseroV = new AgregarMesero();
+        meseroV.setVisible(true);
+        escritorio.add(agregarMeseroV);
+    }//GEN-LAST:event_jButton1ActionPerformed
+*/
+    private void jCBmeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmeserosActionPerformed
+        // COMBO BOX MESEROS
+        borrarFilas();
+        int idMeseroActual=-1;
+        //List<Mesero> listaMeseros;
+        String meseroSeleccionado= jCBmeseros.getSelectedItem().toString();
+        this.listaMeseros= meseroD.listarMeseros();
+        for (Mesero item : listaMeseros) {
+            String m= item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase();
+            if (m.equals(meseroSeleccionado)){
+                
+            }
+          //  jCBmeseros.addItem();
+        }    
+        
+        
+    }//GEN-LAST:event_jCBmeserosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Mesero> jCBmeseros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtMeseros;
     // End of variables declaration//GEN-END:variables
+
+    private void borrarFilas(){
+        int filas=model.getRowCount()-1;
+        for (int f = filas; f >=0; f--) {
+            model.removeRow(f);
+            
+        }
+    }
+    
+    private void llenarComboBox(){
+                for (Mesero item : listaMeseros) {
+            jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
+            
+        }
+    }
+
+
 }

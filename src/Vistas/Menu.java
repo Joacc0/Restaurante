@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Joaco
@@ -15,6 +19,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);//posicion relativa ventana menu
+        this.setSize(810, 608);//tamaño ventana
     }
 
     /**
@@ -26,7 +32,11 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono=new ImageIcon(getClass().getResource("/Recursos/imagenesVistas/mesitasRestaurante.jpg"));
+        Image miImagen=icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);}};
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -71,6 +81,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setText("MESEROS");
 
         jMenuItem3.setText("Gestion Meseros");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -105,6 +120,14 @@ public class Menu extends javax.swing.JFrame {
         mesas.setVisible(true);
         escritorio.add(mesas);
     }//GEN-LAST:event_jmiMesasActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionMesero meseroG = new GestionMesero();
+        meseroG.setVisible(true);
+        escritorio.add(meseroG);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

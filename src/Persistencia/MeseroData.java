@@ -164,7 +164,7 @@ public class MeseroData {
     }
 
  
-    //listar todas las mesas Que no estén baja=true(las de borrado lógico)
+    //listar todas las meseros Que no estén baja=true(las de borrado lógico)
  public List<Mesero> listarMeseros(){
         List<Mesero> meseros = new ArrayList<>();
         

@@ -73,7 +73,7 @@ public class Mesero {
 
     @Override
     public String toString() {
-        return "Mesero{" + "idMesero=" + idMesero + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", baja=" + baja + '}';
+        return  dni + "  " + apellido.toUpperCase() + "  " + nombre.toUpperCase();
     }
 
     
