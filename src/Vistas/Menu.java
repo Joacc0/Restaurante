@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemMeseroMB = new javax.swing.JMenuItem();
         jMenuItemMeseroA = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jmiProductos = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +99,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("PRODUCTOS");
+        jmiProductos.setText("PRODUCTOS");
+        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiProductosActionPerformed(evt);
+            }
+        });
 
         jMenuItem2.setText("Gestion Productos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +112,9 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jmiProductos.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jmiProductos);
 
         setJMenuBar(jMenuBar1);
 
@@ -157,6 +162,15 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jmiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductosActionPerformed
+      // MESERO ALTA NUEVO MESERO
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaProducto productos = new VistaProducto();
+        productos.setVisible(true);
+        escritorio.add(productos);
+    }//GEN-LAST:event_jmiProductosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,11 +211,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jmiMesas;
+    private javax.swing.JMenu jmiProductos;
     // End of variables declaration//GEN-END:variables
 }
