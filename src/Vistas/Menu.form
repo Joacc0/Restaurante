@@ -24,12 +24,20 @@
             <Property name="text" type="java.lang.String" value="MESEROS"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMeseroMB">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestion Meseros"/>
+                <Property name="text" type="java.lang.String" value="MODIFICACION_&#xf3;_BAJA"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemMeseroMBActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMeseroA">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alta Nuevo Mesero"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemMeseroAActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -43,6 +51,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gestion Productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -24,7 +24,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         initComponents();
         this.model= (DefaultTableModel) jtMeseros.getModel();
         this.listaMeseros= meseroD.listarMeseros();
-        llenarComboBox();
+//        llenarComboBox();
 
         
         
@@ -204,12 +204,12 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         }
     }
     
-    private void llenarComboBox(){
-                for (Mesero item : listaMeseros) {
-            jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
-            
-        }
-    }
+//    private void llenarComboBox(){
+//                for (Mesero item : listaMeseros) {
+//            jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
+//            
+//        }
+//    }
 
 
 }

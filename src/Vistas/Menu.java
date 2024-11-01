@@ -42,7 +42,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmiMesas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemMeseroMB = new javax.swing.JMenuItem();
+        jMenuItemMeseroA = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -80,19 +81,32 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setText("MESEROS");
 
-        jMenuItem3.setText("Gestion Meseros");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemMeseroMB.setText("MODIFICACION_ó_BAJA");
+        jMenuItemMeseroMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemMeseroMBActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(jMenuItemMeseroMB);
+
+        jMenuItemMeseroA.setText("Alta Nuevo Mesero");
+        jMenuItemMeseroA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMeseroAActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemMeseroA);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("PRODUCTOS");
 
         jMenuItem2.setText("Gestion Productos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
@@ -121,13 +135,27 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(mesas);
     }//GEN-LAST:event_jmiMesasActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemMeseroMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMeseroMBActionPerformed
+       // MESERO MODIFICACION Y BAJA
         escritorio.removeAll();
         escritorio.repaint();
         GestionMesero meseroG = new GestionMesero();
         meseroG.setVisible(true);
         escritorio.add(meseroG);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemMeseroMBActionPerformed
+
+    private void jMenuItemMeseroAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMeseroAActionPerformed
+        // MESERO ALTA NUEVO MESERO
+        escritorio.removeAll();
+        escritorio.repaint();
+        AltaMesero meseroAlta = new AltaMesero();
+        meseroAlta.setVisible(true);
+        escritorio.add(meseroAlta);
+    }//GEN-LAST:event_jMenuItemMeseroAActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,7 +200,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemMeseroA;
+    private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jmiMesas;
     // End of variables declaration//GEN-END:variables
 }

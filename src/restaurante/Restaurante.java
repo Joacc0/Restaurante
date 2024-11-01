@@ -60,19 +60,19 @@ public class Restaurante {
 //                mD1.listarMesas();
 //
 //            cargo 5 meseros 
-//            Mesero mesero1 = new Mesero(11111111,"Ana","Lopez", false);
-//            Mesero mesero2 = new Mesero(22222222,"Pedro","Garcia", false);
-//            Mesero mesero3 = new Mesero(33333333,"Juan","Llopis", false);
-//            Mesero mesero4 = new Mesero(44444444,"Maria","Perez", false);
-//            Mesero mesero5 = new Mesero(55555555,"Laura","Olano", false);
-//            
-//            MeseroData mesD = new MeseroData();
-//            mesD.guardarMesero(mesero1);
-//            mesD.guardarMesero(mesero2);
-//            mesD.guardarMesero(mesero3);
-//            mesD.guardarMesero(mesero4);
-//            mesD.guardarMesero(mesero5);
-//            
+            Mesero mesero1 = new Mesero(11111111,"Ana","Lopez", false);
+            Mesero mesero2 = new Mesero(22222222,"Pedro","Garcia", false);
+            Mesero mesero3 = new Mesero(33333333,"Juan","Llopis", false);
+            Mesero mesero4 = new Mesero(44444444,"Maria","Perez", false);
+            Mesero mesero5 = new Mesero(55555555,"Laura","Olano", false);
+            
+            MeseroData mesD = new MeseroData();
+            mesD.guardarMesero(mesero1);
+            mesD.guardarMesero(mesero2);
+            mesD.guardarMesero(mesero3);
+            mesD.guardarMesero(mesero4);
+            mesD.guardarMesero(mesero5);
+            
 //            mesD.buscarMeseroPorIDBD(8);
 //            
 //            mesD.listarMeseros();
