@@ -26,6 +26,23 @@ public class VistaMesas extends javax.swing.JInternalFrame {
         this.model = (DefaultTableModel) jtMesa.getModel();
         this.listarMesas = mData.listarMesas();
         cargarNumerosDeMesa(); // Carga los números de mesa al iniciar
+        
+        // Obtén el modelo de la tabla
+        DefaultTableModel modeloTabla = (DefaultTableModel) jtMesa.getModel();
+
+        // Limpia la tabla antes de agregar nuevas filas
+        modeloTabla.setRowCount(0);
+
+        // Agrega los datos de la lista `listarMesas` al modelo de la tabla
+        for (Mesa mesa : listarMesas) {
+            Object[] fila = {
+                mesa.getNumeroMesa(),
+                mesa.getCapacidad(),
+                mesa.getEstadoMesa()
+            };
+            modeloTabla.addRow(fila);
+    }
+        
     }
 
     /**
@@ -225,25 +242,37 @@ public class VistaMesas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-
+/*
         // Preparar el modelo de la tabla
         DefaultTableModel modeloTabla = (DefaultTableModel) jtMesa.getModel();
         modeloTabla.setRowCount(0); // Limpia la tabla
         
+        // Obtiene el número de mesa seleccionado en el JComboBox
+        String numeroMesaSeleccionada = (String) jcbMesas.getSelectedItem();
+        
+        // Asegúrate de que la selección no sea nula
+        if (numeroMesaSeleccionada != null) {
+            int numeroMesa = Integer.parseInt(numeroMesaSeleccionada);
+            
         for (Mesa mesa : listarMesas) {
-            Object[] fila = {
-                mesa.getNumeroMesa(),
-                mesa.getCapacidad(),
-                mesa.getEstadoMesa()
-            };
-        
+            if (mesa.getNumeroMesa() == numeroMesa) {
+                Object[] fila = {
+                    mesa.getNumeroMesa(),
+                    mesa.getCapacidad(),
+                    mesa.getEstadoMesa()
+                };
             modeloTabla.addRow(fila);
+            break; //Sale del bucle luego de encontrar la mesa.
+            }
         }
-        
+        }
+        */
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+    /*    
+    // TODO add your handling code here:
          int filaSeleccionada = jtMesa.getSelectedRow();
          
          if (filaSeleccionada != -1 ) {
@@ -268,10 +297,12 @@ public class VistaMesas extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar." + ex.getMessage());
                 }
          } 
+        */
     }//GEN-LAST:event_jbEliminarActionPerformed
         
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        /*
         // TODO add your handling code here:
         int filaSeleccionada = jtMesa.getSelectedRow();
         
@@ -299,17 +330,19 @@ public class VistaMesas extends javax.swing.JInternalFrame {
                 }
             } else {
                     JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para modificar.");
-                    }    
+                    }   
+        */
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-
+        /*
         Escritorio.removeAll();
         Escritorio.repaint();
         AgregarMesa nuevaMesa = new AgregarMesa();
         nuevaMesa.setVisible(true);
         Escritorio.add(nuevaMesa);
+        */
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jcbMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMesasActionPerformed
@@ -317,6 +350,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbMesasActionPerformed
 
     private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
+        /*
         // TODO add your handling code here:
         //Obtenemos la fila que estamos seleccionando.
         int filaSeleccionada = jtMesa.getSelectedRow();
@@ -333,9 +367,9 @@ public class VistaMesas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Por favor, seleccione una mesa para dar de baja.");
         }
         
-        
+       */   
     }//GEN-LAST:event_jbBajaActionPerformed
-        
+      
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
