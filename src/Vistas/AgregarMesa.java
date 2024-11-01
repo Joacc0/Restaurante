@@ -207,9 +207,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private void inicializarComboBox(){
+        jcbEstado.addItem(0);
         jcbEstado.addItem(1);
         jcbEstado.addItem(2);
-        jcbEstado.addItem(3);
     }
 
 }
