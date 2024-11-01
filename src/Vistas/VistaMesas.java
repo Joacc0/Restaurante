@@ -245,7 +245,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          int filaSeleccionada = jtMesa.getSelectedRow();
          
-         if (filaSeleccionada != -1) {
+         if (filaSeleccionada != -1 ) {
             try {
                 
                 //Obtenemos los valores de la fila seleccionada
