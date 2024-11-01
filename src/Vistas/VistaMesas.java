@@ -25,9 +25,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
         initComponents();
         this.model = (DefaultTableModel) jtMesa.getModel();
         this.listarMesas = mData.listarMesas();
-        for (Mesa l : listarMesas) {
-            jcbMesas.addItem(l.getNumeroMesa() + "" + l.getCapacidad() + "" + l.getEstadoMesa());
-        }
+        cargarNumerosDeMesa(); // Carga los números de mesa al iniciar
     }
 
     /**
@@ -315,29 +313,6 @@ public class VistaMesas extends javax.swing.JInternalFrame {
 
     private void jcbMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMesasActionPerformed
         // TODO add your handling code here:
-        borrarFilas();
-
-        // Obtiene el número de mesa seleccionado como String
-        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
-        
-        // Asegúrate de que la selección no sea nula
-        if (mesaSeleccionada != null) {
-            // Convierte el String a int
-            int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
-
-            // Busca la mesa correspondiente y agrega la fila a la tabla
-            for (Mesa mesa : listarMesas) {
-                if (mesa.getNumeroMesa() == numeroMesaSeleccionado) {
-                    // Agrega la fila con todos los datos que necesites
-                    model.addRow(new Object[]{
-                        mesa.getNumeroMesa(), 
-                        mesa.getCapacidad(), 
-                        mesa.getEstadoMesa()
-                    });
-                    break; // Salir del bucle después de encontrar la mesa
-                }
-            }
-        }
     }//GEN-LAST:event_jcbMesasActionPerformed
 
     private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
@@ -384,12 +359,12 @@ public class VistaMesas extends javax.swing.JInternalFrame {
          }
     }
     
-    private void llenarComboBox() {
-    jcbMesas.removeAllItems(); // Limpia los elementos actuales del JComboBox
-    
-    for (Mesa mesa : listarMesas) {
-        jcbMesas.addItem(String.valueOf(mesa.getNumeroMesa())); // Agrega el numeroMesa como String
+    // Método para inicializar el JComboBox con números de mesa
+    private void cargarNumerosDeMesa() {
+//        jcbMesas.removeAllItems(); // Limpia cualquier elemento previo en el combo box
+            for (Mesa mesa : listarMesas) {
+            jcbMesas.addItem(String.valueOf(mesa.getNumeroMesa())); // Agrega solo el número de mesa como String
+            }
     }
-}
 }
 

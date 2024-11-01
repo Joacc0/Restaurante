@@ -17,6 +17,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
      */
     public AgregarMesa() {
         initComponents();
+        inicializarComboBox();
     }
 
     /**
@@ -178,16 +179,14 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCapacidadActionPerformed
 
     private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
-        jcbEstado.addItem(1);
-        jcbEstado.addItem(2);
-        jcbEstado.addItem(3);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jcbEstadoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         int numeroMesa = Integer.parseInt(jtfNumMesa.getText());
         int capacidad = Integer.parseInt(jtfCapacidad.getText());
-        int estadoMesa = (Integer) jcbEstado.getSelectedItem();
+        int estadoMesa = jcbEstado.getItemCount();
         boolean baja = false;
         
         Mesa nuevaMesa = new Mesa(capacidad,estadoMesa, numeroMesa,baja);
@@ -206,4 +205,11 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCapacidad;
     private javax.swing.JTextField jtfNumMesa;
     // End of variables declaration//GEN-END:variables
+    
+    private void inicializarComboBox(){
+        jcbEstado.addItem(1);
+        jcbEstado.addItem(2);
+        jcbEstado.addItem(3);
+    }
+
 }
