@@ -39,14 +39,14 @@ public class Menu extends javax.swing.JFrame {
                 g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);}};
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jmMesas = new javax.swing.JMenu();
         jmiMesas = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmMeseros = new javax.swing.JMenu();
         jMenuItemMeseroMB = new javax.swing.JMenuItem();
         jMenuItemMeseroA = new javax.swing.JMenuItem();
         jMenuItemTABLAmesero = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmProductos = new javax.swing.JMenu();
+        jmiProductos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante");
@@ -68,7 +68,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("MESAS");
+        jmMesas.setText("MESAS");
 
         jmiMesas.setText("Mesas Disponibles");
         jmiMesas.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +76,11 @@ public class Menu extends javax.swing.JFrame {
                 jmiMesasActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiMesas);
+        jmMesas.add(jmiMesas);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jmMesas);
 
-        jMenu2.setText("MESEROS");
+        jmMeseros.setText("MESEROS");
 
         jMenuItemMeseroMB.setText("MODIFICACION_ó_BAJA");
         jMenuItemMeseroMB.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItemMeseroMBActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemMeseroMB);
+        jmMeseros.add(jMenuItemMeseroMB);
 
         jMenuItemMeseroA.setText("Alta Nuevo Mesero");
         jMenuItemMeseroA.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItemMeseroAActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemMeseroA);
+        jmMeseros.add(jMenuItemMeseroA);
 
         jMenuItemTABLAmesero.setText("LISTAR TODOS LOS MESEROS");
         jMenuItemTABLAmesero.addActionListener(new java.awt.event.ActionListener() {
@@ -104,21 +104,21 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItemTABLAmeseroActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemTABLAmesero);
+        jmMeseros.add(jMenuItemTABLAmesero);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmMeseros);
 
-        jMenu3.setText("PRODUCTOS");
+        jmProductos.setText("PRODUCTOS");
 
-        jMenuItem2.setText("Gestion Productos");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiProductos.setText("Gestion Productos");
+        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiProductosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jmProductos.add(jmiProductos);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jmProductos);
 
         setJMenuBar(jMenuBar1);
 
@@ -162,9 +162,13 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(meseroAlta);
     }//GEN-LAST:event_jMenuItemMeseroAActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jmiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaProducto vistaProducto = new VistaProducto();
+        vistaProducto.setVisible(true);
+        escritorio.add(vistaProducto);
+    }//GEN-LAST:event_jmiProductosActionPerformed
 
     private void jMenuItemTABLAmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTABLAmeseroActionPerformed
         // MESEROStodos imprimir en tabla
@@ -213,14 +217,14 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jMenuItemTABLAmesero;
+    private javax.swing.JMenu jmMesas;
+    private javax.swing.JMenu jmMeseros;
+    private javax.swing.JMenu jmProductos;
     private javax.swing.JMenuItem jmiMesas;
+    private javax.swing.JMenuItem jmiProductos;
     // End of variables declaration//GEN-END:variables
 }
