@@ -46,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemMeseroA = new javax.swing.JMenuItem();
         jMenuItemTABLAmesero = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jmiProducto = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante");
@@ -109,19 +109,14 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("PRODUCTOS");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
-            }
-        });
 
-        jmiProducto.setText("Gestion Productos");
-        jmiProducto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Gestion Productos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiProductoActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jmiProducto);
+        jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
 
@@ -167,18 +162,9 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(meseroAlta);
     }//GEN-LAST:event_jMenuItemMeseroAActionPerformed
 
-    private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmiProductoActionPerformed
-
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-      // MESERO ALTA NUEVO MESERO
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaProducto productos = new VistaProducto();
-        productos.setVisible(true);
-        escritorio.add(productos);
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItemTABLAmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTABLAmeseroActionPerformed
         // MESEROStodos imprimir en tabla
@@ -188,7 +174,6 @@ public class Menu extends javax.swing.JFrame {
         meseroV.setVisible(true);
         escritorio.add(meseroV);
     }//GEN-LAST:event_jMenuItemTABLAmeseroActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -232,10 +217,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jMenuItemTABLAmesero;
     private javax.swing.JMenuItem jmiMesas;
-    private javax.swing.JMenuItem jmiProducto;
     // End of variables declaration//GEN-END:variables
 }

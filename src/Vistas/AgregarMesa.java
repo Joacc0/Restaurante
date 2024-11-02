@@ -17,7 +17,6 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
      */
     public AgregarMesa() {
         initComponents();
-        inicializarComboBox();
     }
 
     /**
@@ -44,10 +43,13 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtfNumMesa.setBackground(new java.awt.Color(255, 255, 255));
         jtfNumMesa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfNumMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNumMesaActionPerformed(evt);
+            }
+        });
 
-        jtfCapacidad.setBackground(new java.awt.Color(255, 255, 255));
         jtfCapacidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +58,6 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado:");
 
         jbGuardar.setBackground(new java.awt.Color(0, 147, 40));
@@ -68,7 +69,6 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbEstado.setBackground(new java.awt.Color(255, 255, 255));
         jcbEstado.setForeground(new java.awt.Color(255, 51, 51));
         jcbEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jcbEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -78,18 +78,13 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Capacidad:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nro. Mesa:");
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("GESTIÓN MESAS");
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jDesktopPane1.setLayer(jtfNumMesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtfCapacidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -179,18 +174,24 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCapacidadActionPerformed
 
     private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
-        // TODO add your handling code here:
+        jcbEstado.addItem(1);
+        jcbEstado.addItem(2);
+        jcbEstado.addItem(3);
     }//GEN-LAST:event_jcbEstadoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         int numeroMesa = Integer.parseInt(jtfNumMesa.getText());
         int capacidad = Integer.parseInt(jtfCapacidad.getText());
-        int estadoMesa = jcbEstado.getItemCount();
+        int estadoMesa = (Integer) jcbEstado.getSelectedItem();
         boolean baja = false;
         
         Mesa nuevaMesa = new Mesa(capacidad,estadoMesa, numeroMesa,baja);
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jtfNumMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNumMesaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,11 +206,4 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCapacidad;
     private javax.swing.JTextField jtfNumMesa;
     // End of variables declaration//GEN-END:variables
-    
-    private void inicializarComboBox(){
-        jcbEstado.addItem(1);
-        jcbEstado.addItem(2);
-        jcbEstado.addItem(3);
-    }
-
 }

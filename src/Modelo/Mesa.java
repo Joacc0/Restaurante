@@ -73,7 +73,9 @@ public class Mesa {
     public void setBaja(boolean baja) {
         this.baja = baja;
     }
-
+    public String imprimirSoloNumMesa() {
+        return  ""+numeroMesa;
+    }
     @Override
     public String toString() {
         return "Mesa{" + "idMesa=" + idMesa + ", capacidad=" + capacidad + ", estadoMesa=" + estadoMesa + ", numeroMesa=" + numeroMesa + ", baja=" + baja + '}';
