@@ -299,7 +299,7 @@ public class GestionMesero extends javax.swing.JInternalFrame {
 
     private void llenarComboBox(){
         jCBmeseros.removeAllItems();
-        listaMeseros= meseroD.listarMeseros();//LISTAR MESEROS SOLO TRAE LOS QUE NO ESTÁN DE BAJA LOGICA. vienen filtrando los baja=1
+        listaMeseros= meseroD.listarMeseros();//LISTAR MESEROS SOLO TRAE LOS QUE NO ESTÁN DE BAJA LOGICA. vienen  los baja=0
                 for (Mesero item : listaMeseros) {
             //jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
             jCBmeseros.addItem(item);

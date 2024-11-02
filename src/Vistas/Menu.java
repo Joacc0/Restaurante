@@ -44,7 +44,12 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemMeseroMB = new javax.swing.JMenuItem();
         jMenuItemMeseroA = new javax.swing.JMenuItem();
+<<<<<<< Updated upstream
         jmiProductos = new javax.swing.JMenu();
+=======
+        jMenuItemTABLAmesero = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+>>>>>>> Stashed changes
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,6 +101,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItemMeseroA);
+
+        jMenuItemTABLAmesero.setText("LISTAR TODOS LOS MESEROS");
+        jMenuItemTABLAmesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTABLAmeseroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemTABLAmesero);
 
         jMenuBar1.add(jMenu2);
 
@@ -162,6 +175,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+<<<<<<< Updated upstream
     private void jmiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductosActionPerformed
       // MESERO ALTA NUEVO MESERO
         escritorio.removeAll();
@@ -170,6 +184,16 @@ public class Menu extends javax.swing.JFrame {
         productos.setVisible(true);
         escritorio.add(productos);
     }//GEN-LAST:event_jmiProductosActionPerformed
+=======
+    private void jMenuItemTABLAmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTABLAmeseroActionPerformed
+        // MESEROStodos imprimir en tabla
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMesero meseroV = new VistaMesero();
+        meseroV.setVisible(true);
+        escritorio.add(meseroV);
+    }//GEN-LAST:event_jMenuItemTABLAmeseroActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -215,6 +239,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
+    private javax.swing.JMenuItem jMenuItemTABLAmesero;
     private javax.swing.JMenuItem jmiMesas;
     private javax.swing.JMenu jmiProductos;
     // End of variables declaration//GEN-END:variables

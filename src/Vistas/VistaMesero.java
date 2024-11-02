@@ -7,6 +7,7 @@ package Vistas;
 import Modelo.Mesero;
 import Persistencia.MeseroData;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,12 +20,24 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         List<Mesero> listaMeseros;
         private MeseroData meseroD=new MeseroData();
         private Mesero meseroActual=null;
-        
+ 
     public VistaMesero() {
         initComponents();
         this.model= (DefaultTableModel) jtMeseros.getModel();
+      
         this.listaMeseros= meseroD.listarMeseros();
-//        llenarComboBox();
+        llenarComboBox();
+        armarCabecera();
+        //LIMPIAMOS TABLA
+        model.setRowCount(0);
+        //LLENAMOS TABLA
+        for (Mesero item : listaMeseros) {
+            model.addRow(new Object[]{
+            item.getDni(),
+            item.getApellido(),
+            item.getNombre()});
+            
+        }
 
         
         
@@ -44,16 +57,15 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jCBmeseros = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jBhistorialPedidosXMesero = new javax.swing.JButton();
+        jBpedidosCobradosXdiaXmesero = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jtMeseros = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel1.setText("CONSULTA MESEROS");
+        jLabel1.setText(" CONSULTA  MESEROS ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Mesero:");
@@ -64,138 +76,155 @@ public class VistaMesero extends javax.swing.JInternalFrame {
             }
         });
 
+        jBhistorialPedidosXMesero.setBackground(new java.awt.Color(102, 255, 204));
+        jBhistorialPedidosXMesero.setText("HISTORIAL DE PEDIDOS x Mesero");
+        jBhistorialPedidosXMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBhistorialPedidosXMeseroActionPerformed(evt);
+            }
+        });
+
+        jBpedidosCobradosXdiaXmesero.setBackground(new java.awt.Color(51, 255, 153));
+        jBpedidosCobradosXdiaXmesero.setText("LISTAR PEDIDOS COBRADOS EN X DIA x Mesero");
+        jBpedidosCobradosXdiaXmesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBpedidosCobradosXdiaXmeseroActionPerformed(evt);
+            }
+        });
+
         jtMeseros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "DNI", "Nombre", "Apellido", "Estado", "Fecha Cont."
+
             }
         ));
-        jScrollPane1.setViewportView(jtMeseros);
-
-        jButton1.setBackground(new java.awt.Color(0, 147, 40));
-        jButton1.setText("ALTA NUEVO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(255, 153, 0));
-        jButton2.setText("MODIFICAR");
-
-        jButton3.setBackground(new java.awt.Color(204, 0, 0));
-        jButton3.setText("ELIMINAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        jtMeseros.setFocusCycleRoot(true);
+        jScrollPane2.setViewportView(jtMeseros);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(186, 186, 186))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBpedidosCobradosXdiaXmesero)
+                        .addGap(92, 92, 92))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(159, 159, 159)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(76, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 29, Short.MAX_VALUE))
+                    .addComponent(jBpedidosCobradosXdiaXmesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(147, 147, 147))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-/*
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO BOTON ALTA NUEVO MESERO, ABRE VISTA DE ALTA MESERO
-        escritorio.removeAll();
-        escritorio.repaint();
-        AgregarMesero agregarMeseroV = new AgregarMesero();
-        meseroV.setVisible(true);
-        escritorio.add(agregarMeseroV);
-    }//GEN-LAST:event_jButton1ActionPerformed
-*/
+    private void jBhistorialPedidosXMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMeseroActionPerformed
+        // AQUI CONSULTAREMOS CON TRONCAL PEDIDOS 
+        meseroActual= (Mesero) model.
+        JOptionPane.showMessageDialog(null, "AQUI CONSULTAREMOS CON TRONCAL PEDIDOS "+e.toString());
+        
+    }//GEN-LAST:event_jBhistorialPedidosXMeseroActionPerformed
+
     private void jCBmeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmeserosActionPerformed
         // COMBO BOX MESEROS
-        borrarFilas();
-        int idMeseroActual=-1;
-        //List<Mesero> listaMeseros;
-        String meseroSeleccionado= jCBmeseros.getSelectedItem().toString();
-        this.listaMeseros= meseroD.listarMeseros();
-        for (Mesero item : listaMeseros) {
-            String m= item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase();
-            if (m.equals(meseroSeleccionado)){
-                
-            }
-          //  jCBmeseros.addItem();
+                // "selected" COMBO BOX MESEROS responde al click
+     meseroActual= (Mesero) jCBmeseros.getSelectedItem();
+//     jBmodificar.setEnabled(true);
+//     jBbaja.setEnabled(true);
+     try{
+         if (meseroActual !=null){
+//        jTFdni.setText(Integer.toString(meseroActual.getDni()));
+//    jTFapellido.setText(meseroActual.getApellido());
+//    jTFnombre.setText(meseroActual.getNombre());
+         } }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "error: "+e.toString());
+//    }
+//        borrarFilas();
+//        int idMeseroActual=-1;
+         
+//        String meseroSeleccionado= jCBmeseros.getSelectedItem().toString();
+//        this.listaMeseros= meseroD.listarMeseros();
+//        for (Mesero item : listaMeseros) {
+//            String m= item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase();
+//            if (m.equals(meseroSeleccionado)){
+//                
+//            }
+//          //  jCBmeseros.addItem();
         }    
         
         
     }//GEN-LAST:event_jCBmeserosActionPerformed
 
+    private void jBpedidosCobradosXdiaXmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBpedidosCobradosXdiaXmeseroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBpedidosCobradosXdiaXmeseroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBhistorialPedidosXMesero;
+    private javax.swing.JButton jBpedidosCobradosXdiaXmesero;
     private javax.swing.JComboBox<Mesero> jCBmeseros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtMeseros;
     // End of variables declaration//GEN-END:variables
 
+    private void armarCabecera(){
+        model.addColumn("DNI");
+        model.addColumn("APELLIDO");
+        model.addColumn("NOMBRE");
+    }
     private void borrarFilas(){
         int filas=model.getRowCount()-1;
         for (int f = filas; f >=0; f--) {
@@ -211,5 +240,14 @@ public class VistaMesero extends javax.swing.JInternalFrame {
 //        }
 //    }
 
+     private void llenarComboBox(){
+        jCBmeseros.removeAllItems();
+        listaMeseros= meseroD.listarMeseros();//LISTAR MESEROS SOLO TRAE LOS QUE NO ESTÁN DE BAJA LOGICA. vienen  los baja=0
+                for (Mesero item : listaMeseros) {
+            //jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
+            jCBmeseros.addItem(item);
+            
+        }
+    }
 
 }
