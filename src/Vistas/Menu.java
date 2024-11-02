@@ -44,13 +44,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemMeseroMB = new javax.swing.JMenuItem();
         jMenuItemMeseroA = new javax.swing.JMenuItem();
-<<<<<<< Updated upstream
-        jmiProductos = new javax.swing.JMenu();
-=======
         jMenuItemTABLAmesero = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
->>>>>>> Stashed changes
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmiProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante");
@@ -112,22 +108,22 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jmiProductos.setText("PRODUCTOS");
-        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
+        jMenu3.setText("PRODUCTOS");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiProductosActionPerformed(evt);
+                jMenu3ActionPerformed(evt);
             }
         });
 
-        jMenuItem2.setText("Gestion Productos");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiProducto.setText("Gestion Productos");
+        jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiProductoActionPerformed(evt);
             }
         });
-        jmiProductos.add(jMenuItem2);
+        jMenu3.add(jmiProducto);
 
-        jMenuBar1.add(jmiProductos);
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -171,20 +167,19 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(meseroAlta);
     }//GEN-LAST:event_jMenuItemMeseroAActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmiProductoActionPerformed
 
-<<<<<<< Updated upstream
-    private void jmiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductosActionPerformed
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
       // MESERO ALTA NUEVO MESERO
         escritorio.removeAll();
         escritorio.repaint();
         VistaProducto productos = new VistaProducto();
         productos.setVisible(true);
         escritorio.add(productos);
-    }//GEN-LAST:event_jmiProductosActionPerformed
-=======
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
     private void jMenuItemTABLAmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTABLAmeseroActionPerformed
         // MESEROStodos imprimir en tabla
         escritorio.removeAll();
@@ -193,7 +188,7 @@ public class Menu extends javax.swing.JFrame {
         meseroV.setVisible(true);
         escritorio.add(meseroV);
     }//GEN-LAST:event_jMenuItemTABLAmeseroActionPerformed
->>>>>>> Stashed changes
+
 
     /**
      * @param args the command line arguments
@@ -235,12 +230,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jMenuItemTABLAmesero;
     private javax.swing.JMenuItem jmiMesas;
-    private javax.swing.JMenu jmiProductos;
+    private javax.swing.JMenuItem jmiProducto;
     // End of variables declaration//GEN-END:variables
 }
