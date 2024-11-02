@@ -33,7 +33,7 @@ public class ProductoData {
     public void guardarProducto(Producto producto){     //damos de alta nuevo Producto ID en BD automático autoincremental
        
         //atributos de producto en orden: (String nombre, String descripcion, double precio, String categoria, int stock, boolean baja)
-        String sql="INSERT INTO producto (nombreProducto,descripcion,precio,categoria,stock,baja)"
+        String sql="INSERT INTO producto (nombreProducto, descripcion,precio, categoria, stock, baja)"
                 + "VALUES(?,?,?,?,?,?)";    
             try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);

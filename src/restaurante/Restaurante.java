@@ -60,18 +60,18 @@ public class Restaurante {
 //                mD1.listarMesas();
 //
 //            cargo 5 meseros 
-            Mesero mesero1 = new Mesero(11111111,"Ana","Lopez", false);
-            Mesero mesero2 = new Mesero(22222222,"Pedro","Garcia", false);
-            Mesero mesero3 = new Mesero(33333333,"Juan","Llopis", false);
-            Mesero mesero4 = new Mesero(44444444,"Maria","Perez", false);
-            Mesero mesero5 = new Mesero(55555555,"Laura","Olano", false);
-            
-            MeseroData mesD = new MeseroData();
-            mesD.guardarMesero(mesero1);
-            mesD.guardarMesero(mesero2);
-            mesD.guardarMesero(mesero3);
-            mesD.guardarMesero(mesero4);
-            mesD.guardarMesero(mesero5);
+//            Mesero mesero1 = new Mesero(11111111,"Ana","Lopez", false);
+//            Mesero mesero2 = new Mesero(22222222,"Pedro","Garcia", false);
+//            Mesero mesero3 = new Mesero(33333333,"Juan","Llopis", false);
+//            Mesero mesero4 = new Mesero(44444444,"Maria","Perez", false);
+//            Mesero mesero5 = new Mesero(55555555,"Laura","Olano", false);
+//            
+//            MeseroData mesD = new MeseroData();
+//            mesD.guardarMesero(mesero1);
+//            mesD.guardarMesero(mesero2);
+//            mesD.guardarMesero(mesero3);
+//            mesD.guardarMesero(mesero4);
+//            mesD.guardarMesero(mesero5);
             
 //            mesD.buscarMeseroPorIDBD(8);
 //            
@@ -82,18 +82,19 @@ public class Restaurante {
 //            mesD.listarMeseros();
 //          
 //            //cargo 6 productos
-            Producto pro1=new Producto("coca", "de litro", 33, "bebidas", 24, false);
-            Producto pro2=new Producto("agua", "de medio", 5, "bebidas", 30, false);
-            Producto pro3=new Producto("cerveza", "latita", 80, "bebidas", 15, false);
-            Producto pro4=new Producto("alfajor", "chocolate", 6, "postre", 6, false);
-//            Producto pro5=new Producto("helado", "frutilla", 10, "portre", 8, false);
-//            Producto pro6=new Producto("sopa", "de verduras", 10, "comidas", 20, false);
+//            Producto pro1=new Producto("coca", "de litro", 33, "bebidas", 24, false);
+//            Producto pro2=new Producto("agua", "de medio", 5, "bebidas", 30, false);
+//            Producto pro3=new Producto("cerveza", "latita", 80, "bebidas", 15, false);
+//            Producto pro4=new Producto("alfajor", "chocolate", 6, "postre", 6, false);
+////            Producto pro5=new Producto("helado", "frutilla", 10, "portre", 8, false);
+////            Producto pro6=new Producto("sopa", "de verduras", 10, "comidas", 20, false);
+////            
+//            ProductoData productoD=new  ProductoData();
+//            productoD.guardarProducto(pro1);
+//            productoD.guardarProducto(pro2);
+//            productoD.guardarProducto(pro3);
+//            productoD.guardarProducto(pro4);
 //            
-            ProductoData pd=new  ProductoData();
-            pd.guardarProducto(pro1);
-            pd.guardarProducto(pro2);
-            pd.guardarProducto(pro3);
-            pd.guardarProducto(pro4);
 //            pd.guardarProducto(pro5);
 //            pd.guardarProducto(pro6);
 //            
