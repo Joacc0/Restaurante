@@ -6,6 +6,7 @@ package Vistas;
 
 import Modelo.Mesa;
 import Persistencia.MesaData;
+import Vistas.AgregarMesa;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaMesas extends javax.swing.JInternalFrame {
       private DefaultTableModel model; 
+      private Mesa mesaActual = null;
       List<Mesa> listarMesas;
       MesaData mData = new MesaData();
     /**
@@ -229,32 +231,30 @@ public class VistaMesas extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
-        // Preparar el modelo de la tabla
+    // Preparar el modelo de la tabla
     DefaultTableModel modeloTabla = (DefaultTableModel) jtMesa.getModel();
     modeloTabla.setRowCount(0); // Limpia la tabla
 
-    // Obtiene el número de mesa seleccionado en el JComboBox
-    String numeroMesaSeleccionada = (String) jcbMesas.getSelectedItem();
+     // Obtiene el número de mesa seleccionado en el JComboBox
+        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
+            // Asegúrate de que la selección no sea nula
+                if (mesaSeleccionada != null) {
+                // Convierte el String a int
+                int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
 
-    // Asegúrate de que la selección no sea nula
-    if (numeroMesaSeleccionada != null) {
-        int numeroMesa = Integer.parseInt(numeroMesaSeleccionada);
-
-        // Recorre la lista de mesas y busca coincidencias
-        for (Mesa mesa : listarMesas) {
-            if (mesa.getNumeroMesa() == numeroMesa) {
-                // Agrega la fila solo si la mesa coincide con el número seleccionado
-                Object[] fila = {
-                    mesa.getNumeroMesa(),
-                    mesa.getCapacidad(),
-                    mesa.getEstadoMesa()
-                };
-                modeloTabla.addRow(fila);
-                break; // Salir del bucle después de encontrar la mesa
-            }
+                // Busca la mesa correspondiente y agrega la fila a la tabla
+                for (Mesa mesa : listarMesas) {
+                    if (mesa.getNumeroMesa() == numeroMesaSeleccionado) {
+                        // Agrega la fila con todos los datos que necesites
+                        model.addRow(new Object[]{
+                            mesa.getNumeroMesa(), 
+                            mesa.getCapacidad(), 
+                            mesa.getEstadoMesa()
+                        });
+                        break; // Salir del bucle después de encontrar la mesa
+                    }
+                }
         }
-    }
-        
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
@@ -287,34 +287,44 @@ public class VistaMesas extends javax.swing.JInternalFrame {
         
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
-        int filaSeleccionada = jtMesa.getSelectedRow();
-        
-        if (filaSeleccionada != -1) {
-            try {
+         // TODO add your handling code here:
+         
+         //Obtenemos la fila seleccionada.
+         int filaSeleccionada = jtMesa.getSelectedRow();
+         
+         // Obtiene el número de mesa seleccionado en el JComboBox
+        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
+            // Asegúrate de que la selección no sea nula
+         if (mesaSeleccionada != null) {
+            // Convierte el String a int
+            int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
+         
+            //Nos aseguramos que sea distinta de un valor nulo.
+            if (filaSeleccionada != -1) {
+                    //Obtenemos los valores de la fila seleccionada
+                    int numMesa = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 0).toString());
+                    int capacidad = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 1).toString());
+                    int estadoMesa = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 2).toString());
                 
-                //Obtenemos los valores de la fila seleccionada
-                int numMesa = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 0).toString());
-                int capacidad = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 1).toString());
-                int estadoMesa = Integer.parseInt(jtMesa.getValueAt(filaSeleccionada, 2).toString());
-                
-                //Creamos la mesa con los valores a modificar
-                Mesa mesaSeleccionada = new Mesa(numMesa,capacidad,estadoMesa);
-                
-                //Llamamos al metodo para modificar la mesa en la base de datos
-                mData.actualizarMesa(mesaSeleccionada);
-                
-                //Mostramos mensaje de confirmación
-                JOptionPane.showMessageDialog(null, "Mesa actualizada.");
-                
-                //Actualizamos la tabla
-                jtMesa.repaint();
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Error en los valores de la fila seleccionada." + ex.getMessage());
-                }
-            } else {
-                    JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para modificar.");
-                    }    
+                    for (Mesa mesa : listarMesas) {
+                        if (mesa.getNumeroMesa() == numeroMesaSeleccionado){
+                            mesaActual = mesa;
+                            mesaActual.setNumeroMesa(numMesa);
+                            mesaActual.setCapacidad(capacidad);
+                            mesaActual.setEstadoMesa(estadoMesa);
+                            break;
+                        }
+                    }
+                // Verifica si mesaActual se encontró y se modificó correctamente
+                if (mesaActual != null) {
+                    JOptionPane.showMessageDialog(null, "Mesa actualizada con éxito.");
+                    mData.actualizarMesa(mesaActual);
+                        // Llama al método que actualiza la base de datos aquí, si es necesario.
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró una mesa con el número seleccionado.");
+                    } 
+            } 
+         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -330,28 +340,7 @@ public class VistaMesas extends javax.swing.JInternalFrame {
     private void jcbMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMesasActionPerformed
         // TODO add your handling code here:
         borrarFilas();
-
-        // Obtiene el número de mesa seleccionado como String
-        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
         
-        // Asegúrate de que la selección no sea nula
-        if (mesaSeleccionada != null) {
-            // Convierte el String a int
-            int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
-
-            // Busca la mesa correspondiente y agrega la fila a la tabla
-            for (Mesa mesa : listarMesas) {
-                if (mesa.getNumeroMesa() == numeroMesaSeleccionado) {
-                    // Agrega la fila con todos los datos que necesites
-                    model.addRow(new Object[]{
-                        mesa.getNumeroMesa(), 
-                        mesa.getCapacidad(), 
-                        mesa.getEstadoMesa()
-                    });
-                    break; // Salir del bucle después de encontrar la mesa
-                }
-            }
-        }
     }//GEN-LAST:event_jcbMesasActionPerformed
 
     private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
@@ -402,14 +391,6 @@ public class VistaMesas extends javax.swing.JInternalFrame {
     jcbMesas.removeAllItems(); // Limpia cualquier elemento previo en el combo box
     for (Mesa mesa : listarMesas) {
         jcbMesas.addItem(String.valueOf(mesa.getNumeroMesa())); // Agrega solo el número de mesa como String
-    }
-}
-    
-    private void llenarComboBox() {
-    jcbMesas.removeAllItems(); // Limpia los elementos actuales del JComboBox
-    
-    for (Mesa mesa : listarMesas) {
-        jcbMesas.addItem(String.valueOf(mesa.getNumeroMesa())); // Agrega el numeroMesa como String
     }
 }
     
