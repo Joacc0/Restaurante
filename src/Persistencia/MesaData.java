@@ -87,13 +87,13 @@ public class MesaData {
     
     //ELIMINAR MESA
     
-    public void eliminarMesa(int idMesa) {
+    public void eliminarMesa(int numeroMesa) {
     
     try  {
-        String sql = "DELETE FROM mesa WHERE idMesa = ?";
+        String sql = "DELETE FROM mesa WHERE numeroMesa = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         
-        ps.setInt(1, idMesa);
+        ps.setInt(1, numeroMesa);
         
         int exitoFila = ps.executeUpdate();
         
