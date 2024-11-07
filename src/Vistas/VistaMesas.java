@@ -351,22 +351,36 @@ public class VistaMesas extends javax.swing.JInternalFrame {
 
     private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
         // TODO add your handling code here:
-        //Obtenemos la fila que estamos seleccionando.
-        int filaSeleccionada = jtMesa.getSelectedRow();
+         
+         //Obtenemos la fila seleccionada.
+         int filaSeleccionada = jtMesa.getSelectedRow();
+         
+        // Obtiene el número de mesa seleccionado en el JComboBox
+        String mesaSeleccionada = (String) jcbMesas.getSelectedItem();
         
-        if (filaSeleccionada > 0) {
-            
-            //Obtenemos el ID de la mesa seleccionada
-            int idMesa = (int) jtMesa.getValueAt(filaSeleccionada,0);
-            mData.eliminarMesaLogica(idMesa);
-            
-            //Actualizamos la tabla después de darle la baja lógica a la mesa.
-            model.removeRow(filaSeleccionada);
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione una mesa para dar de baja.");
-        }
-        
-        
+        // Asegúrate de que la selección no sea nula
+         if (mesaSeleccionada != null) {
+            // Convierte el String a int
+            int numeroMesaSeleccionado = Integer.parseInt(mesaSeleccionada);
+         
+            //Nos aseguramos que sea distinta de un valor nulo.
+            if (filaSeleccionada != -1) {
+                    for (Mesa mesa : listarMesas) {
+                        if (mesa.getNumeroMesa() == numeroMesaSeleccionado){
+                            mesaActual = mesa;
+                            break;
+                        }
+                    }
+                // Verifica si mesaActual se encontró y se modificó correctamente
+                if (mesaActual != null) {
+                    mData.eliminarMesaLogica(numeroMesaSeleccionado);
+                    cargarNumerosDeMesa();
+                        // Llama al método que actualiza la base de datos aquí, si es necesario.
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró una mesa con el número seleccionado.");
+                    } 
+            } 
+         }
     }//GEN-LAST:event_jbBajaActionPerformed
         
     
