@@ -1,23 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vistas;
 
 import Modelo.Mesa;
+import Persistencia.MesaData;
 
-/**
- *
- * @author User
- */
 public class AgregarMesa extends javax.swing.JInternalFrame {
-
+       
+    MesaData mdata = new MesaData();
     /**
      * Creates new form AgregarMesa
      */
     public AgregarMesa() {
         initComponents();
-        inicializarComboBox();
+        llenarComboBox();
     }
 
     /**
@@ -39,15 +33,19 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtfNumMesa.setBackground(new java.awt.Color(255, 255, 255));
         jtfNumMesa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfNumMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNumMesaActionPerformed(evt);
+            }
+        });
 
-        jtfCapacidad.setBackground(new java.awt.Color(255, 255, 255));
         jtfCapacidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +54,6 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado:");
 
         jbGuardar.setBackground(new java.awt.Color(0, 147, 40));
@@ -68,7 +65,6 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbEstado.setBackground(new java.awt.Color(255, 255, 255));
         jcbEstado.setForeground(new java.awt.Color(255, 51, 51));
         jcbEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jcbEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -78,18 +74,15 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Capacidad:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nro. Mesa:");
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("GESTIÓN MESAS");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("1:Libre / 2:Ocupada / 3:Atendida");
 
         jDesktopPane1.setLayer(jtfNumMesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtfCapacidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -100,6 +93,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -112,20 +106,22 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbGuardar))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel6)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfCapacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfNumMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbGuardar)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(106, 106, 106))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -150,7 +146,9 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(30, 30, 30)
                 .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,17 +178,23 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
 
     private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcbEstadoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         int numeroMesa = Integer.parseInt(jtfNumMesa.getText());
         int capacidad = Integer.parseInt(jtfCapacidad.getText());
-        int estadoMesa = jcbEstado.getItemCount();
+        int estadoMesa = (Integer) jcbEstado.getSelectedItem();
         boolean baja = false;
         
         Mesa nuevaMesa = new Mesa(capacidad,estadoMesa, numeroMesa,baja);
+        mdata.agregarMesa(nuevaMesa);
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jtfNumMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNumMesaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -199,17 +203,18 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JComboBox<Integer> jcbEstado;
     private javax.swing.JTextField jtfCapacidad;
     private javax.swing.JTextField jtfNumMesa;
     // End of variables declaration//GEN-END:variables
-    
-    private void inicializarComboBox(){
-        jcbEstado.addItem(0);
-        jcbEstado.addItem(1);
-        jcbEstado.addItem(2);
-    }
 
+    public void llenarComboBox(){
+        Integer[] estados = {1, 2, 3};
+            for (Integer estado : estados) {
+            jcbEstado.addItem(estado);
+            }
+    }
 }

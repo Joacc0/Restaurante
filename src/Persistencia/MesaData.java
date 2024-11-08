@@ -2,7 +2,6 @@ package Persistencia;
 
 import Modelo.Mesa;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,31 +69,31 @@ public class MesaData {
    
 
     //BAJA MESA BAJA LÓGICA
-    public void eliminarMesaLogica(int idMesa){
+    public void eliminarMesaLogica(int numeroMesa){
         try{
-            String sql = "UPDATE mesa SET baja = 1 WHERE idMesa = ? ";
+            String sql = "UPDATE mesa SET baja = 1 WHERE numeroMesa = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, idMesa);
+            ps.setInt(1, numeroMesa);
             
             int filas = ps.executeUpdate();
             if (filas == 1) {
-               JOptionPane.showMessageDialog(null,"Se eliminó la mesa");
+               JOptionPane.showMessageDialog(null,"Se dió de baja a la mesa " + numeroMesa);
             }
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error no se pudo eliminar la mesa "+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error no se pudo dar de baja a la mesa "+ex.getMessage());
         }
     }
     
     //ELIMINAR MESA
     
-    public void eliminarMesa(int idMesa) {
+    public void eliminarMesa(int numeroMesa) {
     
     try  {
-        String sql = "DELETE FROM mesa WHERE idMesa = ?";
+        String sql = "DELETE FROM mesa WHERE numeroMesa = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         
-        ps.setInt(1, idMesa);
+        ps.setInt(1, numeroMesa);
         
         int exitoFila = ps.executeUpdate();
         

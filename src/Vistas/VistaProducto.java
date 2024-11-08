@@ -4,11 +4,14 @@
  */
 package Vistas;
 
-
 import Modelo.Producto;
 import Persistencia.ProductoData;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -16,9 +19,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaProducto extends javax.swing.JInternalFrame {
     
- private DefaultTableModel model; 
+        private DefaultTableModel model; 
       List<Producto> listarProductos;
       ProductoData pData = new ProductoData();
+      
     /**
      * Creates new form VistaProducto
      */
@@ -38,19 +42,19 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProductos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jbModificar = new javax.swing.JButton();
-        jbBorrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jbBuscar = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtProducto = new javax.swing.JTextField();
+        jtBuscar = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -74,17 +78,24 @@ public class VistaProducto extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jbModificar.setBackground(new java.awt.Color(255, 153, 0));
-        jbModificar.setForeground(new java.awt.Color(0, 0, 0));
-        jbModificar.setText("MODIFICAR");
+        jButton1.setBackground(new java.awt.Color(255, 153, 0));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("MODIFICAR");
 
-        jbBorrar.setBackground(new java.awt.Color(204, 0, 0));
-        jbBorrar.setForeground(new java.awt.Color(0, 0, 0));
-        jbBorrar.setText("BORRAR");
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("BORRAR");
 
         jbGuardar.setBackground(new java.awt.Color(0, 147, 40));
         jbGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jbGuardar.setText("GUARDAR");
+
+        jbSalir.setText("SALIR");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -93,28 +104,36 @@ public class VistaProducto extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbBorrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jButton1)
+                .addGap(43, 43, 43)
+                .addComponent(jButton2)
+                .addGap(44, 44, 44)
+                .addComponent(jbSalir)
+                .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalir))
+                .addGap(14, 14, 14))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jbBuscar.setBackground(new java.awt.Color(0, 157, 235));
-        jbBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        jbBuscar.setText("BUSCAR");
+        jButton4.setBackground(new java.awt.Color(0, 157, 235));
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("BUSCAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -124,8 +143,8 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("CONSULTA PRODUCTOS");
 
-        jtProducto.setBackground(new java.awt.Color(255, 255, 255));
-        jtProducto.setForeground(new java.awt.Color(0, 0, 0));
+        jtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        jtBuscar.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -135,9 +154,9 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbBuscar)
+                .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
@@ -151,9 +170,9 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,39 +209,64 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+      dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        filtrarProductos();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbBorrar;
-    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbModificar;
-    private javax.swing.JTextField jtProducto;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JTextField jtBuscar;
     private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
 
     private void cargarProductos() {
         // Limpiar el modelo de la tabla
     model.setRowCount(0);
-    
+
     // Recorrer la lista de productos y añadir cada uno al modelo de la tabla
     for (Producto producto : listarProductos) {
         // Suponiendo que Producto tiene métodos como getId(), getNombre(), getPrecio(), etc.
         Object[] fila = new Object[]{
             producto.getIdProducto(),
-            producto.getNombreProducto(),      
-            producto.getPrecio(),  
-            producto.getStock()   
+            producto.getNombreProducto(),
+            producto.getPrecio(),
+            producto.getStock()
         };
         model.addRow(fila);
     }
-    }
 }
+    
+    private void filtrarProductos() {
+    String busqueda = jtBuscar.getText().toLowerCase(); // obtenemos el txt ingresado en el jt y lo convertimos a minuscula
+    TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(model);
+    jtProductos.setRowSorter(rowSorter);
 
+    // Crear los filtros para cada columna
+    List<RowFilter<DefaultTableModel, Object>> filters = new ArrayList<>();
+    filters.add(RowFilter.regexFilter("(?i).*" + busqueda + ".*", 0)); // Filtrar por ID
+    filters.add(RowFilter.regexFilter("(?i).*" + busqueda + ".*", 1)); // Filtrar por Nombre
+    filters.add(RowFilter.regexFilter("(?i).*" + busqueda + ".*", 2)); // Filtrar por Precio
+    filters.add(RowFilter.regexFilter("(?i).*" + busqueda + ".*", 3)); // Filtrar por Stock
 
+    rowSorter.setRowFilter(RowFilter.regexFilter("(?i).*" + busqueda + ".*"));
+     // Aplicar los filtros compuestos
+    RowFilter<DefaultTableModel, Object> compositeFilter = RowFilter.orFilter(filters);
+    rowSorter.setRowFilter(compositeFilter);
+}
+}

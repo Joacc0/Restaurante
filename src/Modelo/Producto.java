@@ -19,9 +19,9 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
+    public Producto(int idProducto, String nombreProducto, String descripcion, double precio, String categoria, int stock, boolean baja) {
         this.idProducto = idProducto;
-        this.nombreProducto = nombre;
+        this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
@@ -29,8 +29,8 @@ public class Producto {
         this.baja = baja;
     }
 
-    public Producto(String nombre, String descripcion, double precio, String categoria, int stock, boolean baja) {
-        this.nombreProducto = nombre;
+    public Producto(String nombreProducto, String descripcion, double precio, String categoria, int stock, boolean baja) {
+        this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;

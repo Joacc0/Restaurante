@@ -10,10 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author User
- */
+
 public class VistaMesero extends javax.swing.JInternalFrame {
 
         private DefaultTableModel model; 
@@ -169,8 +166,8 @@ public class VistaMesero extends javax.swing.JInternalFrame {
 
     private void jBhistorialPedidosXMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMeseroActionPerformed
         // AQUI CONSULTAREMOS CON TRONCAL PEDIDOS 
-        meseroActual= (Mesero) model.
-        JOptionPane.showMessageDialog(null, "AQUI CONSULTAREMOS CON TRONCAL PEDIDOS "+e.toString());
+       
+        JOptionPane.showMessageDialog(null, "AQUI CONSULTAREMOS CON TRONCAL PEDIDOS usando tabla y/o CB");
         
     }//GEN-LAST:event_jBhistorialPedidosXMeseroActionPerformed
 
@@ -178,13 +175,11 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         // COMBO BOX MESEROS
                 // "selected" COMBO BOX MESEROS responde al click
      meseroActual= (Mesero) jCBmeseros.getSelectedItem();
-//     jBmodificar.setEnabled(true);
-//     jBbaja.setEnabled(true);
+ 
      try{
          if (meseroActual !=null){
-//        jTFdni.setText(Integer.toString(meseroActual.getDni()));
-//    jTFapellido.setText(meseroActual.getApellido());
-//    jTFnombre.setText(meseroActual.getNombre());
+             
+ 
          } }catch(Exception e){
         JOptionPane.showMessageDialog(null, "error: "+e.toString());
 //    }
@@ -205,7 +200,9 @@ public class VistaMesero extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCBmeserosActionPerformed
 
     private void jBpedidosCobradosXdiaXmeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBpedidosCobradosXdiaXmeseroActionPerformed
-        // TODO add your handling code here:
+        // AQUI CONSULTAREMOS CON TRONCAL PEDIDOS 
+       
+        JOptionPane.showMessageDialog(null, "AQUI CONSULTAREMOS CON TRONCAL PEDIDOS usando tabla y/o CB");
     }//GEN-LAST:event_jBpedidosCobradosXdiaXmeseroActionPerformed
 
 
