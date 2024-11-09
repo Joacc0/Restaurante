@@ -131,8 +131,10 @@ public class PedidoData {
                 //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
                 
                 Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
+                pedido.setMesa(mesa);
                 pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
                 Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
+                pedido.setMesero(mesero);
                 pedido.setCobrada(rs.getBoolean("cobrada"));
                 pedido.setBaja(rs.getBoolean("baja"));
                 pedidos.add(pedido);
