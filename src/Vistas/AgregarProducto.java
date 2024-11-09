@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import Modelo.Producto;
+import Persistencia.ProductoData;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tomic
@@ -28,30 +32,24 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLid = new javax.swing.JLabel();
         jLnombre = new javax.swing.JLabel();
         jLprecio = new javax.swing.JLabel();
         jLcategoria = new javax.swing.JLabel();
         jLstock = new javax.swing.JLabel();
-        jLestado = new javax.swing.JLabel();
         jLdescripcion = new javax.swing.JLabel();
-        jTFid = new javax.swing.JTextField();
         jTFnombre = new javax.swing.JTextField();
         jTFprecio = new javax.swing.JTextField();
         jTFcategoria = new javax.swing.JTextField();
         jTFstock = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAdescripcion = new javax.swing.JTextArea();
-        jCBestado = new javax.swing.JComboBox<>();
         jLtitulo = new javax.swing.JLabel();
         jBguardar = new javax.swing.JButton();
+        jBsalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLid.setText("ID:");
 
         jLnombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLnombre.setText("Nombre:");
@@ -64,9 +62,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
         jLstock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLstock.setText("Stock:");
-
-        jLestado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLestado.setText("Estado:");
 
         jLdescripcion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLdescripcion.setText("Descripcion:");
@@ -81,8 +76,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jTAdescripcion.setRows(5);
         jScrollPane2.setViewportView(jTAdescripcion);
 
-        jCBestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -91,21 +84,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLnombre)
-                            .addComponent(jLid))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(229, 229, 229)
-                                .addComponent(jTFnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                        .addComponent(jLnombre)
+                        .addGap(229, 229, 229)
+                        .addComponent(jTFnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLprecio)
                             .addComponent(jLdescripcion)
-                            .addComponent(jLestado)
                             .addComponent(jLstock)
                             .addComponent(jLcategoria))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,18 +98,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                             .addComponent(jTFprecio)
                             .addComponent(jTFcategoria)
                             .addComponent(jTFstock)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jCBestado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
                 .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLid)
-                    .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLnombre)
                     .addComponent(jTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,15 +120,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLstock)
                     .addComponent(jTFstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLestado)
-                    .addComponent(jCBestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLdescripcion)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jLtitulo.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,6 +133,20 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
         jBguardar.setBackground(new java.awt.Color(0, 147, 40));
         jBguardar.setText("GUARDAR");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
+
+        jBsalir.setBackground(new java.awt.Color(255, 0, 0));
+        jBsalir.setForeground(new java.awt.Color(0, 0, 0));
+        jBsalir.setText("SALIR");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,7 +160,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
+                .addComponent(jBsalir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBguardar)
                 .addGap(58, 58, 58))
         );
@@ -182,8 +174,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,14 +198,37 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFprecioActionPerformed
 
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+
+        String nombre = jTFnombre.getText();
+        String descripcion = jTAdescripcion.getText();
+        double precio = Double.parseDouble(jTFprecio.getText());
+        String categoria = jTFcategoria.getText();
+        int stock = Integer.parseInt(jTFstock.getText());
+        boolean estado = false;
+
+        Producto nuevoProducto = new Producto(nombre, descripcion, precio, categoria, stock, estado);
+        ProductoData pd = new ProductoData();
+        pd.guardarProducto(nuevoProducto);
+        //limpiar campos
+        jTFnombre.setText("");
+        jTAdescripcion.setText("");
+        jTFprecio.setText("");
+        jTFcategoria.setText("");
+        jTFstock.setText("");
+
+    }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;
-    private javax.swing.JComboBox<String> jCBestado;
+    private javax.swing.JButton jBsalir;
     private javax.swing.JLabel jLcategoria;
     private javax.swing.JLabel jLdescripcion;
-    private javax.swing.JLabel jLestado;
-    private javax.swing.JLabel jLid;
     private javax.swing.JLabel jLnombre;
     private javax.swing.JLabel jLprecio;
     private javax.swing.JLabel jLstock;
@@ -221,7 +238,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTAdescripcion;
     private javax.swing.JTextField jTFcategoria;
-    private javax.swing.JTextField jTFid;
     private javax.swing.JTextField jTFnombre;
     private javax.swing.JTextField jTFprecio;
     private javax.swing.JTextField jTFstock;

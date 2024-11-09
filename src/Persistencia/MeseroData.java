@@ -92,7 +92,8 @@ public class MeseroData {
             JOptionPane.showMessageDialog(null,"Error no se pudo eliminar el mesero "+ex.getMessage());
         }
     }
-    //BAJA MESERO BAJA LÓGICA por id BD
+    //ANULAR BAJA MESERO por id BD
+    //A IMPLEMENTAR PROXIMAMENTE
     public void resucitarMesero(int id){
         try{
             String sql = "UPDATE mesero SET baja = 0 WHERE idMesero = ? ";

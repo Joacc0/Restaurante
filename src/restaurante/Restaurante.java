@@ -40,11 +40,11 @@ public class Restaurante {
 //            Mesa mesa5 = new Mesa(10, 1, 5, false);
 //            
 //            MesaData mD1 = new MesaData();
-//            mD1.guardarMesa(mesa1);
-//            mD1.guardarMesa(mesa2);           
-//            mD1.guardarMesa(mesa3);
-//            mD1.guardarMesa(mesa4);
-//            mD1.guardarMesa(mesa5);   
+//            mD1.agregarMesa(mesa1);
+//            mD1.agregarMesa(mesa2);           
+//            mD1.agregarMesa(mesa3);
+//            mD1.agregarMesa(mesa4);
+//            mD1.agregarMesa(mesa5);   
 //
 //                MesaData mD1 = new MesaData();
 //                Mesa mesa1DIFERENTE = new Mesa(1,2, 1, 0, false);
@@ -93,16 +93,16 @@ public class Restaurante {
 //            productoD.guardarProducto(pro2);
 //            productoD.guardarProducto(pro3);
 //            productoD.guardarProducto(pro4);
-//            
+//       
 //            pd.guardarProducto(pro5);
 //            pd.guardarProducto(pro6);
 //            
 //            pd.buscarProductoPorIDBD(4);
 //            pd.listarProductos();
-            
-            
-                                //PEDIDO
-//
+//            
+//            
+//                                PEDIDO
+
 //     MeseroData meseroData = new MeseroData();
 //     MesaData mesaData = new MesaData();
 //     PedidoData pedidoData= new PedidoData();
@@ -111,13 +111,13 @@ public class Restaurante {
 //
 //    System.out.println("mesa es: "+ unaMesa.toString());
 //
-//    Mesero unMesero = meseroData.buscarMeseroPorIDBD(7);
+//    Mesero unMesero = meseroData.buscarMeseroPorIDBD(9);
 //
 //    System.out.println("mesero es: "+ unMesero.toString());
 //
 //
 //
-//    Pedido pedido= new Pedido(unaMesa,unMesero);
+//    Pedido pedido= new Pedido(unaMesa, unMesero);
 //
 //    System.out.println("pedido= "+pedido.toString());
 //
@@ -127,30 +127,28 @@ public class Restaurante {
 //    pedido= pedidoData.buscarPedidoPorIDBD(2);
 //    pedidoData.cobrarPedido(pedido);
 //
+//
+//
+//                                //DETALLE
 
-
-                                //DETALLE
-
-          ProductoData productoData= new  ProductoData();
-          PedidoData pedidoData= new PedidoData();
-          DetalleData detalleData= new DetalleData();
-          
-          Producto unProducto= productoData.buscarProductoPorIDBD(1);
-          System.out.println("producto es: "+ unProducto.toString());
-          
-          Pedido unPedido= pedidoData.buscarPedidoPorIDBD(1);
-          System.out.println("pedido es: "+ unPedido.toString());
-          
-          int cantidad=2; 
-          Detalle detalle= new Detalle(unProducto,cantidad,unPedido);
-          System.out.println("detalle es: "+ detalle.toString());
-          System.out.println("AHORA GUARDAR");
-          detalleData.guardarDetalle(detalle);
+//          ProductoData productoData= new  ProductoData();
+//          PedidoData pedidoData= new PedidoData();
+//          DetalleData detalleData= new DetalleData();
+//          
+//          Producto unProducto= productoData.buscarProductoPorIDBD(1);
+//          System.out.println("producto es: "+ unProducto.toString());
+//          
+//          Pedido unPedido= pedidoData.buscarPedidoPorIDBD(1);
+//          System.out.println("pedido es: "+ unPedido.toString());
+//          
+//          int cantidad=2; 
+//          Detalle detalle= new Detalle(unProducto,cantidad,unPedido);
+//          System.out.println("detalle es: "+ detalle.toString());
+//          System.out.println("AHORA GUARDAR");
+//          detalleData.guardarDetalle(detalle);
           
           
 
-
-            
     }
     
 }
