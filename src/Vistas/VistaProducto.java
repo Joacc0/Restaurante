@@ -126,6 +126,11 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         jButton4.setBackground(new java.awt.Color(0, 157, 235));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("BUSCAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -223,16 +228,17 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        filtrarProductos();
+
+         filtrarProductos();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         Escritorio.removeAll();
-
+        Escritorio.repaint();
         AgregarProducto nuevoProducto = new AgregarProducto();
         nuevoProducto.setVisible(true);
         Escritorio.add(nuevoProducto);
+        
         
     }//GEN-LAST:event_jbGuardarActionPerformed
 

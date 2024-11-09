@@ -217,6 +217,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
        dispose();
+       
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void limpiaCampos(){
