@@ -81,7 +81,7 @@ public class Menu extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
 
         jmMesas.setText("MESAS");
@@ -135,6 +135,11 @@ public class Menu extends javax.swing.JFrame {
         jmProductos.add(jmiProductos);
 
         jmiAltaProducto.setText("ALTA nuevo PRODUCTO");
+        jmiAltaProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAltaProductoActionPerformed(evt);
+            }
+        });
         jmProductos.add(jmiAltaProducto);
 
         jmiSTOCK.setText("Stock");
@@ -225,6 +230,15 @@ public class Menu extends javax.swing.JFrame {
     private void jmiSTOCKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSTOCKActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiSTOCKActionPerformed
+
+    private void jmiAltaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaProductoActionPerformed
+        //ALTA DE PRODUCTOS
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarProducto AP = new AgregarProducto();
+        AP.setVisible(true);
+        escritorio.add(AP);
+    }//GEN-LAST:event_jmiAltaProductoActionPerformed
 
     /**
      * @param args the command line arguments

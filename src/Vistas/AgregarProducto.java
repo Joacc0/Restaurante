@@ -39,10 +39,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLdescripcion = new javax.swing.JLabel();
         jTFnombre = new javax.swing.JTextField();
         jTFprecio = new javax.swing.JTextField();
-        jTFcategoria = new javax.swing.JTextField();
         jTFstock = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAdescripcion = new javax.swing.JTextArea();
+        JCBcategoria = new javax.swing.JComboBox<>();
         jLtitulo = new javax.swing.JLabel();
         jBguardar = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
@@ -76,6 +76,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jTAdescripcion.setRows(5);
         jScrollPane2.setViewportView(jTAdescripcion);
 
+        JCBcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comida", "Bebida", "Postre", "Otros" }));
+        JCBcategoria.setSelectedIndex(-1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -96,9 +99,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTFprecio)
-                            .addComponent(jTFcategoria)
                             .addComponent(jTFstock)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(JCBcategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
@@ -115,7 +118,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLcategoria)
-                    .addComponent(jTFcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JCBcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLstock)
@@ -199,22 +202,87 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFprecioActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        if (VerificaCampos() == true) {  //si todos los campos estan bien, deberia tomar la info ingresada y crear el objeto
+            String nombre = jTFnombre.getText();
+            String descripcion = jTAdescripcion.getText();
+            double precio = Double.parseDouble(jTFprecio.getText());
+            String categoria = (String) JCBcategoria.getSelectedItem();
+            int stock = Integer.parseInt(jTFstock.getText());
+            boolean estado = false;
 
-        String nombre = jTFnombre.getText();
-        String descripcion = jTAdescripcion.getText();
-        double precio = Double.parseDouble(jTFprecio.getText());
-        String categoria = jTFcategoria.getText();
-        int stock = Integer.parseInt(jTFstock.getText());
-        boolean estado = false;
-
-        Producto nuevoProducto = new Producto(nombre, descripcion, precio, categoria, stock, estado);
-        ProductoData pd = new ProductoData();
-        pd.guardarProducto(nuevoProducto);
-        //limpiar campos
-        limpiaCampos();
+            Producto nuevoProducto = new Producto(nombre, descripcion, precio, categoria, stock, estado);
+            ProductoData pd = new ProductoData();
+            pd.guardarProducto(nuevoProducto); //hasta ahora funciona bien. Amen
+            //limpiar campos
+            limpiaCampos();
+        }
+        
 
     }//GEN-LAST:event_jBguardarActionPerformed
+    //para verificar que no se ingresen cosas erroneas
+    private boolean VerificaCampos(){
+        //String nombreProducto, String descripcion, double precio, combobox categoria, int stock
+        
+        //controlamos el nombre
+         String nombre = jTFnombre.getText().trim();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESE UN NOMBRE");
+            return false;
+        }
 
+        //controlamos el campo descripcion
+        String descripcion = jTAdescripcion.getText().trim();
+        if (descripcion.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESE UNA DESCRIPCION");
+            return false;
+        }
+
+        //controlamos el precio
+        String precioStr = jTFprecio.getText().trim();
+        if (precioStr.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESE UN PRECIO");
+            return false;
+        }
+        try {
+            double precio = Double.parseDouble(precioStr);
+            if (precio <= 0) {  
+                JOptionPane.showMessageDialog(null, "EL PRECIO DEBE SER UN NUMERO POSITIVO");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "NUMERO INVALIDO");
+            return false;
+        }
+
+        //controlamos el combo box para que no lo dejen en blanco
+        String categoria = (String) JCBcategoria.getSelectedItem();
+        if (categoria == null || categoria.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "SELECCIONE UNA CATEGORIA");
+            return false;
+        }
+
+        //controlamos el campo de stock
+        String stockStr = jTFstock.getText().trim();
+        if (stockStr.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESE UN STOCK");
+            return false;
+        }
+        try {
+            int stock = Integer.parseInt(stockStr);
+            if (stock < 0) {  // Verificar que el stock sea un valor positivo
+                JOptionPane.showMessageDialog(null, "EL STOCK DEBE SER UN NUMERO POSITIVO");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "NUMERO INVALIDO");
+            return false;
+        }
+
+        //retorna true si los campos estan bien
+        return true;
+        
+    }
+    
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
        dispose();
        
@@ -224,11 +292,12 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jTFnombre.setText("");
         jTAdescripcion.setText("");
         jTFprecio.setText("");
-        jTFcategoria.setText("");
+        JCBcategoria.setSelectedIndex(-1);
         jTFstock.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> JCBcategoria;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JLabel jLcategoria;
@@ -241,7 +310,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTAdescripcion;
-    private javax.swing.JTextField jTFcategoria;
     private javax.swing.JTextField jTFnombre;
     private javax.swing.JTextField jTFprecio;
     private javax.swing.JTextField jTFstock;

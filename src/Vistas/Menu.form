@@ -82,6 +82,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ALTA nuevo PRODUCTO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAltaProductoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiSTOCK">
               <Properties>
@@ -176,7 +179,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" alignment="0" pref="530" max="32767" attributes="0"/>
+              <Component id="jLabel1" alignment="1" pref="530" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

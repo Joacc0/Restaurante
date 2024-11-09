@@ -103,9 +103,9 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTFprecio" max="32767" attributes="0"/>
-                                  <Component id="jTFcategoria" max="32767" attributes="0"/>
                                   <Component id="jTFstock" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane2" alignment="0" pref="250" max="32767" attributes="0"/>
+                                  <Component id="JCBcategoria" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -129,7 +129,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JCBcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -194,8 +194,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFprecioActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFcategoria">
-            </Component>
             <Component class="javax.swing.JTextField" name="jTFstock">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -213,6 +211,22 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JComboBox" name="JCBcategoria">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Comida"/>
+                    <StringItem index="1" value="Bebida"/>
+                    <StringItem index="2" value="Postre"/>
+                    <StringItem index="3" value="Otros"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="JCBcategoria.setSelectedIndex(-1);"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLtitulo">
