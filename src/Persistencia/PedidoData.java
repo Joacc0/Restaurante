@@ -167,14 +167,14 @@ public class PedidoData {
                 
                 //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
                 pedido.setIdPedido(rs.getInt("idPedido"));
-                Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
+                pedido.setMesa(mesaData.buscarMesaPorIDBD(rs.getInt("idMesa")));
                 pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
-                Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
+                pedido.setMesero(meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero")));
                 pedido.setCobrada(rs.getBoolean("cobrada"));
                 pedido.setBaja(rs.getBoolean("baja"));
                 
                 //show mensaje antes de return pedido
-                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarPedidoPorIDBD= "+pedido.toString());
+                JOptionPane.showMessageDialog(null,"se encontró este Pedido en buscarPedidoPorIDBD= "+pedido.toString());
                 
             }else{
                 JOptionPane.showMessageDialog(null, "buscarPedidoPorIDBD= No existe el Pedido con idBD: " + id);

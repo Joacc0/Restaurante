@@ -129,25 +129,38 @@ public class Restaurante {
 //
 //
 //
-//                                //DETALLE
+                                //DETALLE
 
-//          ProductoData productoData= new  ProductoData();
-//          PedidoData pedidoData= new PedidoData();
-//          DetalleData detalleData= new DetalleData();
-//          
-//          Producto unProducto= productoData.buscarProductoPorIDBD(1);
-//          System.out.println("producto es: "+ unProducto.toString());
-//          
-//          Pedido unPedido= pedidoData.buscarPedidoPorIDBD(1);
-//          System.out.println("pedido es: "+ unPedido.toString());
-//          
-//          int cantidad=2; 
-//          Detalle detalle= new Detalle(unProducto,cantidad,unPedido);
+          ProductoData productoData= new  ProductoData();
+          PedidoData pedidoData= new PedidoData();
+          DetalleData detalleData= new DetalleData();
+          
+          Producto unProducto= productoData.buscarProductoPorIDBD(1);
+          System.out.println("producto es: "+ unProducto.toString());
+          
+          Pedido unPedido= pedidoData.buscarPedidoPorIDBD(1);
+          System.out.println("pedido es: "+ unPedido.toString());
+          
+          int cantidad=5; 
+          Detalle detalle= new Detalle(unProducto,cantidad,unPedido);
 //          System.out.println("detalle es: "+ detalle.toString());
 //          System.out.println("AHORA GUARDAR");
-//          detalleData.guardarDetalle(detalle);
+          detalleData.guardarDetalle(detalle);
+          System.out.println("detalle desde JAVA"+ detalle.toString());
+          System.out.println("imprimo mismo detalle trayendo de BD"+ detalleData.buscarDetallePorIDBD(4).toString());
           
           
+//          //probando los constructores de detalle
+//         Detalle constructor1= new Detalle(unProducto, 3, unPedido, 50, false); //la idea es q el importe cantidad x precio se calcule sola
+//          System.out.println("detalle es: "+ constructor1.toString());
+//          System.out.println("AHORA GUARDAR");
+//          detalleData.guardarDetalle(constructor1);
+//
+//            Detalle constructor2= new Detalle(unProducto, 2, unPedido);
+//          System.out.println("detalle es: "+ constructor2.toString());
+//          System.out.println("AHORA GUARDAR");
+//          detalleData.guardarDetalle(constructor2);
+//
 
     }
     

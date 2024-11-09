@@ -29,11 +29,13 @@ public class DetalleData {
     }
     
     //ALTA
+    //INSERT INTO `detalle`(`idDetalle`, `idProducto`, `cantidadProductos`, `idPedido`, `importe`, `baja`)
+    //VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
     public void guardarDetalle(Detalle detalle){     //damos de alta nuevo detalle ID en BD automático autoincremental
        
         //atributos de detalle en orden: (Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja)
         String sql="INSERT INTO detalle (idProducto,cantidadProductos,idPedido,importe,baja)"
-                + "VALUES(?,?,?,?,?,?)";    
+                + "VALUES(?,?,?,?,?)";    
             try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
            ps.setInt(1, detalle.getProducto().getIdProducto());
@@ -117,11 +119,11 @@ public class DetalleData {
                 //(Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja)
                 
                 detalle.setIdDetalle(rs.getInt("idDetalle"));
-                Producto producto = productoData.buscarProductoPorIDBD(rs.getInt("idProducto"));
-                detalle.setProducto(producto);
+                
+                detalle.setProducto(productoData.buscarProductoPorIDBD(rs.getInt("idProducto")));
                 detalle.setCantidadProductos(rs.getInt("cantidadProductos"));
-                Pedido pedido = pedidoData.buscarPedidoPorIDBD(rs.getInt("idPedido"));
-                detalle.setPedido(pedido);
+                
+                detalle.setPedido(pedidoData.buscarPedidoPorIDBD(rs.getInt("idPedido")));
                 detalle.setImporte(rs.getDouble("importe"));
                 detalle.setBaja(rs.getBoolean("baja"));
                 detalles.add(detalle);

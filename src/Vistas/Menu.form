@@ -2,6 +2,21 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem5"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmMesas">
@@ -57,11 +72,51 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiProductos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestion Productos"/>
+                <Property name="text" type="java.lang.String" value="CONSULTA Productos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiProductosActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiAltaProducto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ALTA nuevo PRODUCTO"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiSTOCK">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stock"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiSTOCKActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiListarProductos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar PRODUCTOS"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PEDIDOS"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiNuevoPedido">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NUEVO PEDIDO"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiAtenderPedido">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ATENDER PEDIDO"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCobrarPedido">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="COBRAR PEDIDO"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

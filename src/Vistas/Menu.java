@@ -32,6 +32,9 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         ImageIcon icono=new ImageIcon(getClass().getResource("/Recursos/imagenesVistas/mesitasRestaurante.jpg"));
         Image miImagen=icono.getImage();
         escritorio = new javax.swing.JDesktopPane(){
@@ -47,6 +50,19 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemTABLAmesero = new javax.swing.JMenuItem();
         jmProductos = new javax.swing.JMenu();
         jmiProductos = new javax.swing.JMenuItem();
+        jmiAltaProducto = new javax.swing.JMenuItem();
+        jmiSTOCK = new javax.swing.JMenuItem();
+        jmiListarProductos = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jmiNuevoPedido = new javax.swing.JMenuItem();
+        jmiAtenderPedido = new javax.swing.JMenuItem();
+        jmiCobrarPedido = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante");
@@ -110,7 +126,7 @@ public class Menu extends javax.swing.JFrame {
 
         jmProductos.setText("PRODUCTOS");
 
-        jmiProductos.setText("Gestion Productos");
+        jmiProductos.setText("CONSULTA Productos");
         jmiProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiProductosActionPerformed(evt);
@@ -118,7 +134,34 @@ public class Menu extends javax.swing.JFrame {
         });
         jmProductos.add(jmiProductos);
 
+        jmiAltaProducto.setText("ALTA nuevo PRODUCTO");
+        jmProductos.add(jmiAltaProducto);
+
+        jmiSTOCK.setText("Stock");
+        jmiSTOCK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSTOCKActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiSTOCK);
+
+        jmiListarProductos.setText("Listar PRODUCTOS");
+        jmProductos.add(jmiListarProductos);
+
         jMenuBar1.add(jmProductos);
+
+        jMenu1.setText("PEDIDOS");
+
+        jmiNuevoPedido.setText("NUEVO PEDIDO");
+        jMenu1.add(jmiNuevoPedido);
+
+        jmiAtenderPedido.setText("ATENDER PEDIDO");
+        jMenu1.add(jmiAtenderPedido);
+
+        jmiCobrarPedido.setText("COBRAR PEDIDO");
+        jMenu1.add(jmiCobrarPedido);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -179,6 +222,10 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(meseroV);
     }//GEN-LAST:event_jMenuItemTABLAmeseroActionPerformed
 
+    private void jmiSTOCKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSTOCKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiSTOCKActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,14 +264,24 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemMeseroA;
     private javax.swing.JMenuItem jMenuItemMeseroMB;
     private javax.swing.JMenuItem jMenuItemTABLAmesero;
     private javax.swing.JMenu jmMesas;
     private javax.swing.JMenu jmMeseros;
     private javax.swing.JMenu jmProductos;
+    private javax.swing.JMenuItem jmiAltaProducto;
+    private javax.swing.JMenuItem jmiAtenderPedido;
+    private javax.swing.JMenuItem jmiCobrarPedido;
+    private javax.swing.JMenuItem jmiListarProductos;
     private javax.swing.JMenuItem jmiMesas;
+    private javax.swing.JMenuItem jmiNuevoPedido;
     private javax.swing.JMenuItem jmiProductos;
+    private javax.swing.JMenuItem jmiSTOCK;
     // End of variables declaration//GEN-END:variables
 }
