@@ -211,11 +211,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         ProductoData pd = new ProductoData();
         pd.guardarProducto(nuevoProducto);
         //limpiar campos
-        jTFnombre.setText("");
-        jTAdescripcion.setText("");
-        jTFprecio.setText("");
-        jTFcategoria.setText("");
-        jTFstock.setText("");
+        limpiaCampos();
 
     }//GEN-LAST:event_jBguardarActionPerformed
 
@@ -223,7 +219,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
-
+    private void limpiaCampos(){
+        jTFnombre.setText("");
+        jTAdescripcion.setText("");
+        jTFprecio.setText("");
+        jTFcategoria.setText("");
+        jTFstock.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;

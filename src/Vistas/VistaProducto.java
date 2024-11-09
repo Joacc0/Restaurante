@@ -229,7 +229,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         Escritorio.removeAll();
-        Escritorio.repaint();
+
         AgregarProducto nuevoProducto = new AgregarProducto();
         nuevoProducto.setVisible(true);
         Escritorio.add(nuevoProducto);
