@@ -92,6 +92,22 @@ public class MeseroData {
             JOptionPane.showMessageDialog(null,"Error no se pudo eliminar el mesero "+ex.getMessage());
         }
     }
+    //BAJA MESERO BAJA LÓGICA por id BD
+    public void resucitarMesero(int id){
+        try{
+            String sql = "UPDATE mesero SET baja = 0 WHERE idMesero = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if (filas == 1) {
+               JOptionPane.showMessageDialog(null,"Se resucitó el mesero");
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error no se pudo resucitar el mesero "+ex.getMessage());
+        }
+    }
 
     //CONSULTA MESERO
     

@@ -5,6 +5,7 @@
 package Persistencia;
 
 import Modelo.Detalle;
+import Modelo.Pedido;
 import Modelo.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -82,7 +83,7 @@ public class DetalleData {
     }
     
     
-        //BAJA DETALLE BAJA LÓGICA
+    //BAJA DETALLE BAJA LÓGICA
    public void eliminarDetalle(int id){
         try{
             String sql = "UPDATE detalle SET baja = 1 WHERE idDetalle = ? ";
@@ -101,11 +102,12 @@ public class DetalleData {
 
 //CONSULTA DETALLE
     
- public List<Detalle> obtenerDetalles(){
+ public List<Detalle> listarDetalles(){
         List<Detalle> detalles = new ArrayList<>();
         ProductoData productoData = new ProductoData();
         PedidoData pedidoData = new PedidoData();
-        String sql = "SELECT * FROM detalle";
+        String sql = "SELECT * FROM detalle WHERE baja = 0"; 
+        //(idProducto,cantidadProductos,idPedido,importe,baja)
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -116,12 +118,15 @@ public class DetalleData {
                 
                 detalle.setIdDetalle(rs.getInt("idDetalle"));
                 Producto producto = productoData.buscarProductoPorIDBD(rs.getInt("idProducto"));
-               detalle.setCantidadProductos(rs.getInt("cantidadProductos"));
-               // Pedido pedido = pedidotData.buscarPedido(rs.getInt("idPedido"));
+                detalle.setProducto(producto);
+                detalle.setCantidadProductos(rs.getInt("cantidadProductos"));
+                Pedido pedido = pedidoData.buscarPedidoPorIDBD(rs.getInt("idPedido"));
+                detalle.setPedido(pedido);
                 detalle.setImporte(rs.getDouble("importe"));
                 detalle.setBaja(rs.getBoolean("baja"));
                 detalles.add(detalle);
                 
+               
                 //luego se podrá comentar
                 System.out.println(detalle.toString());
                 
@@ -133,5 +138,44 @@ public class DetalleData {
         return detalles;
     }
        
-    
+    //busquda de 1 detalle
+ 
+ public Detalle buscarDetallePorIDBD(int id){
+        Detalle detalle = null;
+        ProductoData productoData = new ProductoData();
+        PedidoData pedidoData = new PedidoData();
+        try{
+            String sql = "SELECT * FROM detalle "
+                    + "WHERE idDetalle = ? AND baja = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1,id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                detalle = new Detalle();
+                detalle.setIdDetalle(rs.getInt("idDetalle"));
+                Producto producto = productoData.buscarProductoPorIDBD(rs.getInt("idProducto"));
+                detalle.setProducto(producto);
+                detalle.setCantidadProductos(rs.getInt("cantidadProductos"));
+                Pedido pedido = pedidoData.buscarPedidoPorIDBD(rs.getInt("idPedido"));
+                detalle.setPedido(pedido);
+                detalle.setImporte(rs.getDouble("importe"));
+                detalle.setBaja(rs.getBoolean("baja"));
+                
+                
+                
+                //show mensaje antes de return detalle
+                JOptionPane.showMessageDialog(null,"se encontró esta detalle en buscarDetallePorIDBD= "+detalle.toString());
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "buscarDetallePorIDBD= No existe el Detalle con idBD: " + id);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de Detalle p/buscarDetallePorIDBD= "+ex.getMessage());
+        }
+        
+        return detalle;
+    }
 }

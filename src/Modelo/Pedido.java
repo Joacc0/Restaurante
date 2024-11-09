@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Pedido {
 
@@ -29,6 +30,14 @@ public class Pedido {
         this.mesero = mesero;
         this.cobrada = cobrada;
         this.baja = baja;
+    }
+    
+    public Pedido(Mesa mesa, Mesero mesero) {
+        this.mesa = mesa;
+        this.fechaYhoraPedido = LocalDate.now();
+        this.mesero = mesero;
+        this.cobrada = false;
+        this.baja = false;
     }
 
     public int getIdPedido() {

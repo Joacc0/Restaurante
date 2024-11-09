@@ -1,11 +1,10 @@
 package restaurante;
 
-import Modelo.Mesa;
-import Modelo.Mesero;
-import Modelo.Producto;
-import Persistencia.MesaData;
-import Persistencia.MeseroData;
-import Persistencia.ProductoData;
+import Modelo.*;
+
+import Persistencia.*;
+
+import java.time.LocalDate;
 
 public class Restaurante {
 
@@ -80,14 +79,14 @@ public class Restaurante {
 //          
 //            
 //            mesD.listarMeseros();
-//          
-//            //cargo 6 productos
+////          
+////            //cargo 6 productos
 //            Producto pro1=new Producto("coca", "de litro", 33, "bebidas", 24, false);
 //            Producto pro2=new Producto("agua", "de medio", 5, "bebidas", 30, false);
 //            Producto pro3=new Producto("cerveza", "latita", 80, "bebidas", 15, false);
 //            Producto pro4=new Producto("alfajor", "chocolate", 6, "postre", 6, false);
-////            Producto pro5=new Producto("helado", "frutilla", 10, "portre", 8, false);
-////            Producto pro6=new Producto("sopa", "de verduras", 10, "comidas", 20, false);
+//            Producto pro5=new Producto("helado", "frutilla", 10, "portre", 8, false);
+//            Producto pro6=new Producto("sopa", "de verduras", 10, "comidas", 20, false);
 ////            
 //            ProductoData productoD=new  ProductoData();
 //            productoD.guardarProducto(pro1);
@@ -102,6 +101,55 @@ public class Restaurante {
 //            pd.listarProductos();
             
             
+                                //PEDIDO
+//
+//     MeseroData meseroData = new MeseroData();
+//     MesaData mesaData = new MesaData();
+//     PedidoData pedidoData= new PedidoData();
+//
+//    Mesa unaMesa = mesaData.buscarMesaPorIDBD(4);
+//
+//    System.out.println("mesa es: "+ unaMesa.toString());
+//
+//    Mesero unMesero = meseroData.buscarMeseroPorIDBD(7);
+//
+//    System.out.println("mesero es: "+ unMesero.toString());
+//
+//
+//
+//    Pedido pedido= new Pedido(unaMesa,unMesero);
+//
+//    System.out.println("pedido= "+pedido.toString());
+//
+//    pedidoData.guardarPedido(pedido);
+//
+//    pedidoData.cobrarPedido(1);
+//    pedido= pedidoData.buscarPedidoPorIDBD(2);
+//    pedidoData.cobrarPedido(pedido);
+//
+
+
+                                //DETALLE
+
+          ProductoData productoData= new  ProductoData();
+          PedidoData pedidoData= new PedidoData();
+          DetalleData detalleData= new DetalleData();
+          
+          Producto unProducto= productoData.buscarProductoPorIDBD(1);
+          System.out.println("producto es: "+ unProducto.toString());
+          
+          Pedido unPedido= pedidoData.buscarPedidoPorIDBD(1);
+          System.out.println("pedido es: "+ unPedido.toString());
+          
+          int cantidad=2; 
+          Detalle detalle= new Detalle(unProducto,cantidad,unPedido);
+          System.out.println("detalle es: "+ detalle.toString());
+          System.out.println("AHORA GUARDAR");
+          detalleData.guardarDetalle(detalle);
+          
+          
+
+
             
     }
     

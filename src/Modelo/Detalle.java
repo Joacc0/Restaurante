@@ -28,11 +28,20 @@ public class Detalle {
 
     
 
+    public Detalle(Producto producto, int cantidadProductos, Pedido pedido) {
+        this.producto = producto;
+        this.cantidadProductos = cantidadProductos;
+        this.pedido = pedido;
+//        this.importe = importe; ESTE CONSTRUCTOR ES PARA NEW DETALLE QUE CALCULA IMPORTE
+        this.importe = cantidadProductos * producto.getPrecio();//el importe se calcula con CANTIDADdel detalle y PRECIO del producto
+         this.baja = false;
+    }
+    
     public Detalle(Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja) {
         this.producto = producto;
         this.cantidadProductos = cantidadProductos;
         this.pedido = pedido;
-        this.importe = importe;
+        this.importe = importe; //este importe viene del objeto
         this.baja = baja;
     }
 
