@@ -5,7 +5,8 @@
 package Vistas;
 
 import Modelo.Mesero;
-import Persistencia.MeseroData;
+import Modelo.Pedido;
+import Persistencia.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,10 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         List<Mesero> listaMeseros;
         private MeseroData meseroD=new MeseroData();
         private Mesero meseroActual=null;
+        private PedidoData pedidoD=new PedidoData();
+        private Pedido pedidoNuevo=null;
+    
+        List<Pedido> listaPedidos; 
  
     public VistaMesero() {
         initComponents();
@@ -64,7 +69,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel1.setText(" CONSULTA  MESEROS ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setText("Mesero:");
 
         jCBmeseros.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +112,8 @@ public class VistaMesero extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
+                .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(186, 186, 186))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
@@ -137,7 +142,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                     .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBpedidosCobradosXdiaXmesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,9 +170,22 @@ public class VistaMesero extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBhistorialPedidosXMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMeseroActionPerformed
+
         // AQUI CONSULTAREMOS CON TRONCAL PEDIDOS 
-       
-        JOptionPane.showMessageDialog(null, "AQUI CONSULTAREMOS CON TRONCAL PEDIDOS usando tabla y/o CB");
+        
+        meseroActual=(Mesero) jCBmeseros.getSelectedItem();
+        
+        try{
+            if (meseroActual !=null){
+                
+                
+        pedidoD.listarPedidosPorMesero(meseroActual.getIdMesero());
+        
+       } } 
+            catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "error: "+e.toString());
+                    }
+        
         
     }//GEN-LAST:event_jBhistorialPedidosXMeseroActionPerformed
 
@@ -245,6 +263,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
             jCBmeseros.addItem(item);
             
         }
+                jCBmeseros.setSelectedItem(null);
     }
 
 }

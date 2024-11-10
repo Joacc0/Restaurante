@@ -60,7 +60,7 @@ public class PedidoData {
            ResultSet rs = ps.getGeneratedKeys();
            while (rs.next()) {
                 pedido.setIdPedido(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Pedido guardado");
+                JOptionPane.showMessageDialog(null, "Pedido guardado" + pedido.toString());
             }
             ps.close();
         }catch(SQLException ex){
@@ -216,6 +216,7 @@ public class PedidoData {
         //ProductoData productoData = new ProductoData();
 //        MesaData mesaData = new MesaData();
 //        MeseroData meseroData = new MeseroData();
+        int tienePedidos=0;
         
         String sql = "SELECT * FROM pedido "
                     + "WHERE idMesero = ? AND baja = 0";
@@ -226,7 +227,7 @@ public class PedidoData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
-                
+                tienePedidos++;
                 //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
                 
                 Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
@@ -238,14 +239,16 @@ public class PedidoData {
                 pedido.setBaja(rs.getBoolean("baja"));
                 pedidos.add(pedido);
                 
-//                //luego se podrá comentar
-//                System.out.println(pedido.toString());
+                
+                //luego se podrá comentar
+                System.out.println("idMesero "+idMesero + "///" +pedido.toString());
                 
             }
              ps.close();
         }catch(SQLException ex){
              JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido "+ ex.getMessage());
         }
+        JOptionPane.showMessageDialog(null, " Este Mesero tiene "+ tienePedidos+ " Pedidos ");
         return pedidos;
     }
     

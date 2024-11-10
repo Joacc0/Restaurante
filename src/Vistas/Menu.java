@@ -158,6 +158,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setText("PEDIDOS");
 
         jmiNuevoPedido.setText("NUEVO PEDIDO");
+        jmiNuevoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNuevoPedidoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiNuevoPedido);
 
         jmiAtenderPedido.setText("ATENDER PEDIDO");
@@ -239,6 +244,15 @@ public class Menu extends javax.swing.JFrame {
         AP.setVisible(true);
         escritorio.add(AP);
     }//GEN-LAST:event_jmiAltaProductoActionPerformed
+
+    private void jmiNuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNuevoPedidoActionPerformed
+// NUEVO PEDIDO ALTA PEDIDO
+        escritorio.removeAll();
+        escritorio.repaint();
+        NuevoPedido pedidoN = new NuevoPedido();
+        pedidoN.setVisible(true);
+        escritorio.add(pedidoN);        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiNuevoPedidoActionPerformed
 
     /**
      * @param args the command line arguments

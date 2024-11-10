@@ -305,6 +305,7 @@ public class GestionMesero extends javax.swing.JInternalFrame {
             jCBmeseros.addItem(item);
             
         }
+                jCBmeseros.setSelectedItem(null);
     }
     
     private void limpiarCamposTexto(){
