@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -139,8 +140,8 @@ public class PedidoData {
                 pedido.setBaja(rs.getBoolean("baja"));
                 pedidos.add(pedido);
                 
-                //luego se podrá comentar
-                System.out.println(pedido.toString());
+//                //luego se podrá comentar
+//                System.out.println(pedido.toString());
                 
             }
              ps.close();
@@ -175,8 +176,8 @@ public class PedidoData {
                 pedido.setCobrada(rs.getBoolean("cobrada"));
                 pedido.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return pedido
-                JOptionPane.showMessageDialog(null,"se encontró este Pedido en buscarPedidoPorIDBD= "+pedido.toString());
+//                //show mensaje antes de return pedido
+//                JOptionPane.showMessageDialog(null,"se encontró este Pedido en buscarPedidoPorIDBD= "+pedido.toString());
                 
             }else{
                 JOptionPane.showMessageDialog(null, "buscarPedidoPorIDBD= No existe el Pedido con idBD: " + id);
@@ -209,25 +210,82 @@ public class PedidoData {
         }  
     }
     
-    public void cobrarPedido(int id){      //recibo ID de un pedido existente
-         try {
-                String sql = "UPDATE pedido SET cobrada= 1 WHERE idPedido = ?";//AHORA ESTÁ COBRADO EL PEDIDO
-           
+    public List<Pedido> listarPedidosPorMesero(int idMesero){
+         
+        List<Pedido> pedidos = new ArrayList<>();
+        //ProductoData productoData = new ProductoData();
+//        MesaData mesaData = new MesaData();
+//        MeseroData meseroData = new MeseroData();
+        
+        String sql = "SELECT * FROM pedido "
+                    + "WHERE idMesero = ? AND baja = 0";
+        try{
             PreparedStatement ps = con.prepareStatement(sql);
-            
-       //AHORA ESTÁ COBRADO EL PEDIDO
-           
-           ps.setInt(1, id);
-           
-           int exitoFila = ps.executeUpdate();
-            
-            if (exitoFila ==1) {
-                JOptionPane.showMessageDialog(null, "pedido COBRADO");
+            ps.setInt(1,idMesero);
+             
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                
+                //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
+                
+                Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
+                pedido.setMesa(mesa);
+                pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
+                Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
+                pedido.setMesero(mesero);
+                pedido.setCobrada(rs.getBoolean("cobrada"));
+                pedido.setBaja(rs.getBoolean("baja"));
+                pedidos.add(pedido);
+                
+//                //luego se podrá comentar
+//                System.out.println(pedido.toString());
+                
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de pedido p/ COBRAR Pedido"+ex.getMessage());
-        }  
+             ps.close();
+        }catch(SQLException ex){
+             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido "+ ex.getMessage());
+        }
+        return pedidos;
     }
     
-       
+//    public List<Pedido> listarPedidosPorMeseroyFecha(int idMesero, LocalDate fecha){
+//         
+//        List<Pedido> pedidos = new ArrayList<>();
+//        //ProductoData productoData = new ProductoData();
+////        MesaData mesaData = new MesaData();
+////        MeseroData meseroData = new MeseroData();
+//        
+//        String sql = "SELECT * FROM pedido "
+//                    + "WHERE idMesero = ? fechaYhoraPedido = ?, AND baja = 0";
+//        try{
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1,idMesero);
+//            ps.setDate(2,fecha.toLocalDate());
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Pedido pedido = new Pedido();
+//                
+//                //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
+//                
+//                Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
+//                pedido.setMesa(mesa);
+//                pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
+//                Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
+//                pedido.setMesero(mesero);
+//                pedido.setCobrada(rs.getBoolean("cobrada"));
+//                pedido.setBaja(rs.getBoolean("baja"));
+//                pedidos.add(pedido);
+//                
+////                //luego se podrá comentar
+////                System.out.println(pedido.toString());
+//                
+//            }
+//             ps.close();
+//        }catch(SQLException ex){
+//             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido "+ ex.getMessage());
+//        }
+//        return pedidos;
+//    }
+//       
 }

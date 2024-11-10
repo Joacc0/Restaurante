@@ -133,8 +133,8 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return producto
-                JOptionPane.showMessageDialog(null,"se encontró el producto en buscarProductoPorIDBD= "+producto.toString());
+//                //show mensaje antes de return producto
+//                JOptionPane.showMessageDialog(null,"se encontró el producto en buscarProductoPorIDBD= "+producto.toString());
                 
             }else{
                 JOptionPane.showMessageDialog(null, "buscarProductoPorIDBD= No existe el Producto con idBD: " + id);
@@ -165,9 +165,9 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setBaja(rs.getBoolean("baja"));
                 productos.add(producto);
-                
-                //luego se podrá comentar
-                System.out.println(producto.toString());
+//                
+//                //luego se podrá comentar
+//                System.out.println(producto.toString());
             }
             ps.close();
         }catch(SQLException ex){

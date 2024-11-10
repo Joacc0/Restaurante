@@ -129,9 +129,9 @@ public class MesaData {
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return mesa
-                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorIDBD= "+mesa.toString());
-                
+//                //show mensaje antes de return mesa
+//                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorIDBD= "+mesa.toString());
+//                
             }else{
                 JOptionPane.showMessageDialog(null, "buscarMesaPorIDBD= No existe la mesa con idBD: " + id);
             }
@@ -162,8 +162,8 @@ public class MesaData {
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return mesa
-                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorNumeroMesa= "+mesa.toString());
+//                //show mensaje antes de return mesa
+//                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorNumeroMesa= "+mesa.toString());
                 
             }else{
                 JOptionPane.showMessageDialog(null, "buscarMesaPorNumeroMesa= No existe la mesa con NumeroMesa: " + numeroMesa);
@@ -193,8 +193,8 @@ public class MesaData {
                 mesa.setBaja(rs.getBoolean("baja"));
                 mesas.add(mesa);
                 
-                //luego se podrá comentar
-                System.out.println(mesa.toString());
+//                //luego se podrá comentar
+//                System.out.println(mesa.toString());
             }
             ps.close();
         }catch(SQLException ex){

@@ -129,14 +129,57 @@ public class DetalleData {
                 detalles.add(detalle);
                 
                
-                //luego se podrá comentar
-                System.out.println(detalle.toString());
+//                //veo lo q carga en list
+//                System.out.println("detalle "+ detalle.getIdDetalle() + "pedido " + detalle.getPedido().getIdPedido()
+//            + "importe "+ detalle.getImporte());
+//                
+            }
+             ps.close();
+        }catch(SQLException ex){
+             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Detalle "+ ex.getMessage());
+        }
+        return detalles;
+    }
+ 
+ public List<Detalle> listarDetallesDeUnPedido(int idPedido){
+        List<Detalle> detalles = new ArrayList<>();
+        ProductoData productoData = new ProductoData();
+        PedidoData pedidoData = new PedidoData();
+        String sql = "SELECT * FROM detalle "
+                    + "WHERE idPedido = ? AND baja = 0";
+        //(idProducto,cantidadProductos,idPedido,importe,baja)
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idPedido);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Detalle detalle = new Detalle();
+                
+                //(Producto producto, int cantidadProductos, Pedido pedido, double importe, boolean baja)
+                
+                detalle.setIdDetalle(rs.getInt("idDetalle"));
+                
+                detalle.setProducto(productoData.buscarProductoPorIDBD(rs.getInt("idProducto")));
+                detalle.setCantidadProductos(rs.getInt("cantidadProductos"));
+                
+                detalle.setPedido(pedidoData.buscarPedidoPorIDBD(rs.getInt("idPedido")));
+                detalle.setImporte(rs.getDouble("importe"));
+                detalle.setBaja(rs.getBoolean("baja"));
+                detalles.add(detalle);
+                
+//                //veo lo q carga en list
+//                System.out.println("detalle "+ detalle.getIdDetalle() + "pedido " + detalle.getPedido().getIdPedido()
+//            + "importe "+ detalle.getImporte());
+                
+               
+               
                 
             }
              ps.close();
         }catch(SQLException ex){
              JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Detalle "+ ex.getMessage());
         }
+        
         return detalles;
     }
        
@@ -168,9 +211,9 @@ public class DetalleData {
                 
                 
                 
-                //show mensaje antes de return detalle
-                JOptionPane.showMessageDialog(null,"se encontró esta detalle en buscarDetallePorIDBD= "+detalle.toString());
-                
+//                //show mensaje antes de return detalle
+//                JOptionPane.showMessageDialog(null,"se encontró esta detalle en buscarDetallePorIDBD= "+detalle.toString());
+//                
             }else{
                 JOptionPane.showMessageDialog(null, "buscarDetallePorIDBD= No existe el Detalle con idBD: " + id);
             }
@@ -180,4 +223,40 @@ public class DetalleData {
         
         return detalle;
     }
+ 
+ 
+            // Un método agregar producto, agrega un producto a un pedido (una lista de productos). 
+            //Quitar producto lo elimina o anula del pedido. 
+ 
+        public void agregarProductosAunPedido(Detalle detalle){
+        //idProducto,cantidadProductos,idPedido,importe,baja
+        
+            guardarDetalle(detalle);
+            
+        }
+ 
+        public void quitarProductosAunPedido(Detalle detalle){
+        //idProducto,cantidadProductos,idPedido,importe,baja
+        
+            actualizarDetalle(detalle);
+            
+        }
+        
+        public Double sumarSubtotalesDeUnPedido(int idPedido){      //recibo ID de un pedido existente
+         
+            List<Detalle> detalles = new ArrayList<>();
+            detalles=listarDetallesDeUnPedido(idPedido);
+            Double total=0.0;
+            for (Detalle detalle : detalles) {
+                total=total + detalle.getImporte();
+            }
+        JOptionPane.showMessageDialog(null,"TOTAL DEL PEDIDO = "+ total);    
+        return total;
+            
+    }
+            
+    
+ 
+ 
+ 
 }

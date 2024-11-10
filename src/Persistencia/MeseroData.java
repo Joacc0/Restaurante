@@ -133,9 +133,9 @@ public class MeseroData {
                 
                 mesero.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return mesero
-                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarMeseroPorIDBD= "+mesero.toString());
-                
+//                //show mensaje antes de return mesero
+//                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarMeseroPorIDBD= "+mesero.toString());
+//                
             }else{
                 JOptionPane.showMessageDialog(null, "buscarMeseroPorIDBD= No existe el mesero con idBD: " + id);
             }
@@ -167,9 +167,9 @@ public class MeseroData {
                 
                 mesero.setBaja(rs.getBoolean("baja"));
                 
-                //show mensaje antes de return mesero
-                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarMeseroPorDNI= "+mesero.toString());
-                
+//                //show mensaje antes de return mesero
+//                JOptionPane.showMessageDialog(null,"se encontró esta mesero en buscarMeseroPorDNI= "+mesero.toString());
+//                
             }else{
                 JOptionPane.showMessageDialog(null, "buscarMeseroPorIDBD= No existe el mesero con DNI: " + dni);
             }
@@ -198,8 +198,8 @@ public class MeseroData {
                 mesero.setBaja(rs.getBoolean("baja"));
                 meseros.add(mesero);
                 
-                //luego se podrá comentar
-                System.out.println(mesero.toString());
+//                //luego se podrá comentar
+//                System.out.println(mesero.toString());
             }
             ps.close();
         }catch(SQLException ex){
