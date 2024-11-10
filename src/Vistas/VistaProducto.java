@@ -52,6 +52,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
+        setClosable(true);
         setMaximizable(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

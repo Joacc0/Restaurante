@@ -233,7 +233,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTABLAmeseroActionPerformed
 
     private void jmiSTOCKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSTOCKActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        StockVistas  SV = new StockVistas();
+        SV.setVisible(true);
+        escritorio.add(SV); 
     }//GEN-LAST:event_jmiSTOCKActionPerformed
 
     private void jmiAltaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaProductoActionPerformed
