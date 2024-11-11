@@ -120,7 +120,7 @@ public class ProductoData {
             
             int filas = ps.executeUpdate();
             if (filas == 1) {
-               JOptionPane.showMessageDialog(null,"Se restó 1 producto");
+//               JOptionPane.showMessageDialog(null,"Se restó 1 producto");
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error no se pudo restar 1 producto "+ex.getMessage());

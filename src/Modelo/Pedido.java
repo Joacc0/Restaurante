@@ -90,12 +90,17 @@ public class Pedido {
         this.baja = baja;
     }
 
-    @Override
-    public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada + "/ Fecha y Hora del pedido= " +fechaYhoraPedido.format(formatter) ;
-    }
+//    GENIAL STRING PERO DIFICIL PARA LA VISTA ATENDER PEDIDO
+//    @Override
+//    public String toString() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+//        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada + "/ Fecha y Hora del pedido= " +fechaYhoraPedido.format(formatter) ;
+//    }
     
-
+//PARA QUE ATENDER PEDIDO IMPRIMA EN EL COMBOBOX "DE MOMENTO" HACEMOS:
+     @Override
+    public String toString() {
+        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada;
+    }
     
 }
