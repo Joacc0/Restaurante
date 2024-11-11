@@ -118,11 +118,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ATENDER PEDIDO"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiCobrarPedido">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="COBRAR PEDIDO"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtenderPedidoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -177,7 +175,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" alignment="0" pref="569" max="32767" attributes="0"/>
+              <Component id="jLabel1" alignment="0" pref="896" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

@@ -56,7 +56,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmiNuevoPedido = new javax.swing.JMenuItem();
         jmiAtenderPedido = new javax.swing.JMenuItem();
-        jmiCobrarPedido = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -77,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,10 +165,12 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(jmiNuevoPedido);
 
         jmiAtenderPedido.setText("ATENDER PEDIDO");
+        jmiAtenderPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAtenderPedidoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiAtenderPedido);
-
-        jmiCobrarPedido.setText("COBRAR PEDIDO");
-        jMenu1.add(jmiCobrarPedido);
 
         jMenuBar1.add(jMenu1);
 
@@ -258,6 +259,14 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(pedidoN);        // TODO add your handling code here:
     }//GEN-LAST:event_jmiNuevoPedidoActionPerformed
 
+    private void jmiAtenderPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAtenderPedidoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AtenderPedido Apedido = new AtenderPedido();
+        Apedido.setVisible(true);
+        escritorio.add(Apedido);    
+    }//GEN-LAST:event_jmiAtenderPedidoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,7 +318,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jmProductos;
     private javax.swing.JMenuItem jmiAltaProducto;
     private javax.swing.JMenuItem jmiAtenderPedido;
-    private javax.swing.JMenuItem jmiCobrarPedido;
     private javax.swing.JMenuItem jmiListarProductos;
     private javax.swing.JMenuItem jmiMesas;
     private javax.swing.JMenuItem jmiNuevoPedido;
