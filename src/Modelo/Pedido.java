@@ -91,7 +91,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", fechaYhoraPedido=" + fechaYhoraPedido + ", mesero=" + mesero + ", cobrada=" + cobrada + ", baja=" + baja + '}';
+        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada;
     }
     
 
