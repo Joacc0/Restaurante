@@ -108,7 +108,24 @@ public class ProductoData {
         }
     }
 
-
+//stock PRODUCTO restar 1 solo producto lo q se pide en DETALLES (multiplicar con for)
+   public void modifStockProducto(int id){
+       //si hay stock entrar, sino dar mensaje
+       
+        try{
+            String sql = "UPDATE producto SET stock = (stock-1) WHERE idProducto = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if (filas == 1) {
+               JOptionPane.showMessageDialog(null,"Se restó 1 producto");
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error no se pudo restar 1 producto "+ex.getMessage());
+        }
+    }
     //CONSULTA PRODUCTO
     
     //desde fuera creo que no buscaremos por ID de la BD, sino por numero de producto

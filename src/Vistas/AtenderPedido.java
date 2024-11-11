@@ -265,7 +265,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JCBproductosActionPerformed
 
     private void JBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBagregarActionPerformed
-        //hacer nueva linea en la table detalle
+         //hacer nueva linea en la table detalle
         
         //producto
         Producto prodActual = (Producto) JCBproductos.getSelectedItem();
@@ -276,10 +276,10 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         //usamos constructor: public Detalle(Producto producto, int cantidadProductos, Pedido pedido)
         detalleNuevo= new Detalle(prodActual,cantidad,pedidoActual);
         detalleD.agregarProductosAunPedido(detalleNuevo);
-        
-        
-        
-        
+        //prodActual,cantidad hay q modificar el stock
+        for (int i = 0; i < cantidad; i++) {
+            prodD.modifStockProducto(prodActual.getIdProducto());
+        }
         
         //imprime DETALLE en carrito a través de método CargarProductos 
         if (VerificaCampos() == true) {

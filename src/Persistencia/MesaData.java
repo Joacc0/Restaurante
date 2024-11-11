@@ -229,7 +229,7 @@ public class MesaData {
         List<Mesa> mesas = new ArrayList<>();
         
         try{
-            String sql = "SELECT * FROM mesa WHERE baja = 0 ";
+            String sql = "SELECT * FROM mesa WHERE baja = 0 ORDER BY numeroMesa";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
