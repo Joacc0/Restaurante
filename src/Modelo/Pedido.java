@@ -1,13 +1,14 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class Pedido {
 
     private int idPedido;
     private Mesa mesa;
-    private LocalDate fechaYhoraPedido;
+    private LocalDateTime fechaYhoraPedido;
     private Mesero mesero;
     private boolean cobrada; //
     private boolean baja; // para borrado logico
@@ -15,7 +16,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(int idPedido, Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
+    public Pedido(int idPedido, Mesa mesa, LocalDateTime fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
         this.idPedido = idPedido;
         this.mesa = mesa;
         this.fechaYhoraPedido = fechaYhoraPedido;
@@ -24,7 +25,7 @@ public class Pedido {
         this.baja = baja;
     }
 
-    public Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
+    public Pedido(Mesa mesa, LocalDateTime fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja) {
         this.mesa = mesa;
         this.fechaYhoraPedido = fechaYhoraPedido;
         this.mesero = mesero;
@@ -34,7 +35,7 @@ public class Pedido {
     
     public Pedido(Mesa mesa, Mesero mesero) {
         this.mesa = mesa;
-        this.fechaYhoraPedido = LocalDate.now();
+        this.fechaYhoraPedido = LocalDateTime.now();
         this.mesero = mesero;
         this.cobrada = false;
         this.baja = false;
@@ -56,11 +57,11 @@ public class Pedido {
         this.mesa = mesa;
     }
 
-    public LocalDate getFechaYhoraPedido() {
+    public LocalDateTime getFechaYhoraPedido() {
         return fechaYhoraPedido;
     }
 
-    public void setFechaYhoraPedido(LocalDate fechaYhoraPedido) {
+    public void setFechaYhoraPedido(LocalDateTime fechaYhoraPedido) {
         this.fechaYhoraPedido = fechaYhoraPedido;
     }
 

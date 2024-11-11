@@ -7,6 +7,7 @@ package Persistencia;
 import Modelo.Mesa;
 import Modelo.Mesero;
 import Modelo.Pedido;
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,25 +53,23 @@ public class PedidoData {
                 + "VALUES(?,?,?,?,?)";   
 //            String sql="INSERT INTO pedido (idMesa,account_date, idMesero, cobrada, baja)"
 //                + "VALUES(?,?,?,?,?)";   
-            try{
-           PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-           ps.setInt(1, pedido.getMesa().getIdMesa());
-           ps.setDate(2, Date.valueOf(pedido.getFechaYhoraPedido()));
-           //ps.setDate(2, sqlFecha);
-           ps.setInt(3, pedido.getMesero().getIdMesero());
-           ps.setBoolean(4, pedido.isCobrada());
-           ps.setBoolean(5, pedido.isBaja());//baja=false,(damos de alta new PEDIDO) porque sólo ponemos baja true cuando hay borrado lógico
-           ps.executeUpdate();
-           ResultSet rs = ps.getGeneratedKeys();
-           while (rs.next()) {
-                pedido.setIdPedido(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Pedido guardado" + pedido.toString());
-                
-            }
-            ps.close();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Pedido"+ex.getMessage());
-        
+          try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, pedido.getMesa().getIdMesa());
+        ps.setTimestamp(2, Timestamp.valueOf(pedido.getFechaYhoraPedido()));  // Conversión correcta a Timestamp
+        ps.setInt(3, pedido.getMesero().getIdMesero());
+        ps.setBoolean(4, pedido.isCobrada());
+        ps.setBoolean(5, pedido.isBaja());
+
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            pedido.setIdPedido(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Pedido guardado" + pedido.toString());
+        }
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Pedido: " + ex.getMessage());
     }
  }
     
@@ -86,7 +85,7 @@ public class PedidoData {
             PreparedStatement ps = con.prepareStatement(sql);
             
            ps.setInt(1, pedido.getMesa().getIdMesa());
-           ps.setDate(2, Date.valueOf(pedido.getFechaYhoraPedido()));
+           ps.setTimestamp(2, Timestamp.valueOf(pedido.getFechaYhoraPedido()));  
            ps.setInt(3, pedido.getMesero().getIdMesero());
            ps.setBoolean(4, pedido.isCobrada());
            ps.setBoolean(5,pedido.isBaja());//baja=false
@@ -138,7 +137,7 @@ public class PedidoData {
                 
                 Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
                 pedido.setMesa(mesa);
-                pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
+                pedido.setFechaYhoraPedido(rs.getTimestamp("fechaYhoraPedido").toLocalDateTime());                
                 Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
                 pedido.setMesero(mesero);
                 pedido.setCobrada(rs.getBoolean("cobrada"));
@@ -176,7 +175,8 @@ public class PedidoData {
                 //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
                 pedido.setIdPedido(rs.getInt("idPedido"));
                 pedido.setMesa(mesaData.buscarMesaPorIDBD(rs.getInt("idMesa")));
-                pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
+                pedido.setFechaYhoraPedido(rs.getTimestamp("fechaYhoraPedido").toLocalDateTime());
+
                 pedido.setMesero(meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero")));
                 pedido.setCobrada(rs.getBoolean("cobrada"));
                 pedido.setBaja(rs.getBoolean("baja"));
@@ -237,7 +237,8 @@ public class PedidoData {
                 
                 Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
                 pedido.setMesa(mesa);
-                pedido.setFechaYhoraPedido(rs.getDate("fechaYhoraPedido").toLocalDate());
+               pedido.setFechaYhoraPedido(rs.getTimestamp("fechaYhoraPedido").toLocalDateTime());
+
                 Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
                 pedido.setMesero(mesero);
                 pedido.setCobrada(rs.getBoolean("cobrada"));
