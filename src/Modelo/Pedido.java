@@ -2,6 +2,7 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Pedido {
@@ -91,7 +92,8 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada + "/ Fecha y Hora del pedido= " +fechaYhoraPedido.format(formatter) ;
     }
     
 
