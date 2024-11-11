@@ -144,7 +144,7 @@ public class PedidoData {
                 pedido.setBaja(rs.getBoolean("baja"));
                 pedidos.add(pedido);
                 
-//                //luego se podrá comentar
+
 //                System.out.println(pedido.toString());
                 
             }

@@ -10,8 +10,8 @@ public class Pedido {
     private Mesa mesa;
     private LocalDateTime fechaYhoraPedido;
     private Mesero mesero;
-    private boolean cobrada; //
-    private boolean baja; // para borrado logico
+    private boolean cobrada; 
+    private boolean baja; 
 
     public Pedido() {
     }
