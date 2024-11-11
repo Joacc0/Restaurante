@@ -4,7 +4,9 @@
  */
 package Vistas;
 
+import Modelo.Pedido;
 import Modelo.Producto;
+import Persistencia.PedidoData;
 import Persistencia.ProductoData;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -17,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
 public class AtenderPedido extends javax.swing.JInternalFrame {
     private DefaultTableModel model;
     private ProductoData prodD = new ProductoData();
+    private PedidoData pediD = new PedidoData();
     List<Producto> listaProductos;
+    List<Pedido> listaPedidos;
     
     public AtenderPedido() {
         initComponents();
@@ -41,6 +45,8 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         JBagregar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         JTFcantidad = new javax.swing.JTextField();
+        JCBpedido = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         JBcobrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,6 +84,18 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         JTFcantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JTFcantidad.setForeground(new java.awt.Color(0, 0, 0));
 
+        JCBpedido.setBackground(new java.awt.Color(255, 255, 255));
+        JCBpedido.setForeground(new java.awt.Color(0, 0, 0));
+        JCBpedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCBpedidoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("PEDIDO:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,26 +107,37 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JTFcantidad)
-                    .addComponent(JCBproductos, 0, 285, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JTFcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JCBproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JCBpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCBpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JCBproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(JTFcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                    .addComponent(JTFcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addComponent(JBagregar)
                 .addGap(26, 26, 26))
         );
@@ -195,9 +224,14 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
     private void llenarJCB() {
         JCBproductos.removeAllItems();
         listaProductos = prodD.listarProductos();//Productos que no esten dados de baja
+        JCBpedido.removeAllItems();
+        listaPedidos = pediD.listarPedidos() ;
         for (Producto pro : listaProductos) {
             JCBproductos.addItem(pro);
 
+        }
+        for (Pedido pedi : listaPedidos){
+            JCBpedido.addItem(pedi);
         }
     }
     
@@ -248,14 +282,20 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JBagregarActionPerformed
 
+    private void JCBpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBpedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JCBpedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBagregar;
     private javax.swing.JButton JBcobrar;
+    private javax.swing.JComboBox<Pedido> JCBpedido;
     private javax.swing.JComboBox<Producto> JCBproductos;
     private javax.swing.JTextField JTFcantidad;
     private javax.swing.JTable JTcarrito;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
