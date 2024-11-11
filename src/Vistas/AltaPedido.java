@@ -56,19 +56,14 @@ public class AltaPedido extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ALTA NUEVOS PEDIDOS");
 
-        jCBmesas.setBackground(new java.awt.Color(255, 255, 255));
-        jCBmesas.setForeground(new java.awt.Color(0, 0, 0));
         jCBmesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBmesasActionPerformed(evt);
             }
         });
 
-        jCBmeseros.setBackground(new java.awt.Color(255, 255, 255));
-        jCBmeseros.setForeground(new java.awt.Color(0, 0, 0));
         jCBmeseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBmeserosActionPerformed(evt);
@@ -82,10 +77,8 @@ public class AltaPedido extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Mesa:");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Mesero:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -93,23 +86,22 @@ public class AltaPedido extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(102, 102, 102)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCBmesas, 0, 196, Short.MAX_VALUE)
-                            .addComponent(jCBmeseros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCBmesas, 0, 273, Short.MAX_VALUE)
+                    .addComponent(jCBmeseros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jBguardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -145,26 +137,6 @@ public class AltaPedido extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBmesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmesasActionPerformed
-        // "selected" COMBO BOX MESEROS responde al click
-        meseroActual = (Mesero) jCBmeseros.getSelectedItem();
-//        jBmodificar.setEnabled(true);
-//        jBbaja.setEnabled(true);
-        int idMesero = 0;
-
-        try {
-            if (meseroActual != null) {
-
-                idMesero = meseroActual.getIdMesero();
-//                //para comentar luego...
-//                JOptionPane.showMessageDialog(null, "idMesero= "+idMesero);
-
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error: " + e.toString());
-        }
-    }//GEN-LAST:event_jCBmesasActionPerformed
-
-    private void jCBmeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmeserosActionPerformed
         // "selected" COMBO BOX MESAS responde al click
         mesaActual = (Mesa) jCBmesas.getSelectedItem();
 //        jBmodificar.setEnabled(true);
@@ -177,6 +149,26 @@ public class AltaPedido extends javax.swing.JInternalFrame {
                 idMesa = mesaActual.getIdMesa();
 //                //para comentar luego...
 //                JOptionPane.showMessageDialog(null, "idMesa= "+idMesa);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error: " + e.toString());
+        }
+    }//GEN-LAST:event_jCBmesasActionPerformed
+
+    private void jCBmeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmeserosActionPerformed
+        // "selected" COMBO BOX MESEROS responde al click
+        meseroActual = (Mesero) jCBmeseros.getSelectedItem();
+//        jBmodificar.setEnabled(true);
+//        jBbaja.setEnabled(true);
+        int idMesero = 0;
+
+        try {
+            if (meseroActual != null) {
+
+                idMesero = meseroActual.getIdMesero();
+//                //para comentar luego...
+//                JOptionPane.showMessageDialog(null, "idMesero= "+idMesero);
 
             }
         } catch (Exception e) {

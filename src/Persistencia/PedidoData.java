@@ -45,14 +45,18 @@ public class PedidoData {
 
     //ALTA
     public void guardarPedido(Pedido pedido){     //damos de alta nuevo pedido ID en BD automático autoincremental
-        
+        //Date fecha= new Date();
+        //java.sql.Date sqlFecha= new java.sql.Date(fecha.getTime());
         //atributos de PEDIDO en orden: (Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
         String sql="INSERT INTO pedido (idMesa,fechaYhoraPedido, idMesero, cobrada, baja)"
-                + "VALUES(?,?,?,?,?)";    
+                + "VALUES(?,?,?,?,?)";   
+//            String sql="INSERT INTO pedido (idMesa,account_date, idMesero, cobrada, baja)"
+//                + "VALUES(?,?,?,?,?)";   
             try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
            ps.setInt(1, pedido.getMesa().getIdMesa());
            ps.setDate(2, Date.valueOf(pedido.getFechaYhoraPedido()));
+           //ps.setDate(2, sqlFecha);
            ps.setInt(3, pedido.getMesero().getIdMesero());
            ps.setBoolean(4, pedido.isCobrada());
            ps.setBoolean(5, pedido.isBaja());//baja=false,(damos de alta new PEDIDO) porque sólo ponemos baja true cuando hay borrado lógico
