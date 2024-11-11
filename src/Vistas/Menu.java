@@ -253,7 +253,7 @@ public class Menu extends javax.swing.JFrame {
 // NUEVO PEDIDO ALTA PEDIDO
         escritorio.removeAll();
         escritorio.repaint();
-        NuevoPedido pedidoN = new NuevoPedido();
+        AltaPedido pedidoN = new AltaPedido();
         pedidoN.setVisible(true);
         escritorio.add(pedidoN);        // TODO add your handling code here:
     }//GEN-LAST:event_jmiNuevoPedidoActionPerformed
