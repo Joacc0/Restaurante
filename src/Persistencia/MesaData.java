@@ -84,7 +84,55 @@ public class MesaData {
             JOptionPane.showMessageDialog(null,"Error no se pudo dar de baja a la mesa "+ex.getMessage());
         }
     }
+    //2= MESA OCUPADA 
+    public void ocuparMesaEstado2(int numeroMesa){
+        try{
+            String sql = "UPDATE mesa SET estadoMesa = 2 WHERE numeroMesa = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, numeroMesa);
+            
+            int filas = ps.executeUpdate();
+            if (filas == 1) {
+               JOptionPane.showMessageDialog(null,"Se OCUPÓ la mesa " + numeroMesa);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error no se pudo OCUPAR la mesa "+ex.getMessage());
+        }
+    }
+     //3= MESA ATENDIDA
+    public void atenderMesaEstado3(int numeroMesa){
+        try{
+            String sql = "UPDATE mesa SET estadoMesa = 3 WHERE numeroMesa = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, numeroMesa);
+            
+            int filas = ps.executeUpdate();
+            if (filas == 1) {
+               JOptionPane.showMessageDialog(null,"ATENDEMOS la mesa " + numeroMesa);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error no se pudo ATENDER la mesa "+ex.getMessage());
+        }
+    }
     
+    //1=  MESA LIBRE (CUANDO TODOS LOS PEDIDOS DE ESA MESA SON COBRADOS) 
+    public void liberarMesaEstado1(int numeroMesa){
+        try{
+            String sql = "UPDATE mesa SET estadoMesa = 1 WHERE numeroMesa = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, numeroMesa);
+            
+            int filas = ps.executeUpdate();
+            if (filas == 1) {
+               JOptionPane.showMessageDialog(null,"LIBERAMOS la mesa " + numeroMesa);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error no se pudo LIBERAR la mesa "+ex.getMessage());
+        }
+    }
     //ELIMINAR MESA
     
     public void eliminarMesa(int numeroMesa) {

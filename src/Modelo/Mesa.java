@@ -4,7 +4,7 @@ public class Mesa {
 
     private int idMesa;     //autogeneradoBD
     private int capacidad;  //permite sentar X personas máximo   
-    private int estadoMesa;     //1_libre 2_ocupada 3_atendida-> cuando es cobrada pasa a 1_libre
+    private int estadoMesa;     //1_libre 2_ocupadaARRANCA UN PEDIDO 3_atendida CARGANDO DETALLES-> cuando es cobrada pasa a 1_libre
     private int numeroMesa; //número (descriptivo) introducido x mesero
     private boolean baja;
 
@@ -32,6 +32,13 @@ public class Mesa {
         this.estadoMesa = estadoMesa;
         this.numeroMesa = numeroMesa;
         this.baja = baja;
+    }
+    
+    public Mesa(int capacidad, int numeroMesa) {
+        this.capacidad = capacidad;
+        this.estadoMesa = 1; //TODAS LAS MESAS NACEN LIBRES
+        this.numeroMesa = numeroMesa;
+        this.baja = false; //TODAS LAS MESAS NACEN ACTIVAS
     }
 
     public int getIdMesa() {

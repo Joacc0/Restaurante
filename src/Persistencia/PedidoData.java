@@ -65,6 +65,7 @@ public class PedidoData {
            while (rs.next()) {
                 pedido.setIdPedido(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Pedido guardado" + pedido.toString());
+                
             }
             ps.close();
         }catch(SQLException ex){

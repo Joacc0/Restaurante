@@ -249,7 +249,8 @@ public class VistaMesas extends javax.swing.JInternalFrame {
                         model.addRow(new Object[]{
                             mesa.getNumeroMesa(), 
                             mesa.getCapacidad(), 
-                            mesa.getEstadoMesa()
+                            mesa.getEstadoMesa(),
+                            
                         });
                         break; // Salir del bucle después de encontrar la mesa
                     }
