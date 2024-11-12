@@ -60,7 +60,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jCBmeseros = new javax.swing.JComboBox<>();
-        jBhistorialPedidosXMesero = new javax.swing.JButton();
+        JBmpdiario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtMeseros = new javax.swing.JTable();
         JBhistorialPedidos = new javax.swing.JButton();
@@ -79,11 +79,11 @@ public class VistaMesero extends javax.swing.JInternalFrame {
             }
         });
 
-        jBhistorialPedidosXMesero.setBackground(new java.awt.Color(102, 255, 204));
-        jBhistorialPedidosXMesero.setText("PEDIDOS X MESERO DIARIO");
-        jBhistorialPedidosXMesero.addActionListener(new java.awt.event.ActionListener() {
+        JBmpdiario.setBackground(new java.awt.Color(102, 255, 204));
+        JBmpdiario.setText("PEDIDOS X MESERO DIARIO");
+        JBmpdiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBhistorialPedidosXMeseroActionPerformed(evt);
+                JBmpdiarioActionPerformed(evt);
             }
         });
 
@@ -115,7 +115,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                 .addContainerGap(120, Short.MAX_VALUE)
                 .addComponent(JBhistorialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(156, 156, 156)
-                .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JBmpdiario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -141,7 +141,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBhistorialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JBmpdiario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
         );
 
@@ -176,25 +176,13 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBhistorialPedidosXMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMeseroActionPerformed
-
-        // AQUI CONSULTAREMOS CON TRONCAL PEDIDOS 
-        
-        meseroActual=(Mesero) jCBmeseros.getSelectedItem();
-        
-        try{
-            if (meseroActual !=null){
-                
-                
-        pedidoD.listarPedidosPorMesero(meseroActual.getIdMesero());
-        
-       } } 
-            catch (Exception e){
-                    JOptionPane.showMessageDialog(null, "error: "+e.toString());
-                    }
-        
-        
-    }//GEN-LAST:event_jBhistorialPedidosXMeseroActionPerformed
+    private void JBmpdiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBmpdiarioActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        MPedidosDia hp = new MPedidosDia();
+        hp.setVisible(true);
+        escritorio.add(hp);
+    }//GEN-LAST:event_JBmpdiarioActionPerformed
 
     private void jCBmeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmeserosActionPerformed
         // COMBO BOX MESEROS
@@ -235,8 +223,8 @@ public class VistaMesero extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBhistorialPedidos;
+    private javax.swing.JButton JBmpdiario;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jBhistorialPedidosXMesero;
     private javax.swing.JComboBox<Mesero> jCBmeseros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
