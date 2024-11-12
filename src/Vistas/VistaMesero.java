@@ -55,6 +55,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        escritorio = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,8 +63,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jBhistorialPedidosXMesero = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtMeseros = new javax.swing.JTable();
-        jBhistorialPedidosXMesero1 = new javax.swing.JButton();
-        jBhistorialPedidosXMesero2 = new javax.swing.JButton();
+        JBhistorialPedidos = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,7 +80,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         });
 
         jBhistorialPedidosXMesero.setBackground(new java.awt.Color(102, 255, 204));
-        jBhistorialPedidosXMesero.setText("HISTORIAL DE PEDIDOS x Mesero");
+        jBhistorialPedidosXMesero.setText("PEDIDOS X MESERO DIARIO");
         jBhistorialPedidosXMesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBhistorialPedidosXMeseroActionPerformed(evt);
@@ -98,19 +98,11 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         jtMeseros.setFocusCycleRoot(true);
         jScrollPane2.setViewportView(jtMeseros);
 
-        jBhistorialPedidosXMesero1.setBackground(new java.awt.Color(102, 255, 204));
-        jBhistorialPedidosXMesero1.setText("HISTORIAL DE PEDIDOS x Mesero");
-        jBhistorialPedidosXMesero1.addActionListener(new java.awt.event.ActionListener() {
+        JBhistorialPedidos.setBackground(new java.awt.Color(102, 255, 204));
+        JBhistorialPedidos.setText("HISTORIAL DE PEDIDOS ");
+        JBhistorialPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBhistorialPedidosXMesero1ActionPerformed(evt);
-            }
-        });
-
-        jBhistorialPedidosXMesero2.setBackground(new java.awt.Color(102, 255, 204));
-        jBhistorialPedidosXMesero2.setText("HISTORIAL DE PEDIDOS x Mesero");
-        jBhistorialPedidosXMesero2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBhistorialPedidosXMesero2ActionPerformed(evt);
+                JBhistorialPedidosActionPerformed(evt);
             }
         });
 
@@ -120,26 +112,21 @@ public class VistaMesero extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jBhistorialPedidosXMesero2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBhistorialPedidosXMesero1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(238, 238, 238)
-                                .addComponent(jLabel1)))
-                        .addContainerGap(27, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(120, Short.MAX_VALUE)
+                .addComponent(JBhistorialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156)
+                .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,25 +138,39 @@ public class VistaMesero extends javax.swing.JInternalFrame {
                     .addComponent(jCBmeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBhistorialPedidosXMesero2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBhistorialPedidosXMesero1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JBhistorialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBhistorialPedidosXMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
+        );
+
+        escritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 574, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(escritorio)
         );
 
         pack();
@@ -223,19 +224,19 @@ public class VistaMesero extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jCBmeserosActionPerformed
 
-    private void jBhistorialPedidosXMesero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMesero1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBhistorialPedidosXMesero1ActionPerformed
-
-    private void jBhistorialPedidosXMesero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBhistorialPedidosXMesero2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBhistorialPedidosXMesero2ActionPerformed
+    private void JBhistorialPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBhistorialPedidosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        HistorialPedidos hp = new HistorialPedidos();
+        hp.setVisible(true);
+        escritorio.add(hp);
+    }//GEN-LAST:event_JBhistorialPedidosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBhistorialPedidos;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jBhistorialPedidosXMesero;
-    private javax.swing.JButton jBhistorialPedidosXMesero1;
-    private javax.swing.JButton jBhistorialPedidosXMesero2;
     private javax.swing.JComboBox<Mesero> jCBmeseros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
