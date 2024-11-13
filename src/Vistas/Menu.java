@@ -53,6 +53,7 @@ public class Menu extends javax.swing.JFrame {
         jmiAltaProducto = new javax.swing.JMenuItem();
         jmiSTOCK = new javax.swing.JMenuItem();
         jmiListarProductos = new javax.swing.JMenuItem();
+        jmiCambiarPrecios = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jmiNuevoPedido = new javax.swing.JMenuItem();
         jmiAtenderPedido = new javax.swing.JMenuItem();
@@ -151,6 +152,14 @@ public class Menu extends javax.swing.JFrame {
 
         jmiListarProductos.setText("Listar PRODUCTOS");
         jmProductos.add(jmiListarProductos);
+
+        jmiCambiarPrecios.setText("CAMBIAR PRECIOS");
+        jmiCambiarPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCambiarPreciosActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiCambiarPrecios);
 
         jMenuBar1.add(jmProductos);
 
@@ -267,6 +276,14 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(Apedido);    
     }//GEN-LAST:event_jmiAtenderPedidoActionPerformed
 
+    private void jmiCambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCambiarPreciosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        CambioDePrecios  CP = new CambioDePrecios();
+        CP.setVisible(true);
+        escritorio.add(CP); 
+    }//GEN-LAST:event_jmiCambiarPreciosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +335,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jmProductos;
     private javax.swing.JMenuItem jmiAltaProducto;
     private javax.swing.JMenuItem jmiAtenderPedido;
+    private javax.swing.JMenuItem jmiCambiarPrecios;
     private javax.swing.JMenuItem jmiListarProductos;
     private javax.swing.JMenuItem jmiMesas;
     private javax.swing.JMenuItem jmiNuevoPedido;

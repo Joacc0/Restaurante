@@ -96,7 +96,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "NOMBRE: " + nombreProducto + ", STOCK: " + stock ;
+        return  nombreProducto + "_"+descripcion;//+", STOCK: " + stock ;
     }
     
    
