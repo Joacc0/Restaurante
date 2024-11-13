@@ -21,8 +21,8 @@ public class Producto {
 
     public Producto(int idProducto, String nombreProducto, String descripcion, double precio, String categoria, int stock, boolean baja) {
         this.idProducto = idProducto;
-        this.nombreProducto = nombreProducto;
-        this.descripcion = descripcion;
+        this.nombreProducto = nombreProducto.toUpperCase();
+        this.descripcion = descripcion.toUpperCase();
         this.precio = precio;
         this.categoria = categoria;
         this.stock = stock;
@@ -47,7 +47,7 @@ public class Producto {
     }
 
     public String getNombreProducto() {
-        return nombreProducto;
+        return nombreProducto.toUpperCase();
     }
 
     public void setNombreProducto(String nombreProducto) {
@@ -55,7 +55,7 @@ public class Producto {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return descripcion.toUpperCase();
     }
 
     public void setDescripcion(String descripcion) {

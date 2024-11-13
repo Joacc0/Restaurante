@@ -250,7 +250,7 @@ public class DetalleData {
             for (Detalle detalle : detalles) {
                 total=total + detalle.getImporte();
             }
-        JOptionPane.showMessageDialog(null,"TOTAL DEL PEDIDO = "+ total);    
+//        JOptionPane.showMessageDialog(null,"TOTAL DEL PEDIDO = "+ total);    
         return total;
             
     }

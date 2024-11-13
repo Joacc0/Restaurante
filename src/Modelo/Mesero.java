@@ -16,8 +16,8 @@ public class Mesero {
     public Mesero(int idMesero, int dni, String nombre, String apellido, boolean baja) {
         this.idMesero = idMesero;
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombre = nombre.toUpperCase();
+        this.apellido = apellido.toUpperCase();
         this.baja = baja;
     }
 
@@ -48,7 +48,7 @@ public class Mesero {
 
     
     public String getNombre() {
-        return nombre;
+        return nombre.toUpperCase();
     }
 
     public void setNombre(String nombre) {
@@ -56,7 +56,7 @@ public class Mesero {
     }
 
     public String getApellido() {
-        return apellido;
+        return apellido.toUpperCase();
     }
 
     public void setApellido(String apellido) {

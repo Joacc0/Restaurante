@@ -265,6 +265,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         model.setRowCount(0);  //limpo tabla
         if(JCBpedido.getSelectedIndex()>=0){
             cargarDetallesDePedidoSelected();
+            imprimirTotalDeLosDetallesDelPedidoX();
         }
         
     }
@@ -343,6 +344,9 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
         //usamos constructor: public Detalle(Producto producto, int cantidadProductos, Pedido pedido)
         detalleNuevo= new Detalle(prodActual,cantidad,pedidoActual);
+//        VERIFICAR SI HAY SUFICIENTE STOCK
+        if(cantidad<=prodActual.getStock()){
+            //GUARDAR EL DETALLE
         detalleD.agregarProductosAunPedido(detalleNuevo);//guarda un detalle
         //prodActual,cantidad hay q modificar el stock
         for (int i = 0; i < cantidad; i++) {
@@ -356,11 +360,22 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         }
         
         llenarJCBProductos();//se imprimen productos con stock actualizado 
+            
+            
+        }else{//no hay suficiente stock
+            
+            JOptionPane.showMessageDialog(null,"NO ES POSIBLE= Stock disponible=  " + prodActual.getStock());
+            
+        }
+
+
+        
     }//GEN-LAST:event_JBagregarActionPerformed
 
     private void JCBpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBpedidoActionPerformed
         model.setRowCount(0);  //limpo tabla
         cargarDetallesDePedidoSelected();
+        imprimirTotalDeLosDetallesDelPedidoX();
     }//GEN-LAST:event_JCBpedidoActionPerformed
 
     private void JBcobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBcobrarActionPerformed
@@ -373,6 +388,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         
         model.setRowCount(0);  //limpo tabla
         cargarDetallesDePedidoSelected();//imprimo en tabla
+        imprimirTotalDeLosDetallesDelPedidoX();
         // BOTON COBRAR
         
         int respuesta= JOptionPane.showConfirmDialog(null,"Realmente desea COBRAR el pedido "+ idPedido +"?",
@@ -399,11 +415,15 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         //public Double sumarSubtotalesDeUnPedido(int idPedido){      //recibo ID de un pedido existente
         //pedido JCBpedido
         Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
+        if(JCBpedido.getSelectedIndex()>=0){//si hay objeto seleccionado
         int idPedido= pedidoActual.getIdPedido();
         detalleD.sumarSubtotalesDeUnPedido(idPedido);
         //asi lo muestro pero falta poner en la vista
-        JOptionPane.showMessageDialog(null,"el total a pagar en el pedido " + idPedido + "+ es de $: " +
-                  detalleD.sumarSubtotalesDeUnPedido(idPedido));
+//        JOptionPane.showMessageDialog(null,"el total a pagar en el pedido " + idPedido + "+ es de $: " +
+//                  detalleD.sumarSubtotalesDeUnPedido(idPedido));
+        JTFtotalDetallesDe1pedido.setText(detalleD.sumarSubtotalesDeUnPedido(idPedido).toString());
+    }
+        
     }
     private void JTFtotalDetallesDe1pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtotalDetallesDe1pedidoActionPerformed
        
