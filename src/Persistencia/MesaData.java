@@ -20,6 +20,16 @@ public class MesaData {
     
     //ALTA
     public void agregarMesa(Mesa mesa){     //damos de alta nueva mesa ID en BD automático autoincremental
+       int numeroMesaAinsertar=mesa.getNumeroMesa();//NUMERO DE MESA(descriptivo), NADA QUE VER CON IDMESA
+       
+       Mesa mesaAux= buscarMesaPorNumeroMesa(numeroMesaAinsertar);//si hay mesaACTIVA con este numero(a modo de nombreInt) la devuelve aquí
+       
+       if(mesaAux.getNumeroMesa()== numeroMesaAinsertar){
+           
+           JOptionPane.showMessageDialog(null,"NO SE AGREGA= Existe MESA Activa con el mismo NUMERO DE MESA ");
+           
+       }else{
+           //SE ACEPTA ESE NUM DE MESA Y SE AÑADIRÁ A LA BD
        
         //atributos de mesa en orden: (int capacidad, int estado, int numeroMesa, boolean baja)
         String sql="INSERT INTO mesa (capacidad,estadoMesa,numeroMesa,baja)"
@@ -38,7 +48,9 @@ public class MesaData {
             }
             ps.close();
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla mesa"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla MESA "+ex.getMessage());
+            
+        }
         
     }
  }
