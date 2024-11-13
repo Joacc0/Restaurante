@@ -12,16 +12,16 @@ public class Restaurante {
         
         
         
-//        Mesa mesa1 = new Mesa(4, 1, 1, false);
-//        System.out.println(mesa1.toString());
-//        
-//        MesaData mD1 = new MesaData();
-//        mD1.guardarMesa(mesa1);
-//        
-//        
-//       
-//       
-//       MesaData mD1 = new MesaData();
+        Mesa mesa1 = new Mesa(4, 1, 1, false);
+        System.out.println(mesa1.toString());
+        
+        MesaData mD1 = new MesaData();
+        mD1.agregarMesa(mesa1);
+        
+        
+       
+       
+     //  MesaData mD1 = new MesaData();
 //        Mesa mesa1DIFERENTE = new Mesa(1,4, 3, 66, false);
 //        mD1.actualizarMesa(mesa1DIFERENTE);
 //
@@ -31,21 +31,27 @@ public class Restaurante {
 //        
 //        Mesa mesa1cambio2 = new Mesa(1,6, 3, 3, false);
 //        mD1.actualizarMesa(mesa1cambio2);
-//
-// cargo 5 mesas más
-//            Mesa mesa1 = new Mesa(2, 1, 1, false);
+
+ //cargo 5 mesas más
+           // Mesa mesa1 = new Mesa(2, 1, 1, false);
 //            Mesa mesa2 = new Mesa(4, 1, 2, false);
 //            Mesa mesa3 = new Mesa(6, 1, 3, false);
 //            Mesa mesa4 = new Mesa(8, 1, 4, false);
 //            Mesa mesa5 = new Mesa(10, 1, 5, false);
-//            
-//            MesaData mD1 = new MesaData();
+            
+            //cargar con constructor de 2 argumentos capacidad-numMesa
+            
+             Mesa mesa2 = new Mesa(10, 6);
+            Mesa mesa3 = new Mesa(12, 7);
+            Mesa mesa4 = new Mesa(6, 8);
+            Mesa mesa5 = new Mesa(4, 9);
+         //   MesaData mD1 = new MesaData();
 //            mD1.agregarMesa(mesa1);
-//            mD1.agregarMesa(mesa2);           
-//            mD1.agregarMesa(mesa3);
-//            mD1.agregarMesa(mesa4);
-//            mD1.agregarMesa(mesa5);   
-//
+            mD1.agregarMesa(mesa2);           
+            mD1.agregarMesa(mesa3);
+            mD1.agregarMesa(mesa4);
+            mD1.agregarMesa(mesa5);   
+
 //                MesaData mD1 = new MesaData();
 //                Mesa mesa1DIFERENTE = new Mesa(1,2, 1, 0, false);
 //                mD1.actualizarMesa(mesa1DIFERENTE);
@@ -133,7 +139,7 @@ public class Restaurante {
 //
 //          ProductoData productoData= new  ProductoData();
 //          PedidoData pedidoData= new PedidoData();
-          DetalleData detalleData= new DetalleData();
+//          DetalleData detalleData= new DetalleData();
 //          
 //          Producto unProducto= productoData.buscarProductoPorIDBD(1);
 //          System.out.println("producto es: "+ unProducto.toString());
@@ -178,8 +184,8 @@ public class Restaurante {
           
 //          detalleData.listarDetallesDeUnPedido(2);
           
-          System.out.println("el total a pagar en el pedido 1 es: "+
-                  detalleData.sumarSubtotalesDeUnPedido(1));
+//          System.out.println("el total a pagar en el pedido 1 es: "+
+//                  detalleData.sumarSubtotalesDeUnPedido(1));
 
 
     }

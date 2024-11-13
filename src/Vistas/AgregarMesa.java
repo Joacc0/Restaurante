@@ -11,7 +11,7 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
      */
     public AgregarMesa() {
         initComponents();
-//        llenarComboBox();
+//       llenarComboBox();
     }
 
     /**
@@ -155,6 +155,8 @@ public class AgregarMesa extends javax.swing.JInternalFrame {
         
         Mesa nuevaMesa = new Mesa(capacidad, numeroMesa);//nueva mesa nace son capacidad y numero de mesa, nacerá libre y activa
         mdata.agregarMesa(nuevaMesa);
+        
+           dispose();
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jtfNumMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumMesaActionPerformed

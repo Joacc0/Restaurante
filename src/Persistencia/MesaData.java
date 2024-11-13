@@ -24,7 +24,7 @@ public class MesaData {
        
        Mesa mesaAux= buscarMesaPorNumeroMesa(numeroMesaAinsertar);//si hay mesaACTIVA con este numero(a modo de nombreInt) la devuelve aquí
        
-       if(mesaAux.getNumeroMesa()== numeroMesaAinsertar){
+       if(mesaAux!=null){ //está viniendo una mesa activa...
            
            JOptionPane.showMessageDialog(null,"NO SE AGREGA= Existe MESA Activa con el mismo NUMERO DE MESA ");
            
