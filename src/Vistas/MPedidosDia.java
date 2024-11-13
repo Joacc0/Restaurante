@@ -50,20 +50,12 @@ public class MPedidosDia extends javax.swing.JInternalFrame {
         JBsalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
-
-        JCBmeseros.setBackground(new java.awt.Color(255, 255, 255));
-        JCBmeseros.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("PEDIDOS POR MESERO DIARIO");
 
         JDCfecha.setBackground(new java.awt.Color(255, 255, 255));
-        JDCfecha.setForeground(new java.awt.Color(0, 0, 0));
 
-        JTpedidos.setBackground(new java.awt.Color(255, 255, 255));
-        JTpedidos.setForeground(new java.awt.Color(0, 0, 0));
         JTpedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -86,19 +78,20 @@ public class MPedidosDia extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(JTpedidos);
 
         JBbuscar.setBackground(new java.awt.Color(0, 153, 51));
-        JBbuscar.setForeground(new java.awt.Color(0, 0, 0));
         JBbuscar.setText("BUSCAR");
+        JBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBbuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("MESERO:");
 
         jLabel3.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("FECHA:");
 
         JBsalir.setBackground(new java.awt.Color(0, 102, 204));
-        JBsalir.setForeground(new java.awt.Color(0, 0, 0));
         JBsalir.setText("SALIR");
         JBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,20 +166,20 @@ public class MPedidosDia extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_JBsalirActionPerformed
 
+    private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBbuscarActionPerformed
+
 
     private void cargarProductos() {
-        // Limpiar el modelo de la tabla
-        model.setRowCount(0);
-
-        // Recorrer la lista de productos y añadir cada uno al modelo de la tabla
-        for (Pedido pedi : listaPedidos) {
-            // Suponiendo que Producto tiene métodos como getId(), getNombre(), getPrecio(), etc.
-            Object[] fila = new Object[]{
-               pedi.getFechaYhoraPedido(),
-               pedi.getMesero()
-            };
-            model.addRow(fila);
-        }
+//        for (Pedido pedi : listaPedidos) {
+//            // Suponiendo que Producto tiene métodos como getId(), getNombre(), getPrecio(), etc.
+//            Object[] fila = new Object[]{
+//               pedi.getFechaYhoraPedido(),
+//               pedi.getMesero()
+//            };
+//            model.addRow(fila);
+        
     }
     private void llenarComboBox(){
         JCBmeseros.removeAllItems();

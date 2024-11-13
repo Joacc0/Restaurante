@@ -22,13 +22,10 @@ public class MesaData {
     public void agregarMesa(Mesa mesa){     //damos de alta nueva mesa ID en BD automático autoincremental
        int numeroMesaAinsertar=mesa.getNumeroMesa();//NUMERO DE MESA(descriptivo), NADA QUE VER CON IDMESA
        
-       Mesa mesaAux= buscarMesaPorNumeroMesa(numeroMesaAinsertar);//si hay mesaACTIVA con este numero(a modo de nombreInt) la devuelve aquí
+//       Mesa mesaAux= buscarMesaPorNumeroMesa(numeroMesaAinsertar);//si hay mesaACTIVA con este numero(a modo de nombreInt) la devuelve aquí
        
-       if(mesaAux!=null){ //está viniendo una mesa activa...
+       if(buscarMesaPorNumeroMesa(numeroMesaAinsertar)==false){ //true hay en BD false no hay en BD 
            
-           JOptionPane.showMessageDialog(null,"NO SE AGREGA= Existe MESA Activa con el mismo NUMERO DE MESA ");
-           
-       }else{
            //SE ACEPTA ESE NUM DE MESA Y SE AÑADIRÁ A LA BD
        
         //atributos de mesa en orden: (int capacidad, int estado, int numeroMesa, boolean baja)
@@ -52,7 +49,9 @@ public class MesaData {
             
         }
         
-    }
+    }else{
+           JOptionPane.showMessageDialog(null,"NO SE AGREGA= Existe MESA Activa con el mismo NUMERO DE MESA ");
+       }
  }
     
     //MODIFICA
@@ -203,8 +202,10 @@ public class MesaData {
     }
  
     //buscar mesa por el numero de mesa (si usamos objeto entero sobra con la busqueda x id
- public Mesa buscarMesaPorNumeroMesa(int numeroMesa){
-        Mesa mesa = new Mesa();
+ public Boolean buscarMesaPorNumeroMesa(int numeroMesa){//DEVUELVE TRUE SI LO ENCONTRO
+                                                        //FALSE SI NO LO ENCONTRO EN LA BD
+                                                        
+        Mesa mesa = null;
         try{
             String sql = "SELECT capacidad,estadoMesa,numeroMesa,idMesa,baja FROM mesa "
                     + "WHERE numeroMesa = ? AND baja = 0";
@@ -224,15 +225,16 @@ public class MesaData {
                 
 //                //show mensaje antes de return mesa
 //                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorNumeroMesa= "+mesa.toString());
-                
+                return true;//y se sale
             }else{
                 JOptionPane.showMessageDialog(null, "buscarMesaPorNumeroMesa= No existe la mesa con NumeroMesa: " + numeroMesa);
+            
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de MESA p/buscarMesaPorNumeroMesa= "+ex.getMessage());
         }
         
-        return mesa;
+        return false;
     }
  
  

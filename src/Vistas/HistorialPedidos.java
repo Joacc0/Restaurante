@@ -161,7 +161,7 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
             Object[] fila = new Object[]{
                pedi.getFechaYhoraPedido(),//borrar?me sobra
                pedi.getMesero().getNombre(),//borrar?
-               pedi.getMesa().getNumeroMesa(),
+//               pedi.getMesa().getNumeroMesa(),
                pedi.getFechaYhoraPedido(),
                pedi.getMesero().getNombre(),
                pedi.isCobrada(),

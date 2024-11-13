@@ -42,21 +42,20 @@ public class Menu extends javax.swing.JFrame {
                 g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);}};
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmiNuevoPedido = new javax.swing.JMenuItem();
+        jmiAtenderPedido = new javax.swing.JMenuItem();
+        jmProductos = new javax.swing.JMenu();
+        jmiProductos = new javax.swing.JMenuItem();
+        jmiAltaProducto = new javax.swing.JMenuItem();
+        jmiSTOCK = new javax.swing.JMenuItem();
+        jmiCambiarPrecios = new javax.swing.JMenuItem();
         jmMesas = new javax.swing.JMenu();
         jmiMesas = new javax.swing.JMenuItem();
         jmMeseros = new javax.swing.JMenu();
         jMenuItemMeseroMB = new javax.swing.JMenuItem();
         jMenuItemMeseroA = new javax.swing.JMenuItem();
         jMenuItemTABLAmesero = new javax.swing.JMenuItem();
-        jmProductos = new javax.swing.JMenu();
-        jmiProductos = new javax.swing.JMenuItem();
-        jmiAltaProducto = new javax.swing.JMenuItem();
-        jmiSTOCK = new javax.swing.JMenuItem();
-        jmiListarProductos = new javax.swing.JMenuItem();
-        jmiCambiarPrecios = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jmiNuevoPedido = new javax.swing.JMenuItem();
-        jmiAtenderPedido = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -81,8 +80,64 @@ public class Menu extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
+
+        jMenu1.setText("PEDIDOS");
+
+        jmiNuevoPedido.setText("NUEVO PEDIDO");
+        jmiNuevoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNuevoPedidoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiNuevoPedido);
+
+        jmiAtenderPedido.setText("ATENDER PEDIDO");
+        jmiAtenderPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAtenderPedidoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiAtenderPedido);
+
+        jMenuBar1.add(jMenu1);
+
+        jmProductos.setText("PRODUCTOS");
+
+        jmiProductos.setText("CONSULTA Productos");
+        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiProductosActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiProductos);
+
+        jmiAltaProducto.setText("ALTA nuevo PRODUCTO");
+        jmiAltaProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAltaProductoActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiAltaProducto);
+
+        jmiSTOCK.setText("STOCK administrar");
+        jmiSTOCK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSTOCKActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiSTOCK);
+
+        jmiCambiarPrecios.setText("CAMBIAR PRECIOS");
+        jmiCambiarPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCambiarPreciosActionPerformed(evt);
+            }
+        });
+        jmProductos.add(jmiCambiarPrecios);
+
+        jMenuBar1.add(jmProductos);
 
         jmMesas.setText("MESAS");
 
@@ -123,65 +178,6 @@ public class Menu extends javax.swing.JFrame {
         jmMeseros.add(jMenuItemTABLAmesero);
 
         jMenuBar1.add(jmMeseros);
-
-        jmProductos.setText("PRODUCTOS");
-
-        jmiProductos.setText("CONSULTA Productos");
-        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiProductosActionPerformed(evt);
-            }
-        });
-        jmProductos.add(jmiProductos);
-
-        jmiAltaProducto.setText("ALTA nuevo PRODUCTO");
-        jmiAltaProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAltaProductoActionPerformed(evt);
-            }
-        });
-        jmProductos.add(jmiAltaProducto);
-
-        jmiSTOCK.setText("Stock");
-        jmiSTOCK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiSTOCKActionPerformed(evt);
-            }
-        });
-        jmProductos.add(jmiSTOCK);
-
-        jmiListarProductos.setText("Listar PRODUCTOS");
-        jmProductos.add(jmiListarProductos);
-
-        jmiCambiarPrecios.setText("CAMBIAR PRECIOS");
-        jmiCambiarPrecios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCambiarPreciosActionPerformed(evt);
-            }
-        });
-        jmProductos.add(jmiCambiarPrecios);
-
-        jMenuBar1.add(jmProductos);
-
-        jMenu1.setText("PEDIDOS");
-
-        jmiNuevoPedido.setText("NUEVO PEDIDO");
-        jmiNuevoPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiNuevoPedidoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiNuevoPedido);
-
-        jmiAtenderPedido.setText("ATENDER PEDIDO");
-        jmiAtenderPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAtenderPedidoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiAtenderPedido);
-
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -336,7 +332,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiAltaProducto;
     private javax.swing.JMenuItem jmiAtenderPedido;
     private javax.swing.JMenuItem jmiCambiarPrecios;
-    private javax.swing.JMenuItem jmiListarProductos;
     private javax.swing.JMenuItem jmiMesas;
     private javax.swing.JMenuItem jmiNuevoPedido;
     private javax.swing.JMenuItem jmiProductos;
