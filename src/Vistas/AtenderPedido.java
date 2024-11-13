@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author tomic
  */
 public class AtenderPedido extends javax.swing.JInternalFrame {
-    private DefaultTableModel model;
+    private DefaultTableModel model=new DefaultTableModel();
     private ProductoData prodD = new ProductoData();
     private Producto productoNuevo = new Producto();
     private PedidoData pediD = new PedidoData();
@@ -24,6 +24,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
     private Detalle detalleNuevo = null;
     List<Producto> listaProductos;
     List<Pedido> listaPedidos;
+    List<Detalle> listaDetalles;
     
     public AtenderPedido() {
         initComponents();
@@ -233,25 +234,38 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void llenarJCB() {//los dos JCB
-        JCBproductos.removeAllItems();
-        listaProductos = prodD.listarProductos();//Productos que no esten dados de baja
+    private void llenarJCBPedidos() {//CB PEDIDOS INDIVIDUAL
+       
         JCBpedido.removeAllItems();
-        listaPedidos = pediD.listarPedidos() ;
-        for (Producto pro : listaProductos) {
-            JCBproductos.addItem(pro);
-
-        }
+        listaPedidos = pediD.listarPedidosNoCobrados();//pedidos que no esten dados de baja ni cobrados
+       
         for (Pedido pedi : listaPedidos){
             if(!pedi.isCobrada()){
                 JCBpedido.addItem(pedi);//SE CARGAN PEDIDOS, SOLO LOS COBRADOS FALSE
             }
             
         }
+//        JCBpedido.setSelectedIndex(-1);
+    }
+    private void llenarJCBProductos() {// CB PRODUCTOS INDIVIDUAL 
+        JCBproductos.removeAllItems();
+        listaProductos = prodD.listarProductos();//Productos que no esten dados de baja
+        
+        for (Producto pro : listaProductos) {
+            JCBproductos.addItem(pro);
+
+        }
+        JCBproductos.setSelectedIndex(-1);
+        
     }
     
     private void refrescarVentana(){
-        llenarJCB();
+        llenarJCBProductos();
+        llenarJCBPedidos();
+        model.setRowCount(0);  //limpo tabla
+        if(JCBpedido.getSelectedIndex()>=0){
+            cargarDetallesDePedidoSelected();
+        }
         
     }
     
@@ -286,6 +300,33 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
             };
             model.addRow(fila);
     }  
+    private void cargarDetallesDePedidoSelected() {
+            
+        //usando PedidoData198
+        //public List<Detalle> listarDetallesDeUnPedido(int idPedido){
+        Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
+        if(JCBpedido.getSelectedIndex()>=0){
+            int idPedido= pedidoActual.getIdPedido();
+        
+            
+        listaDetalles= detalleD.listarDetallesDeUnPedido(idPedido);
+        
+         for (Detalle detalle : listaDetalles) {
+
+             model.addRow(new Object[]{   
+             
+                
+                detalle.getProducto().getNombreProducto(),
+                detalle.getProducto().getDescripcion(),
+                detalle.getCantidadProductos(),
+                detalle.getImporte()
+             });
+        }
+        }else{
+            System.out.println("SELECCIONE UN PEDIDO PARA IMPRIMIR SUS DETALLES");
+        }
+        
+    }
     
     private void JCBproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBproductosActionPerformed
         
@@ -313,10 +354,13 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
             cargarProductos();
             JTFcantidad.setText("");
         }
+        
+        llenarJCBProductos();//se imprimen productos con stock actualizado 
     }//GEN-LAST:event_JBagregarActionPerformed
 
     private void JCBpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBpedidoActionPerformed
-        // TODO add your handling code here:
+        model.setRowCount(0);  //limpo tabla
+        cargarDetallesDePedidoSelected();
     }//GEN-LAST:event_JCBpedidoActionPerformed
 
     private void JBcobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBcobrarActionPerformed
@@ -324,7 +368,27 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         //USANDO LINEA 198 DE PEDIDDATA
         //public void cobrarPedido(Pedido pedido){      //recibo pedido existente
         //EL PEDIDO EXISTENTE QUE SE MANDA X PARAMETRO ES EL Q CB SELECTED ITEM
+        Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
+        int idPedido= pedidoActual.getIdPedido();
         
+        model.setRowCount(0);  //limpo tabla
+        cargarDetallesDePedidoSelected();//imprimo en tabla
+        // BOTON COBRAR
+        
+        int respuesta= JOptionPane.showConfirmDialog(null,"Realmente desea COBRAR el pedido "+ idPedido +"?",
+                "Confirmar Eliminar",JOptionPane.YES_NO_OPTION, JOptionPane.OK_CANCEL_OPTION);
+        /* Si el usuario pulsa si, devolverá valor 0, si pulsa no devolverá valor 1, y si cierra la ventana devolverá -1*/
+        if (respuesta==0){
+            //saco otro mensaje de advertiencia
+            int rta2 = JOptionPane.showConfirmDialog(null," SE COBRARÁ EL PEDIDO "+ idPedido +" $: " + detalleD.sumarSubtotalesDeUnPedido(idPedido).toString(),
+                "COBRAR NoCobrar",JOptionPane.YES_NO_OPTION, JOptionPane.OK_CANCEL_OPTION);
+            if (rta2==0){
+                pediD.cobrarPedido(pedidoActual);
+                    refrescarVentana();
+                    
+            }
+        }
+        refrescarVentana();
     }//GEN-LAST:event_JBcobrarActionPerformed
 
     private void imprimirTotalDeLosDetallesDelPedidoX(){

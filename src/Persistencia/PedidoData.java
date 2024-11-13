@@ -155,6 +155,42 @@ public class PedidoData {
         return pedidos;
     }
 
+    //LISTAR TODOS LOS PEDIDOS PENDIENTES DE COBRO
+    
+    public List<Pedido> listarPedidosNoCobrados(){
+        List<Pedido> pedidos = new ArrayList<>();
+        //ProductoData productoData = new ProductoData();
+//        MesaData mesaData = new MesaData();
+//        MeseroData meseroData = new MeseroData();
+        
+        String sql = "SELECT * FROM pedido WHERE baja = 0 AND cobrada = 0";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                
+                //Pedido(Mesa mesa, LocalDate fechaYhoraPedido, Mesero mesero, boolean cobrada, boolean baja)
+                pedido.setIdPedido(rs.getInt("idPedido"));
+                Mesa mesa= mesaData.buscarMesaPorIDBD(rs.getInt("idMesa"));
+                pedido.setMesa(mesa);
+                pedido.setFechaYhoraPedido(rs.getTimestamp("fechaYhoraPedido").toLocalDateTime());                
+                Mesero mesero= meseroData.buscarMeseroPorIDBD(rs.getInt("idMesero"));
+                pedido.setMesero(mesero);
+                pedido.setCobrada(rs.getBoolean("cobrada"));
+                pedido.setBaja(rs.getBoolean("baja"));
+                pedidos.add(pedido);
+                
+
+//                System.out.println(pedido.toString());
+                
+            }
+             ps.close();
+        }catch(SQLException ex){
+             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido "+ ex.getMessage());
+        }
+        return pedidos;
+    }
     public Pedido buscarPedidoPorIDBD(int id) {
        Pedido pedido = null;
 //       MesaData mesaData = new MesaData();
