@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import Modelo.Pedido;
-import Persistencia.PedidoData;
+import Modelo.*;
+import Persistencia.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
 public class MPedidosDia extends javax.swing.JInternalFrame {
     
     private DefaultTableModel model;
-    List<Pedido> listarPedidos;
+    List<Pedido> listaPedidos;
     PedidoData pData = new PedidoData();
+    List<Mesero> listaMeseros;
+    MeseroData meseroD = new MeseroData();
     
     public MPedidosDia() {
         initComponents();
+        llenarComboBox();
         this.model = (DefaultTableModel) JTpedidos.getModel();
-        this.listarPedidos = pData.listarPedidos();
+        this.listaPedidos = pData.listarPedidos();
         cargarProductos();
     }
 
@@ -176,7 +179,7 @@ public class MPedidosDia extends javax.swing.JInternalFrame {
         model.setRowCount(0);
 
         // Recorrer la lista de productos y añadir cada uno al modelo de la tabla
-        for (Pedido pedi : listarPedidos) {
+        for (Pedido pedi : listaPedidos) {
             // Suponiendo que Producto tiene métodos como getId(), getNombre(), getPrecio(), etc.
             Object[] fila = new Object[]{
                pedi.getFechaYhoraPedido(),
@@ -185,7 +188,16 @@ public class MPedidosDia extends javax.swing.JInternalFrame {
             model.addRow(fila);
         }
     }
-    
+    private void llenarComboBox(){
+        JCBmeseros.removeAllItems();
+        listaMeseros= meseroD.listarMeseros();//LISTAR MESEROS SOLO TRAE LOS QUE NO ESTÁN DE BAJA LOGICA. vienen  los baja=0
+                for (Mesero item : listaMeseros) {
+            //jCBmeseros.addItem(item.getDni()+", "+item.getApellido().toUpperCase()+", "+item.getNombre().toUpperCase());
+            JCBmeseros.addItem(item);
+            
+        }
+                JCBmeseros.setSelectedItem(null);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBbuscar;
     private javax.swing.JButton JBsalir;

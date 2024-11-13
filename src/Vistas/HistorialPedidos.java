@@ -24,6 +24,8 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
         this.model = (DefaultTableModel) JTpedidos.getModel();
         this.listarPedidos = pData.listarPedidos();
         cargarProductos();
+        instanciarCabecera();
+        
     }
 
     /**
@@ -40,15 +42,13 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTpedidos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("HISTORIAL PEDIDOS");
 
-        JTpedidos.setBackground(new java.awt.Color(255, 255, 255));
         JTpedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -75,11 +75,11 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 204));
-        jButton1.setText("SALIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.setBackground(new java.awt.Color(0, 102, 204));
+        jbSalir.setText("SALIR");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
@@ -89,14 +89,14 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jbSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -136,9 +136,20 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
+    
+    public void instanciarCabecera(){
+        
+        model.addColumn("NumMesa");
+        model.addColumn("Fecha");
+        model.addColumn("Mesero");
+        model.addColumn("Cobrada");
+        model.addColumn("ImporteACAconJOIN");//join DETALLE DATA metodo: sumarSubtotalesDeUnPedido
+
+        JTpedidos.setModel(model);
+    }; 
     
     private void cargarProductos() {
         // Limpiar el modelo de la tabla
@@ -148,19 +159,37 @@ public class HistorialPedidos extends javax.swing.JInternalFrame {
         for (Pedido pedi : listarPedidos) {
             // Suponiendo que Producto tiene métodos como getId(), getNombre(), getPrecio(), etc.
             Object[] fila = new Object[]{
+               pedi.getFechaYhoraPedido(),//borrar?me sobra
+               pedi.getMesero().getNombre(),//borrar?
+               pedi.getMesa().getNumeroMesa(),
                pedi.getFechaYhoraPedido(),
-               pedi.getMesero()
+               pedi.getMesero().getNombre(),
+               pedi.isCobrada(),
+               pedi.isCobrada()//acá tendriamos que tener el importe total del pedido que se calcula usando DetalleData
             };
             model.addRow(fila);
         }
+        
+        //ACÁ PROBANDO HACER DE OTRO MODO
+//        for (Pedido pedi : listarPedidos) {
+//            
+////            if (pedi.getMesero().getIdMesero()= idMeseroBuscardo) { //
+//                // Agregar el producto a la tabla
+//                model.addRow(new Object[]{
+//                     pedi.getMesa().getNumeroMesa(),
+//               pedi.getFechaYhoraPedido(),
+//               pedi.getMesero().getNombre(),
+//               pedi.isCobrada(),
+//               pedi.isBaja()
+//                });
+//    }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTpedidos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbSalir;
     // End of variables declaration//GEN-END:variables
 }

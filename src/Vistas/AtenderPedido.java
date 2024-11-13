@@ -51,6 +51,8 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         JBcobrar = new javax.swing.JButton();
+        JLtotal = new javax.swing.JLabel();
+        JTFtotalDetallesDe1pedido = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTcarrito = new javax.swing.JTable();
 
@@ -123,7 +125,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JCBproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JTFcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -136,20 +138,44 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
 
         JBcobrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JBcobrar.setText("COBRAR PEDIDO");
+        JBcobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBcobrarActionPerformed(evt);
+            }
+        });
+
+        JLtotal.setText("TOTAL $");
+
+        JTFtotalDetallesDe1pedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        JTFtotalDetallesDe1pedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFtotalDetallesDe1pedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(458, Short.MAX_VALUE)
                 .addComponent(JBcobrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JLtotal)
+                .addGap(63, 63, 63)
+                .addComponent(JTFtotalDetallesDe1pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLtotal)
+                    .addComponent(JTFtotalDetallesDe1pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(JBcobrar)
                 .addGap(31, 31, 31))
         );
@@ -207,7 +233,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void llenarJCB() {
+    private void llenarJCB() {//los dos JCB
         JCBproductos.removeAllItems();
         listaProductos = prodD.listarProductos();//Productos que no esten dados de baja
         JCBpedido.removeAllItems();
@@ -226,6 +252,7 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
     
     private void refrescarVentana(){
         llenarJCB();
+        
     }
     
     private boolean VerificaCampos(){
@@ -275,12 +302,12 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
         //usamos constructor: public Detalle(Producto producto, int cantidadProductos, Pedido pedido)
         detalleNuevo= new Detalle(prodActual,cantidad,pedidoActual);
-        detalleD.agregarProductosAunPedido(detalleNuevo);
+        detalleD.agregarProductosAunPedido(detalleNuevo);//guarda un detalle
         //prodActual,cantidad hay q modificar el stock
         for (int i = 0; i < cantidad; i++) {
             prodD.modifStockProducto(prodActual.getIdProducto());
         }
-        
+        imprimirTotalDeLosDetallesDelPedidoX();//esto tiene que imprimirse en la vista
         //imprime DETALLE en carrito a través de método CargarProductos 
         if (VerificaCampos() == true) {
             cargarProductos();
@@ -292,13 +319,42 @@ public class AtenderPedido extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JCBpedidoActionPerformed
 
+    private void JBcobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBcobrarActionPerformed
+        // USAR METODO COBRAR PEDIDO
+        //USANDO LINEA 198 DE PEDIDDATA
+        //public void cobrarPedido(Pedido pedido){      //recibo pedido existente
+        //EL PEDIDO EXISTENTE QUE SE MANDA X PARAMETRO ES EL Q CB SELECTED ITEM
+        
+    }//GEN-LAST:event_JBcobrarActionPerformed
+
+    private void imprimirTotalDeLosDetallesDelPedidoX(){
+         // acá imprimir todo el tiempo el total del pedido
+        //recorriendo todos los detalles de un medido
+        //hace un total
+        //usando linea 245 de DealleData
+        //public Double sumarSubtotalesDeUnPedido(int idPedido){      //recibo ID de un pedido existente
+        //pedido JCBpedido
+        Pedido pedidoActual = (Pedido) JCBpedido.getSelectedItem();
+        int idPedido= pedidoActual.getIdPedido();
+        detalleD.sumarSubtotalesDeUnPedido(idPedido);
+        //asi lo muestro pero falta poner en la vista
+        JOptionPane.showMessageDialog(null,"el total a pagar en el pedido " + idPedido + "+ es de $: " +
+                  detalleD.sumarSubtotalesDeUnPedido(idPedido));
+    }
+    private void JTFtotalDetallesDe1pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtotalDetallesDe1pedidoActionPerformed
+       
+        
+    }//GEN-LAST:event_JTFtotalDetallesDe1pedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBagregar;
     private javax.swing.JButton JBcobrar;
     private javax.swing.JComboBox<Pedido> JCBpedido;
     private javax.swing.JComboBox<Producto> JCBproductos;
+    private javax.swing.JLabel JLtotal;
     private javax.swing.JTextField JTFcantidad;
+    private javax.swing.JTextField JTFtotalDetallesDe1pedido;
     private javax.swing.JTable JTcarrito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

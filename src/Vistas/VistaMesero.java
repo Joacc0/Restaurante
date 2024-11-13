@@ -177,6 +177,7 @@ public class VistaMesero extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBmpdiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBmpdiarioActionPerformed
+        //ABRE VISTA MESERO PEDIDOS DIA
         escritorio.removeAll();
         escritorio.repaint();
         MPedidosDia hp = new MPedidosDia();
