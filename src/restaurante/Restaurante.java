@@ -34,23 +34,23 @@ public class Restaurante {
 
  //cargo 5 mesas más
            // Mesa mesa1 = new Mesa(2, 1, 1, false);
-//            Mesa mesa2 = new Mesa(4, 1, 2, false);
-//            Mesa mesa3 = new Mesa(6, 1, 3, false);
-//            Mesa mesa4 = new Mesa(8, 1, 4, false);
-//            Mesa mesa5 = new Mesa(10, 1, 5, false);
-            
-            //cargar con constructor de 2 argumentos capacidad-numMesa
-            
-             Mesa mesa2 = new Mesa(10, 6);
-            Mesa mesa3 = new Mesa(12, 7);
-            Mesa mesa4 = new Mesa(6, 8);
-            Mesa mesa5 = new Mesa(4, 9);
-         //   MesaData mD1 = new MesaData();
-//            mD1.agregarMesa(mesa1);
-            mD1.agregarMesa(mesa2);           
-            mD1.agregarMesa(mesa3);
-            mD1.agregarMesa(mesa4);
-            mD1.agregarMesa(mesa5);   
+////            Mesa mesa2 = new Mesa(4, 1, 2, false);
+////            Mesa mesa3 = new Mesa(6, 1, 3, false);
+////            Mesa mesa4 = new Mesa(8, 1, 4, false);
+////            Mesa mesa5 = new Mesa(10, 1, 5, false);
+//            
+//            //cargar con constructor de 2 argumentos capacidad-numMesa
+//            
+//             Mesa mesa2 = new Mesa(10, 6);
+//            Mesa mesa3 = new Mesa(12, 7);
+//            Mesa mesa4 = new Mesa(6, 8);
+//            Mesa mesa5 = new Mesa(4, 9);
+//         //   MesaData mD1 = new MesaData();
+////            mD1.agregarMesa(mesa1);
+//            mD1.agregarMesa(mesa2);           
+//            mD1.agregarMesa(mesa3);
+//            mD1.agregarMesa(mesa4);
+//            mD1.agregarMesa(mesa5);   
 
 //                MesaData mD1 = new MesaData();
 //                Mesa mesa1DIFERENTE = new Mesa(1,2, 1, 0, false);

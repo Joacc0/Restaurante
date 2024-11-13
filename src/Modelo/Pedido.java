@@ -100,7 +100,9 @@ public class Pedido {
 //PARA QUE ATENDER PEDIDO IMPRIMA EN EL COMBOBOX "DE MOMENTO" HACEMOS:
      @Override
     public String toString() {
-        return "idPedido=" + idPedido + "/ mesa:" + mesa.getNumeroMesa() + "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada;
+        return "idPedido=" + idPedido +
+//                "/ mesa:" + mesa.getNumeroMesa() + 
+                "/ mesero:" + mesero.getNombre() + "/ cobrada:" + cobrada;
     }
     
 }

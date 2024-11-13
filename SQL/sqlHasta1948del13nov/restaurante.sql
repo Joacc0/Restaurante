@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-11-2024 a las 23:48:02
+-- Tiempo de generación: 13-11-2024 a las 22:44:07
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -108,12 +108,7 @@ INSERT INTO `detalle` (`idDetalle`, `idProducto`, `cantidadProductos`, `idPedido
 (63, 2, 1, 20, 5, 0),
 (64, 2, 2, 20, 10, 0),
 (65, 5, 1, 20, 10, 0),
-(66, 4, 1, 21, 6, 0),
-(67, 4, 1, 21, 1500, 0),
-(68, 2, 1, 19, 1900, 0),
-(69, 1, 1, 24, 2500, 0),
-(70, 1, 1, 21, 2500, 0),
-(71, 2, 1, 24, 1900, 0);
+(66, 4, 1, 21, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -134,31 +129,23 @@ CREATE TABLE `mesa` (
 --
 
 INSERT INTO `mesa` (`idMesa`, `capacidad`, `estadoMesa`, `numeroMesa`, `baja`) VALUES
-(1, 6, 3, 3, 0),
-(2, 2, 1, 22, 1),
-(3, 4, 1, 22, 1),
-(4, 6, 1, 22, 1),
-(5, 8, 1, 22, 1),
-(6, 8, 1, 22, 1),
-(8, 15, 2, 22, 1),
-(11, 60, 1, 22, 1),
-(15, 6, 1, 22, 1),
-(17, 2, 2, 22, 1),
-(20, 7, 1, 21, 1),
-(21, 3, 1, 23, 1),
-(22, 20, 1, 22, 1),
-(23, 2, 1, 21, 1),
-(24, 2, 1, 20, 1),
+(1, 2, 1, 0, 1),
+(2, 2, 1, 0, 1),
+(3, 4, 1, 0, 1),
+(4, 6, 1, 0, 1),
+(5, 8, 1, 0, 1),
+(6, 8, 1, 0, 1),
+(8, 15, 2, 0, 1),
+(11, 60, 1, 0, 1),
+(15, 6, 1, 0, 1),
+(17, 2, 2, 0, 1),
+(20, 7, 1, 0, 1),
+(21, 3, 1, 0, 1),
+(22, 20, 1, 0, 1),
+(23, 2, 1, 0, 1),
+(24, 2, 1, 0, 1),
 (29, 3, 1, 1, 1),
-(30, 8, 1, 1, 1),
-(31, 4, 1, 1, 0),
-(32, 4, 1, 2, 0),
-(33, 8, 1, 4, 0),
-(34, 10, 1, 5, 0),
-(35, 10, 1, 6, 0),
-(36, 12, 1, 7, 0),
-(37, 6, 1, 8, 0),
-(38, 4, 1, 9, 0);
+(30, 8, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -219,15 +206,15 @@ INSERT INTO `pedido` (`idPedido`, `idMesa`, `fechaYhoraPedido`, `idMesero`, `cob
 (10, 3, '2024-11-11 00:00:00', 7, 1, 0),
 (11, 2, '2024-11-11 00:00:00', 6, 1, 0),
 (12, 2, '2024-11-11 00:00:00', 7, 1, 0),
+(13, 3, '2024-11-11 00:00:00', 7, 1, 0),
+(14, 15, '2024-11-11 00:00:00', 10, 1, 0),
 (15, 22, '2024-11-11 20:05:17', 11, 1, 0),
 (16, 22, '2024-11-13 09:47:49', 9, 1, 0),
 (17, 2, '2024-11-13 13:29:58', 9, 1, 0),
 (18, 6, '2024-11-13 13:44:02', 7, 1, 0),
 (19, 4, '2024-11-13 13:50:20', 7, 0, 0),
 (20, 4, '2024-11-13 15:38:03', 8, 0, 0),
-(21, 5, '2024-11-13 16:17:44', 7, 0, 0),
-(24, 36, '2024-11-13 19:36:51', 10, 0, 0),
-(25, 34, '2024-11-13 19:41:08', 7, 0, 0);
+(21, 5, '2024-11-13 16:17:44', 7, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,10 +237,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripcion`, `precio`, `categoria`, `stock`, `baja`) VALUES
-(1, 'COCA', 'DE LITRO', 2500, 'bebidas', 48, 0),
-(2, 'AGUA', 'DE MEDIO', 1900, 'bebidas', 38, 0),
+(1, 'COCA', 'DE LITRO', 2500, 'bebidas', 50, 0),
+(2, 'AGUA', 'DE MEDIO', 1900, 'bebidas', 40, 0),
 (3, 'CERVEZA', 'LATITA', 2300, 'bebidas', 40, 0),
-(4, 'ALFAJOR', 'CHOCOLATE', 1500, 'postre', 29, 0),
+(4, 'ALFAJOR', 'CHOCOLATE', 1500, 'postre', 30, 0),
 (5, 'HELADO', 'FRUTILLA', 7500, 'portre', 20, 0),
 (6, 'SOPA', 'DE VERDURAS', 3000, 'comidas', 19, 0),
 (7, 'SPRITE', 'X 500ML', 1800, 'bebidas', 50, 0),
@@ -330,13 +317,13 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de la tabla `mesa`
 --
 ALTER TABLE `mesa`
-  MODIFY `idMesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `idMesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `mesero`
@@ -348,7 +335,7 @@ ALTER TABLE `mesero`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

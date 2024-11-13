@@ -193,7 +193,7 @@ public class MesaData {
 //                JOptionPane.showMessageDialog(null,"se encontró esta mesa en buscarMesaPorIDBD= "+mesa.toString());
 //                
             }else{
-                JOptionPane.showMessageDialog(null, "buscarMesaPorIDBD= No existe la mesa con idBD: " + id);
+//                JOptionPane.showMessageDialog(null, "buscarMesaPorIDBD= No existe la mesa con idBD: " + id);
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de MESA p/buscarMesaPorIDBD= "+ex.getMessage());
@@ -204,7 +204,7 @@ public class MesaData {
  
     //buscar mesa por el numero de mesa (si usamos objeto entero sobra con la busqueda x id
  public Mesa buscarMesaPorNumeroMesa(int numeroMesa){
-        Mesa mesa = null;
+        Mesa mesa = new Mesa();
         try{
             String sql = "SELECT capacidad,estadoMesa,numeroMesa,idMesa,baja FROM mesa "
                     + "WHERE numeroMesa = ? AND baja = 0";
