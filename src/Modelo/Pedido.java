@@ -90,7 +90,7 @@ public class Pedido {
         this.baja = baja;
     }
 
-//    GENIAL STRING PERO DIFICIL PARA LA VISTA ATENDER PEDIDO
+
 //    @Override
 //    public String toString() {
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
